@@ -3,6 +3,7 @@ import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import { Home } from "./Home";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
+import ProductionList from "./productions/ProductionList";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
     return (
@@ -13,6 +14,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     element={
                         <AuthorizedRoute loggedInUser={loggedInUser}>
                             <Home />
+                        </AuthorizedRoute>
+                    }
+                />
+                <Route
+                    path="productions"
+                    element={
+                        <AuthorizedRoute loggedInUser={loggedInUser}>
+                            <ProductionList />
                         </AuthorizedRoute>
                     }
                 />
