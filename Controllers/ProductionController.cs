@@ -1,5 +1,6 @@
 using Indielot.Data;
 using Indielot.Models;
+using Indielot.Models.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,26 @@ public class ProductionController : ControllerBase
     public IActionResult Get()
     {
         return Ok(_dbContext.Productions
-            .Include(p => p.ProductionLead));
+            .Include(p => p.ProductionLead)
+            .Select(p => new ProductionDTO
+            {
+                Id = p.Id,
+                Title = p.Title,
+                Description = p.Description,
+                ProductionLead = p.ProductionLead.FullName,
+                Completed = p.Completed,
+                Crew = _dbContext.Crews
+                    .Include(c => c.UserProfile)
+                    .Where(c => c.ProductionId == p.Id)
+                    .Select(c => new CrewDTO
+                    {
+                        Id = c.Id,
+                        Name = c.UserProfile.FullName,
+                        ProfilePicturePath = c.UserProfile.ProfilePicturePath,
+                        Roles = c.RoleNames(c.Roles)
+                    })
+                    .ToList()
+            }));
     }
 
     [HttpGet("{id}")]
@@ -36,7 +56,26 @@ public class ProductionController : ControllerBase
 
         if (production != null)
         {
-            return Ok(production);
+            return Ok(_dbContext.Productions
+                .Select(p => new ProductionDTO
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    Description = p.Description,
+                    ProductionLead = production.ProductionLead.FullName,
+                    Completed = p.Completed,
+                    Crew = _dbContext.Crews
+                        .Include(c => c.UserProfile)
+                        .Where(c => c.ProductionId == p.Id)
+                        .Select(c => new CrewDTO
+                        {
+                            Id = c.Id,
+                            Name = c.UserProfile.FullName,
+                            ProfilePicturePath = c.UserProfile.ProfilePicturePath,
+                            Roles = c.RoleNames(c.Roles)
+                        })
+                        .ToList()
+                }).SingleOrDefault(p => p.Id == id));
         }
 
         return NotFound();

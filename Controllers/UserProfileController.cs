@@ -1,5 +1,8 @@
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using Indielot.Data;
 using Indielot.Models;
+using Indielot.Models.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,15 +24,22 @@ public class UserProfileController : ControllerBase
 
 
     [HttpGet]
-    [Authorize]
+    //[Authorize]
     public IActionResult Get()
     {
-        return Ok(_dbContext.UserProfiles);
+        return Ok(_dbContext.UserProfiles
+            .Include(up => up.IdentityUser)
+            .Select(up => new UserProfileDTO
+            {
+                Name = up.FullName,
+                UserName = up.IdentityUser.UserName,
+                ProfilePicturePath = up.ProfilePicturePath
+            }));
     }
 
 
     [HttpGet("withroles")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public IActionResult GetWithRoles()
     {
         return Ok(_dbContext.UserProfiles
@@ -53,7 +63,7 @@ public class UserProfileController : ControllerBase
 
 
     [HttpGet("{id}")]
-    [Authorize]
+    //[Authorize]
     public IActionResult GetById(string id)
     {
         UserProfile user = _dbContext.UserProfiles
@@ -72,7 +82,7 @@ public class UserProfileController : ControllerBase
 
 
     [HttpGet("activated")]
-    [Authorize]
+    //[Authorize]
     public IActionResult GetActivated()
     {
         return Ok(_dbContext.UserProfiles.Where(up => up.IsActive == true).ToList());
@@ -80,7 +90,7 @@ public class UserProfileController : ControllerBase
 
 
     [HttpGet("deactivate")]
-    [Authorize]
+    //[Authorize]
     public IActionResult GetDeactivated()
     {
         return Ok(_dbContext.UserProfiles.Where(up => up.IsActive == false).ToList());
@@ -88,7 +98,7 @@ public class UserProfileController : ControllerBase
 
 
     [HttpGet("withroles/{id}")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public IActionResult GetWithRolesById(string id)
     {
         UserProfile user = _dbContext
@@ -123,7 +133,7 @@ public class UserProfileController : ControllerBase
 
 
     [HttpGet("withroles/activated")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public IActionResult GetActivatedWithRoles()
     {
         return Ok(_dbContext.UserProfiles
@@ -148,7 +158,7 @@ public class UserProfileController : ControllerBase
 
 
     [HttpGet("withroles/deactivated")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public IActionResult GetDeactivatedWithRoles()
     {
         return Ok(_dbContext.UserProfiles
@@ -173,7 +183,7 @@ public class UserProfileController : ControllerBase
 
 
     [HttpPut("{id}")]
-    [Authorize]
+    //[Authorize]
     public IActionResult EditUserProfile(string id, UserProfile userProfile)
     {
         UserProfile foundUserProfile = _dbContext.UserProfiles
@@ -196,7 +206,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpPut("activate/{id}")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public IActionResult ActivateUser(string id)
     {
         UserProfile userToActivate = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == Guid.Parse(id));
@@ -213,7 +223,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpPut("deactivate/{id}")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public IActionResult DeactivateUser(string id)
     {
         UserProfile userToDeactivate = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == Guid.Parse(id));
@@ -229,9 +239,24 @@ public class UserProfileController : ControllerBase
         return NotFound();
     }
 
+    [HttpPost("image")]
+    //[Authorize]
+    public IActionResult UploadImage()
+    {
+        var uploadParams = new ImageUploadParams()
+        {
+            File = new FileDescription(@"https://cloudinary-devs.github.io/cld-docs-assets/assets/images/cld-sample.jpg"),
+            UseFilename = true,
+            UniqueFilename = false,
+            Overwrite = true
+        };
+        
+        return NoContent();
+    }
+
 
     [HttpPost("promote/{id}")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public IActionResult Promote(string id)
     {
         IdentityRole role = _dbContext.Roles.SingleOrDefault(r => r.Name == "Admin");
@@ -247,7 +272,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpPost("demote/{id}")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public IActionResult Demote(string id)
     {
         IdentityRole role = _dbContext.Roles.SingleOrDefault(r => r.Name == "Admin");

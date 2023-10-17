@@ -21,6 +21,8 @@ namespace Indielot.Models
 
         public bool Completed { get; set; } = false;
 
+        public DateTime? DateCompleted { get; set; }
+
         public List<Crew> Crew { get; set; }
     }
 }

@@ -22,7 +22,15 @@ public class CrewController : ControllerBase
     //[Authorize]
     public IActionResult Get()
     {
-        return Ok(_dbContext.Crews);
+        return Ok(_dbContext.Crews
+            .Select(c => new CrewDTO
+            {
+                Id = c.Id,
+                Name = c.UserProfile.FullName,
+                ProfilePicturePath = c.UserProfile.ProfilePicturePath,
+                ProductionTitle = c.Production.Title,
+                Roles = c.RoleNames(c.Roles)
+            }));
     }
 
     [HttpGet("{id}")]
@@ -36,8 +44,6 @@ public class CrewController : ControllerBase
 
         if (crew != null)
         {
-            List<string> roleStrings = crew.Roles.Select(r => Enum.GetName(typeof(Role), r)).ToList();
-
             return Ok(_dbContext.Crews
                 .Select(c => new CrewDTO
                 {
@@ -45,7 +51,7 @@ public class CrewController : ControllerBase
                     Name = c.UserProfile.FullName,
                     ProfilePicturePath = c.UserProfile.ProfilePicturePath,
                     ProductionTitle = crew.Production.Title,
-                    Roles = roleStrings
+                    Roles = c.RoleNames(c.Roles)
                 }).SingleOrDefault(c => c.Id == id));
         }
 
