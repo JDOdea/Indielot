@@ -1,1 +1,1 @@
-Built using React, Bootstrap, and Reactstrap
+Built using Cloudinary, React, Bootstrap, and Reactstrap
