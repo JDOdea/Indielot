@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { NavLink as RRNavLink} from "react-router-dom";
 import { Button, Collapse, Nav, NavLink, NavItem, Navbar, NavbarBrand, NavbarToggler } from "reactstrap";
+import { logout } from "../managers/authManager";
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
     const [open, setOpen] = useState(false);
@@ -25,6 +26,18 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                                 </NavItem>
                             </Nav>
                         </Collapse>
+                        <Button
+                            color="primary"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setOpen(false);
+                                logout().then(() => {
+                                    setLoggedInUser(null);
+                                    setOpen(false);
+                                })
+                            }}>
+                                Logout
+                            </Button>
                     </>
                 ) : (
                     <Nav navbar>
