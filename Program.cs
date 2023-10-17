@@ -1,7 +1,26 @@
-using System.Text.Json.Serialization;
-using Indielot.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
+using CloudinaryDotNet.Actions;
+using CloudinaryDotNet;
+using Indielot.Data;
+using dotenv.net;
+
+DotEnv.Load(options: new DotEnvOptions(probeForEnv: true));
+Cloudinary cloudinary = new Cloudinary(Environment.GetEnvironmentVariable("CLOUDINARY_URL"));
+cloudinary.Api.Secure = true;
+
+// Upload an image and log the response to the console
+//=======================================
+var uploadParams = new ImageUploadParams()
+{
+    File = new FileDescription(@"https://cloudinary-devs.github.io/cld-docs-assets/assets/images/cld-sample.jpg"),
+    UseFilename = true,
+    UniqueFilename = false,
+    Overwrite = true
+};
+var uploadResult = cloudinary.Upload(uploadParams);
+Console.WriteLine(uploadResult.JsonObj);
 
 var builder = WebApplication.CreateBuilder(args);
 

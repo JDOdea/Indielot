@@ -17,6 +17,11 @@ namespace Indielot.Models
         public Production Production { get; set; }
 
         public List<Role> Roles { get; set; }
+
+        public List<string> RoleNames(List<Role> roles)
+        {
+            return roles.Select(r => Enum.GetName(typeof(Role), r)).ToList();
+        }
         
         // TODO: Finish enum
     }
