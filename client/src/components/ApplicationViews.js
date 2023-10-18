@@ -5,8 +5,13 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Productions from "./productions/Productions";
 import NewProduction from "./productions/NewProduction";
+import ProductionHub from "./productions/ProductionHub";
+import { useState } from "react";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
+    const [production, setProduction] = useState(null);
+
+
     return (
         <Routes>
             <Route path="/">
@@ -23,7 +28,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                         index
                         element={
                             <AuthorizedRoute loggedInUser={loggedInUser}>
-                                <Productions />
+                                <Productions setProduction={setProduction}/>
                             </AuthorizedRoute>
                         }
                     />
@@ -32,6 +37,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                         element={
                             <AuthorizedRoute loggedInUser={loggedInUser}>
                                 <NewProduction loggedInUser={loggedInUser}/>
+                            </AuthorizedRoute>
+                        }
+                    />
+                    <Route 
+                        path=":title"
+                        element={
+                            <AuthorizedRoute loggedInUser={loggedInUser}>
+                                <ProductionHub production={production}/>
                             </AuthorizedRoute>
                         }
                     />
