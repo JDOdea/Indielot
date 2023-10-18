@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Indielot.Models
@@ -8,7 +9,11 @@ namespace Indielot.Models
 
         public string Title { get; set; }
         
-        public string Description { get; set; }
+        public string Description { get; set; } = "No description provided...";
+
+        [DataType(DataType.Url)]
+        [MaxLength(255)]
+        public string PicturePath { get; set; }
 
         public DateTime CreationDate { get; set; }
 

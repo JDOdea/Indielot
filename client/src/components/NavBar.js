@@ -2,6 +2,7 @@ import { useState } from "react"
 import { NavLink as RRNavLink} from "react-router-dom";
 import { Button, Collapse, Nav, NavLink, NavItem, Navbar, NavbarBrand, NavbarToggler } from "reactstrap";
 import { logout } from "../managers/authManager";
+import { ReactComponent as PlusIcon } from "../svgs/plusIcon.svg"
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
     const [open, setOpen] = useState(false);
@@ -26,6 +27,11 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                                 </NavItem>
                             </Nav>
                         </Collapse>
+                        <div>
+                            <NavLink onClick={() => setOpen(false)} tag={RRNavLink} to="productions/new">
+                                <PlusIcon style={{ width: "35px", height: "35px"}}/>
+                            </NavLink>
+                        </div>
                         <Button
                             color="primary"
                             onClick={(e) => {

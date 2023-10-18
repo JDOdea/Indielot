@@ -30,6 +30,7 @@ public class ProductionController : ControllerBase
                 Id = p.Id,
                 Title = p.Title,
                 Description = p.Description,
+                PicturePath = p.PicturePath,
                 ProductionLead = p.ProductionLead.FullName,
                 Completed = p.Completed,
                 Crew = _dbContext.Crews
@@ -62,6 +63,7 @@ public class ProductionController : ControllerBase
                     Id = p.Id,
                     Title = p.Title,
                     Description = p.Description,
+                    PicturePath = p.PicturePath,
                     ProductionLead = production.ProductionLead.FullName,
                     Completed = p.Completed,
                     Crew = _dbContext.Crews
@@ -79,5 +81,18 @@ public class ProductionController : ControllerBase
         }
 
         return NotFound();
+    }
+
+    [HttpPost]
+    //[Authorize]
+    public IActionResult CreateProduction(Production production)
+    {
+        production.CreationDate = DateTime.Now;
+        _dbContext.Productions.Add(production);
+        _dbContext.SaveChanges();
+
+        return Created($"/api/production/{production.Id}", production);
+
+        // TODO: Implement Production Home Page
     }
 }

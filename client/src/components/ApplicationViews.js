@@ -4,6 +4,7 @@ import { Home } from "./Home";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Productions from "./productions/Productions";
+import NewProduction from "./productions/NewProduction";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
     return (
@@ -17,14 +18,25 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                         </AuthorizedRoute>
                     }
                 />
-                <Route
-                    path="productions"
-                    element={
-                        <AuthorizedRoute loggedInUser={loggedInUser}>
-                            <Productions />
-                        </AuthorizedRoute>
-                    }
-                />
+                <Route path="productions">
+                    <Route
+                        index
+                        element={
+                            <AuthorizedRoute loggedInUser={loggedInUser}>
+                                <Productions />
+                            </AuthorizedRoute>
+                        }
+                    />
+                    <Route 
+                        path="new"
+                        element={
+                            <AuthorizedRoute loggedInUser={loggedInUser}>
+                                <NewProduction loggedInUser={loggedInUser}/>
+                            </AuthorizedRoute>
+                        }
+                    />
+                </Route>
+
 
                 <Route
                     path="login"

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Indielot.Models.DTOs
 {
     public class ProductionDTO
@@ -7,6 +9,10 @@ namespace Indielot.Models.DTOs
         public string Title { get; set; }
 
         public string Description { get; set; }
+
+        [DataType(DataType.Url)]
+        [MaxLength(255)]
+        public string PicturePath { get; set; }
 
         public string ProductionLead { get; set; }
 
