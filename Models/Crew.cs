@@ -1,16 +1,19 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
+using System.Xml.Linq;
+using Microsoft.OpenApi.Extensions;
 
 namespace Indielot.Models
 {
     public class Crew
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         
         public Guid UserProfileId { get; set; }
         
-        public int ProductionId { get; set; }
+        public Guid ProductionId { get; set; }
         
         public UserProfile UserProfile { get; set; }
 
@@ -43,7 +46,7 @@ namespace Indielot.Models
         [EnumMember(Value = "Composer")]
         Composer,
 
-        [EnumMember(Value = "Director of Photography")]
+        [Display(Name = "Director of Photography")]
         DirectorOfPhotography,
 
         [EnumMember(Value = "Cinematographer")]

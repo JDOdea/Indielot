@@ -150,15 +150,15 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
         {
             new() 
             {
-                Id = 1, Title = "Fix", Description = "What will you do for yours?", Completed = false, Budget = 12500.00f, ProductionLeadId = Guid.Parse("ae82495c-74ab-4660-9bd8-dc6a4403eaf9"), CreationDate = new DateTime(2023, 10, 16, 11, 30, 0)
+                Id = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Title = "Fix", Description = "What will you do for yours?", Completed = false, Budget = 12500.00f, ProductionLeadId = Guid.Parse("ae82495c-74ab-4660-9bd8-dc6a4403eaf9"), CreationDate = new DateTime(2023, 10, 16, 11, 30, 0)
             },
             new()
             {
-                Id = 2, Title = "Spider-Man Noir and the Man Made of Stone", Completed = false, Description = "A short fan film based on the character created by David Hine", Budget = 40000.00f, ProductionLeadId = Guid.Parse("b741081a-7b4e-4bad-9e45-181fcc188e5e"), CreationDate = new DateTime(2023, 10, 16, 11, 30, 0)
+                Id = Guid.Parse("b9e4cf53-6075-4270-a2d5-8451c3f708d4"), Title = "Spider-Man Noir and the Man Made of Stone", Completed = false, Description = "A short fan film based on the character created by David Hine", Budget = 40000.00f, ProductionLeadId = Guid.Parse("b741081a-7b4e-4bad-9e45-181fcc188e5e"), CreationDate = new DateTime(2023, 10, 16, 11, 30, 0)
             },
             new()
             {
-                Id = 3, Title = "Dissonance", Description = "Diabolus in Musica...", Completed = false, ProductionLeadId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161"), CreationDate = new DateTime(2023, 10, 16, 11, 30, 0)
+                Id = Guid.Parse("020f13be-c902-4a27-a6c6-b3dea5fa880c"), Title = "Dissonance", Description = "Diabolus in Musica...", Completed = false, ProductionLeadId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161"), CreationDate = new DateTime(2023, 10, 16, 11, 30, 0)
             }
         });
 
@@ -166,31 +166,31 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
         {
             new()
             {
-                Id = 1, ProductionId = 1, Roles = new List<Role>() {Role.Director, Role.Writer, Role.Producer, Role.Casting}, UserProfileId = Guid.Parse("ae82495c-74ab-4660-9bd8-dc6a4403eaf9") 
+                Id = Guid.Parse("ab0b6219-ab0c-48f2-a9f8-3e5a62c85168"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Roles = new List<Role>() {Role.Director, Role.Writer, Role.Producer, Role.Casting}, UserProfileId = Guid.Parse("ae82495c-74ab-4660-9bd8-dc6a4403eaf9") 
             },
             new()
             {
-                Id = 2, ProductionId = 1, Roles = new List<Role>() {Role.Actor, Role.Producer, Role.Casting}, UserProfileId = Guid.Parse("270ead62-0129-42fd-b3a8-20dacdd629fd")
+                Id = Guid.Parse("07cd44dc-3a03-49ca-9449-7179c1426202"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Roles = new List<Role>() {Role.Actor, Role.Producer, Role.Casting}, UserProfileId = Guid.Parse("270ead62-0129-42fd-b3a8-20dacdd629fd")
             },
             new()
             {
-                Id = 3, ProductionId = 1, Roles = new List<Role>() {Role.DirectorOfPhotography, Role.Editor}, UserProfileId = Guid.Parse("b741081a-7b4e-4bad-9e45-181fcc188e5e")
+                Id = Guid.Parse("d003e6a3-54c1-443b-8ed1-8f6e68221055"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Roles = new List<Role>() {Role.DirectorOfPhotography, Role.Editor}, UserProfileId = Guid.Parse("b741081a-7b4e-4bad-9e45-181fcc188e5e")
             },
             new()
             {
-                Id = 4, ProductionId = 1, Roles = new List<Role>() {Role.Actor, Role.Sound}, UserProfileId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
+                Id = Guid.Parse("302e2c54-f572-4e31-a63b-02d37af46a15"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Roles = new List<Role>() {Role.Actor, Role.Sound}, UserProfileId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
             },
             new()
             {
-                Id = 5, ProductionId = 1, Roles = new List<Role>() {Role.Actor, Role.Gaffer}, UserProfileId = Guid.Parse("1b9c7d32-7851-4a4b-9ec3-d00e4b010a4f")
+                Id = Guid.Parse("95a17e7b-bc65-4bdd-8acf-3ff5c6e3f36c"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Roles = new List<Role>() {Role.Actor, Role.Gaffer}, UserProfileId = Guid.Parse("1b9c7d32-7851-4a4b-9ec3-d00e4b010a4f")
             },
             new() 
             {
-                Id = 6, ProductionId = 2, Roles = new List<Role>() {Role.Director, Role.Writer, Role.Actor}, UserProfileId = Guid.Parse("b741081a-7b4e-4bad-9e45-181fcc188e5e")
+                Id = Guid.Parse("a67fca84-da24-4faf-bfc3-84b97d3951d2"), ProductionId = Guid.Parse("b9e4cf53-6075-4270-a2d5-8451c3f708d4"), Roles = new List<Role>() {Role.Director, Role.Writer, Role.Actor}, UserProfileId = Guid.Parse("b741081a-7b4e-4bad-9e45-181fcc188e5e")
             },
             new()
             {
-                Id = 7, ProductionId = 3, Roles = new List<Role>() {Role.Director, Role.Writer}, UserProfileId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
+                Id = Guid.Parse("294031fb-226b-491b-bf61-8ea2f6171b1e"), ProductionId = Guid.Parse("020f13be-c902-4a27-a6c6-b3dea5fa880c"), Roles = new List<Role>() {Role.Director, Role.Writer}, UserProfileId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
             }
         });
 
@@ -198,11 +198,11 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
         {
             new()
             {
-                Id = 1, ProductionId = 1, Title = "Call Sheet - Day 1", AssetType = "Call Sheet", UploadDate = new DateTime(2023, 10, 16, 10, 26, 0)
+                Id = Guid.Parse("d3dd4c90-1642-45eb-99a1-2048482daf16"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Title = "Call Sheet - Day 1", AssetType = "Call Sheet", UploadDate = new DateTime(2023, 10, 16, 10, 26, 0)
             },
             new()
             {
-                Id = 2, ProductionId = 1, Title = "Call Sheet - Day 2", AssetType = "Call Sheet", UploadDate = new DateTime(2023, 10, 16, 10, 26, 0)
+                Id = Guid.Parse("66c80a46-378b-49c4-88f4-256daa0d3798"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Title = "Call Sheet - Day 2", AssetType = "Call Sheet", UploadDate = new DateTime(2023, 10, 16, 10, 26, 0)
             }
         });
 
@@ -210,15 +210,15 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
         {
             new()
             {
-                Id = 1, ProductionId = 1, Name = "Int. Travis Apartment", Description = "1st AirBnb", Address = "2334 Ashley Road, Charlotte, NC 28208"
+                Id = Guid.Parse("951fb305-a33d-4c35-81e5-bd9b96a64907"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Name = "Int. Travis Apartment", Description = "1st AirBnb", Address = "2334 Ashley Road, Charlotte, NC 28208"
             },
             new()
             {
-                Id = 2, ProductionId = 1, Name = "Ext. Jewelry Store", Description = "Morrison Smith Fine & Custom Jewelers", Address = "705 Providence Rd, Charlotte, NC 28207"
+                Id = Guid.Parse("452bf302-8a06-429a-ac49-e519e04330b7"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Name = "Ext. Jewelry Store", Description = "Morrison Smith Fine & Custom Jewelers", Address = "705 Providence Rd, Charlotte, NC 28207"
             },
             new()
             {
-                Id = 3, ProductionId = 2, Name = "Ext. Apartment", Description = "Xanadu Condominium", Address = "750 N Atlantic Ave, Cocoa Beach, FL 32931"
+                Id = Guid.Parse("164f1b74-68af-4578-9530-9d7532f4b8ec"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Name = "Ext. Apartment", Description = "Xanadu Condominium", Address = "750 N Atlantic Ave, Cocoa Beach, FL 32931"
             }
         });
 
@@ -226,15 +226,15 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
         {
             new()
             {
-                Id = 1, ProductionId = 1, Title = "SFX", Description = "Finish post sound sfx placement", Status = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
+                Id = Guid.Parse("fe55ea20-4cae-463a-9aa3-eb5b5106ddff"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Title = "SFX", Description = "Finish post sound sfx placement", Status = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
             },
             new()
             {
-                Id = 2, ProductionId = 2, Title = "Raise Funding", Description = "Acquire funding through Kickstarter", Status = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("b741081a-7b4e-4bad-9e45-181fcc188e5e")
+                Id = Guid.Parse("f8246c24-7bbb-4a35-af08-64187bd9a7a4"), ProductionId = Guid.Parse("b9e4cf53-6075-4270-a2d5-8451c3f708d4"), Title = "Raise Funding", Description = "Acquire funding through Kickstarter", Status = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("b741081a-7b4e-4bad-9e45-181fcc188e5e")
             },
             new()
             {
-                Id = 3, ProductionId = 3, Title = "Finish Script v1", Description = "Finish the first draft of script", Status = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
+                Id = Guid.Parse("ee640c55-80fd-442f-aceb-8e27923d9f6a"), ProductionId = Guid.Parse("020f13be-c902-4a27-a6c6-b3dea5fa880c"), Title = "Finish Script v1", Description = "Finish the first draft of script", Status = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
             }
         });
 

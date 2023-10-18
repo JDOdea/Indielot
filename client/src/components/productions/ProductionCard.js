@@ -1,8 +1,14 @@
-import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle } from "reactstrap";
+import { 
+    Button, 
+    Card, 
+    CardBody, 
+    CardSubtitle, 
+    CardText,
+    CardTitle } from "reactstrap";
 
 export default function ProductionCard({ production, setProductionDetailsId }) {
     return (
-        <Card color="dark" outline style={{ marginBottom: "4px"}}>
+        <Card color="dark" outline style={{ marginBottom: "4px" }}>
             <CardBody>
                 <CardTitle tag="h5">{production.title}</CardTitle>
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
