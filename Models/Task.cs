@@ -5,9 +5,9 @@ namespace Indielot.Models
 {
     public class Task
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int ProductionId { get; set; }
+        public Guid ProductionId { get; set; }
         
         [Required]
         public string Title { get; set; }

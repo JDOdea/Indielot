@@ -24,9 +24,9 @@ public class TaskController : ControllerBase
 
     [HttpGet("{id}")]
     // [Authorize]
-    public IActionResult GetById(int id)
+    public IActionResult GetById(string id)
     {
-        Models.Task task = _dbContext.Tasks.SingleOrDefault(t => t.Id == id);
+        Models.Task task = _dbContext.Tasks.SingleOrDefault(t => t.Id == Guid.Parse(id));
 
         if (task != null)
         {

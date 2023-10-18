@@ -20,7 +20,8 @@ export default function ProductionList({ setProductionDetailsId }) {
             {productions.map((p) => (
                 <ProductionCard 
                     production={p}
-                    key={`production--${p.id}`}
+                    setProductionDetailsId={setProductionDetailsId}
+                    key={`production-${p.id}`}
                 />
             ))}
         </>

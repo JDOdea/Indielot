@@ -12,7 +12,7 @@ cloudinary.Api.Secure = true;
 
 // Upload an image and log the response to the console
 //=======================================
-var uploadParams = new ImageUploadParams()
+/* var uploadParams = new ImageUploadParams()
 {
     File = new FileDescription(@"https://cloudinary-devs.github.io/cld-docs-assets/assets/images/cld-sample.jpg"),
     UseFilename = true,
@@ -20,7 +20,7 @@ var uploadParams = new ImageUploadParams()
     Overwrite = true
 };
 var uploadResult = cloudinary.Upload(uploadParams);
-Console.WriteLine(uploadResult.JsonObj);
+Console.WriteLine(uploadResult.JsonObj); */
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -2,7 +2,7 @@ namespace Indielot.Models.DTOs
 {
     public class ProductionDTO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         
         public string Title { get; set; }
 

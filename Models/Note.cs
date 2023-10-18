@@ -4,9 +4,9 @@ namespace Indielot.Models
 {
     public class Note
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int ProductionId { get; set; }
+        public Guid ProductionId { get; set; }
 
         public Guid AuthorId { get; set; }
 

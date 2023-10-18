@@ -25,9 +25,9 @@ public class AssetController : ControllerBase
 
     [HttpGet("{id}")]
     //[Authorize]
-    public IActionResult GetById(int id)
+    public IActionResult GetById(string id)
     {
-        Asset asset = _dbContext.Assets.SingleOrDefault(a => a.Id == id);
+        Asset asset = _dbContext.Assets.SingleOrDefault(a => a.Id == Guid.Parse(id));
 
         if (asset != null)
         {

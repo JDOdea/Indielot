@@ -35,12 +35,12 @@ public class CrewController : ControllerBase
 
     [HttpGet("{id}")]
     //[Authorize]
-    public IActionResult GetById(int id)
+    public IActionResult GetById(string id)
     {
         Crew crew = _dbContext.Crews
         .Include(c => c.UserProfile)
         .Include(c => c.Production)
-        .SingleOrDefault(c => c.Id == id);
+        .SingleOrDefault(c => c.Id == Guid.Parse(id));
 
         if (crew != null)
         {
@@ -52,7 +52,7 @@ public class CrewController : ControllerBase
                     ProfilePicturePath = c.UserProfile.ProfilePicturePath,
                     ProductionTitle = crew.Production.Title,
                     Roles = c.RoleNames(c.Roles)
-                }).SingleOrDefault(c => c.Id == id));
+                }).SingleOrDefault(c => c.Id == Guid.Parse(id)));
         }
 
         return NotFound();

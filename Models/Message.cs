@@ -2,7 +2,7 @@ namespace Indielot.Models
 {
     public class Message
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public Guid SenderUserId { get; set; }
 

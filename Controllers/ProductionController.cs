@@ -48,11 +48,11 @@ public class ProductionController : ControllerBase
 
     [HttpGet("{id}")]
     //[Authorize]
-    public IActionResult GetById(int id)
+    public IActionResult GetById(string id)
     {
         Production production = _dbContext.Productions
             .Include(p => p.ProductionLead)
-            .SingleOrDefault(p => p.Id == id);
+            .SingleOrDefault(p => p.Id == Guid.Parse(id));
 
         if (production != null)
         {
@@ -75,7 +75,7 @@ public class ProductionController : ControllerBase
                             Roles = c.RoleNames(c.Roles)
                         })
                         .ToList()
-                }).SingleOrDefault(p => p.Id == id));
+                }).SingleOrDefault(p => p.Id == Guid.Parse(id)));
         }
 
         return NotFound();

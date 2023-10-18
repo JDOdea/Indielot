@@ -2,9 +2,9 @@ namespace Indielot.Models
 {
     public class Asset
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int ProductionId { get; set; }
+        public Guid ProductionId { get; set; }
 
         public string Title { get; set; }
 

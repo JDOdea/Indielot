@@ -25,9 +25,9 @@ public class LocationController : ControllerBase
 
     [HttpGet("{id}")]
     //[Authorize]
-    public IActionResult GetById(int id)
+    public IActionResult GetById(string id)
     {
-        Location location = _dbContext.Locations.SingleOrDefault(l => l.Id == id);
+        Location location = _dbContext.Locations.SingleOrDefault(l => l.Id == Guid.Parse(id));
 
         if (location != null)
         {
