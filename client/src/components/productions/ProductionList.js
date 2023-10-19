@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchProductions } from "../../managers/productionManager";
 import ProductionCard from "./ProductionCard";
 
-export default function ProductionList({ setProductionDetailsId, setProduction }) {
+export default function ProductionList({ setProductionDetailsId }) {
     const [productions, setProductions] = useState([]);
 
     const getAllProductions = () => {
@@ -19,9 +19,8 @@ export default function ProductionList({ setProductionDetailsId, setProduction }
             <h2>Productions</h2>
             {productions.map((p) => (
                 <ProductionCard 
-                    production={p}
+                    productionObject={p}
                     setProductionDetailsId={setProductionDetailsId}
-                    setProduction={setProduction}
                     key={`production-${p.id}`}
                 />
             ))}

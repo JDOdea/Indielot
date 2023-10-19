@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
     Button, 
@@ -6,29 +7,30 @@ import {
     CardSubtitle, 
     CardText,
     CardTitle } from "reactstrap";
+import { ProductionContext } from "../ApplicationViews";
 
-export default function ProductionCard({ production, setProductionDetailsId, setProduction }) {
-    const navigate = useNavigate();
+export default function ProductionCard({ productionObject, setProductionDetailsId }) {
+
+    const { production, setProduction } = useContext(ProductionContext);
 
     return (
         <Card color="dark" outline style={{ marginBottom: "4px" }}>
             <CardBody
                 className="prod-card"
                 onClick={() => {
-                    setProduction(production);
-                    navigate(`${production.title}`);
+                    setProduction(productionObject);
                 }}
             >
-                <CardTitle tag="h5">{production.title}</CardTitle>
+                <CardTitle tag="h5">{productionObject.title}</CardTitle>
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
-                    {production.description}
+                    {productionObject.description}
                 </CardSubtitle>
-                <CardText>Lead by: {production.productionLead}</CardText>
+                <CardText>Lead by: {productionObject.productionLead}</CardText>
             </CardBody>
                 <Button
                     color="dark"
                     onClick={() => {
-                        setProductionDetailsId(production.id);
+                        setProductionDetailsId(productionObject.id);
                         window.scrollTo({
                             top: 0,
                             left: 0,
