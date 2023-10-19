@@ -83,6 +83,48 @@ public class ProductionController : ControllerBase
         return NotFound();
     }
 
+    [HttpGet("user/{userId}")]
+    //[Authorize]
+    public IActionResult GetByUserId(string userId)
+    {
+        UserProfile userProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == Guid.Parse(userId));
+
+        if (userProfile != null)
+        {
+            List<Production> productions = _dbContext.Productions
+                .Include(p => p.Crew)
+                .Where(p => p.ProductionLeadId == Guid.Parse(userId) || p.Crew.Any(c => c.UserProfileId == Guid.Parse(userId)))
+                .ToList();
+
+            return Ok(_dbContext.Productions
+                .Include(p => p.Crew)
+                .Where(p => p.ProductionLeadId == Guid.Parse(userId) || p.Crew.Any(c => c.UserProfileId == Guid.Parse(userId)))
+                .Select(p => new ProductionDTO
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    Description = p.Description,
+                    PicturePath = p.PicturePath,
+                    ProductionLead = p.ProductionLead.FullName,
+                    Completed = p.Completed,
+                    Crew = _dbContext.Crews
+                        .Include(c => c.UserProfile)
+                        .Where(c => c.ProductionId == p.Id)
+                        .Select(c => new CrewDTO
+                        {
+                            Id = c.Id,
+                            Name = c.UserProfile.FullName,
+                            ProfilePicturePath = c.UserProfile.ProfilePicturePath,
+                            Roles = c.RoleNames(c.Roles)
+                        })
+                        .ToList()
+                })
+                .ToList());
+        }
+
+        return NotFound();
+    }
+
     [HttpPost]
     //[Authorize]
     public IActionResult CreateProduction(Production production)

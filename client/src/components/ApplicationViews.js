@@ -8,6 +8,8 @@ import NewProduction from "./productions/NewProduction";
 import ProductionHub from "./productions/productionHub/ProductionHub";
 import { createContext, useEffect, useState } from "react";
 import EditProduction from "./productions/productionHub/EditProduction";
+import UserProductionList from "./productions/userProductions/UserProductionList";
+import UserProductions from "./productions/userProductions/UserProductions";
 
 export const ProductionContext = createContext(null);
 
@@ -35,6 +37,18 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                         </AuthorizedRoute>
                     }
                 />
+                    <Route path=":userName">
+                        <Route
+                            path="productions" 
+                            element={
+                                <AuthorizedRoute loggedInUser={loggedInUser}>
+                                    <ProductionContext.Provider value={{ production: production, setProduction: setProduction}}>
+                                        <UserProductions loggedInUser={loggedInUser}/>
+                                    </ProductionContext.Provider>
+                                </AuthorizedRoute>
+                            }
+                            />
+                    </Route>
                     <Route path="productions">
                         <Route
                             index

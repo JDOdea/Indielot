@@ -8,6 +8,10 @@ export const fetchProductionById = (id) => {
     return fetch(_apiUrl + `/${id}`).then((res) => res.json());
 };
 
+export const fetchProductionsByUserId = (userId) => {
+    return fetch(_apiUrl + `/user/${userId}`).then((res) => res.json());
+};
+
 export const postProduction = (production) => {
     return fetch(_apiUrl, {
         method: "POST",
