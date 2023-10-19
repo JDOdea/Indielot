@@ -1,8 +1,9 @@
-import { Button, Card, CardBody, CardSubtitle, CardText } from "reactstrap";
+import { Button, Card, CardBody, CardFooter, CardSubtitle, CardText } from "reactstrap";
 import { ReactComponent as EmptyPoster } from "../../../svgs/emptyPoster.svg"
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { ProductionContext } from "../../ApplicationViews";
+import DeleteProductionModal from "./DeleteProductionModal";
 
 export default function ProductionHubCard({ loggedInUser }) {
     const navigate = useNavigate();
@@ -21,8 +22,7 @@ export default function ProductionHubCard({ loggedInUser }) {
                     </CardSubtitle>
                 </div>
                     {
-                        production.productionLeadId === loggedInUser.id
-                        ?
+                        production.productionLead === loggedInUser.fullName &&
                         <Button
                             size="sm"
                             onClick={() => {
@@ -31,14 +31,18 @@ export default function ProductionHubCard({ loggedInUser }) {
                         >
                             Edit
                         </Button>
-                        :
-                        ""
                     }
                 <CardText>
                     <b>Director</b><br/>
                     <b>Writer</b>
                 </CardText>
             </CardBody>
+            <CardFooter>
+                {
+                    production.productionLead === loggedInUser.fullName &&
+                    <DeleteProductionModal />
+                }
+            </CardFooter>
         </Card>
     )
 }

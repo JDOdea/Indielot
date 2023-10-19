@@ -10,7 +10,7 @@ export default function ProductionHub({ loggedInUser }) {
 
     useEffect(() => {
         if (!production) {
-            const storedProduction = sessionStorage.getItem("production");
+            const storedProduction = localStorage.getItem("production");
             setProduction(JSON.parse(storedProduction));
         };
     },[]);

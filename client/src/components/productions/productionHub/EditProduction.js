@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Col, Form, FormFeedback, FormGroup, Input, InputGroup, InputGroupText, Label } from "reactstrap";
-import { updateProduction } from "../../../managers/productionManager";
+import { fetchProductionById, updateProduction } from "../../../managers/productionManager";
 import { useNavigate } from "react-router-dom";
 
 export default function EditProduction({ loggedInUser, production, setProduction }) {
@@ -25,7 +25,10 @@ export default function EditProduction({ loggedInUser, production, setProduction
             budget
         };
 
-        updateProduction(updatedProduction).then(setProduction);
+        updateProduction(updatedProduction).then(() => {
+            fetchProductionById(updatedProduction.id)
+                .then(setProduction);
+        });
     }
     
     return (
