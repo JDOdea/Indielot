@@ -11,6 +11,7 @@ export default function ProductionList({ setProductionDetailsId }) {
 
     useEffect(() => {
         getAllProductions();
+        localStorage.removeItem("production");
     }, []);
 
 

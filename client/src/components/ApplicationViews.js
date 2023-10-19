@@ -18,7 +18,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
 
     useEffect(() => {
         if (production) {
-            sessionStorage.setItem("production", JSON.stringify(production));
+            localStorage.setItem("production", JSON.stringify(production));
             navigate(`/${production.title}`);
         }
     }, [production]);

@@ -21,11 +21,11 @@ export const updateProduction = (production) => {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(production)
-    }).then((res) => res.json());
+    });
 };
 
 export const deleteProduction = (productionId) => {
     return fetch(_apiUrl + `/${productionId}`, {
         method: "DELETE",
-    }).then((res) => res.json());
+    });
 };

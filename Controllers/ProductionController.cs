@@ -110,7 +110,7 @@ public class ProductionController : ControllerBase
             foundProduction.Budget = production.Budget;
             
             _dbContext.SaveChanges();
-            return Ok(foundProduction);
+            return NoContent();
         }
 
         return NotFound();
@@ -124,6 +124,8 @@ public class ProductionController : ControllerBase
 
         if (production != null)
         {
+            _dbContext.Productions.Remove(production);
+            _dbContext.SaveChanges();
             return NoContent();
         }
 
