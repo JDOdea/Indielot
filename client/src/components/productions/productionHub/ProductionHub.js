@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import ProductionHubCard from "./ProductionHubCard";
 import { useContext, useEffect, useState } from "react";
 import { ProductionContext } from "../../ApplicationViews";
+import ProductionHubNavBar from "./ProductionHubNavBar";
 
 export default function ProductionHub({ loggedInUser }) {
     const { title } = useParams();
@@ -20,7 +21,7 @@ export default function ProductionHub({ loggedInUser }) {
     return (
         <>
             <h1><u><b>{production.title}</b></u></h1>
-            <ProductionHubCard loggedInUser={loggedInUser}/>
+            <ProductionHubNavBar loggedInUser={loggedInUser}/>
         </>
     )
 }

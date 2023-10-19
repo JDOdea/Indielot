@@ -37,12 +37,12 @@ export default function ProductionHubCard({ loggedInUser }) {
                     <b>Writer</b>
                 </CardText>
             </CardBody>
-            <CardFooter>
                 {
                     production.productionLead === loggedInUser.fullName &&
-                    <DeleteProductionModal />
+                    <CardFooter>
+                        <DeleteProductionModal />
+                    </CardFooter>
                 }
-            </CardFooter>
         </Card>
     )
 }
