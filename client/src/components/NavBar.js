@@ -25,6 +25,11 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                                         Productions
                                     </NavLink>
                                 </NavItem>
+                                <NavItem onClick={() => setOpen(false)}>
+                                    <NavLink tag={RRNavLink} to={`${loggedInUser.userName}/productions`}>
+                                        My Productions
+                                    </NavLink>
+                                </NavItem>
                             </Nav>
                         </Collapse>
                         <div>
