@@ -1,42 +1,39 @@
 import { useState } from "react";
 import { Button, Col, Form, FormFeedback, FormGroup, Input, InputGroup, InputGroupText, Label } from "reactstrap";
-import { postProduction } from "../../managers/productionManager";
+import { updateProduction } from "../../../managers/productionManager";
 import { useNavigate } from "react-router-dom";
 
-export default function NewProduction({ loggedInUser }) {
-    const navigate = useNavigate();
-    
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+export default function EditProduction({ loggedInUser, production, setProduction }) {
+    const [title, setTitle] = useState(production.title);
+    const [description, setDescription] = useState(production.description);
+    const [PicturePath, setPicturePath] = useState(null);
     const [hasBudget, setHasBudget] = useState(false);
     const [budget, setBudget] = useState(null);
 
     const [invalid, setInvalid] = useState(false);
 
+    const navigate = useNavigate();
 
-
-    const handleSubmit = (e) => {
+    const handleUpdate = (e) => {
         e.preventDefault();
 
-        const newProduction = {
+        const updatedProduction = {
+            id: production.id,
             title,
             description,
-            productionLeadId: loggedInUser.id,
+            PicturePath,
             budget
-        }
+        };
 
-        postProduction(newProduction).then(() => {
-            navigate("/");
-        })
+        updateProduction(updatedProduction).then(setProduction);
     }
-
-
+    
     return (
-        <div className="container" style={{ maxWidth: "700px" }}>
-            <h3>Create a Production</h3>
+        <div className="container" style={{ maxWidth: "700px " }}>
+            <h4>Edit Production</h4>
             <Form>
                 <FormGroup row>
-                    <Label 
+                    <Label
                         for="title"
                         sm={2}
                     >
@@ -45,7 +42,7 @@ export default function NewProduction({ loggedInUser }) {
                     <Col sm={10}>
                         <Input 
                             name="title"
-                            placeholder="Enter your production's title..."
+                            defaultValue={production.title}
                             type="text"
                             invalid={invalid}
                             onChange={(e) => {
@@ -67,7 +64,7 @@ export default function NewProduction({ loggedInUser }) {
                     <Col sm={10}>
                         <Input 
                             name="description"
-                            placeholder="Enter a description here..."
+                            defaultValue={production.description}
                             type="textarea"
                             onChange={(e) => {
                                 setDescription(e.target.value);
@@ -76,7 +73,7 @@ export default function NewProduction({ loggedInUser }) {
                     </Col>
                 </FormGroup>
                 <FormGroup>
-                    <Label 
+                    <Label
                         for="picture"
                         sm={2}
                     >
@@ -88,15 +85,7 @@ export default function NewProduction({ loggedInUser }) {
                     />
                 </FormGroup>
                 <FormGroup check>
-                    <Input 
-                        type="checkbox" 
-                        onClick={() => {
-                            setHasBudget(!hasBudget);
-                        }}
-                    />
-                    <Label check>
-                        Have a budget?
-                    </Label>
+                    Have a budget?
                 </FormGroup>
                 {
                     hasBudget
@@ -132,18 +121,14 @@ export default function NewProduction({ loggedInUser }) {
                     >
                         <Button
                             onClick={(e) => {
-                                if (!title) {
-                                    setInvalid(true);
-                                } else {
-                                    handleSubmit(e);
-                                }
-                        }}>
-                            Submit
+                                handleUpdate(e);
+                            }}
+                        >
+                            Update
                         </Button>
                     </Col>
                 </FormGroup>
             </Form>
         </div>
     )
-
 }

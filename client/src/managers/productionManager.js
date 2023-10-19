@@ -13,5 +13,19 @@ export const postProduction = (production) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(production)
-    }).then((res) => res.json);
-}
+    }).then((res) => res.json());
+};
+
+export const updateProduction = (production) => {
+    return fetch(_apiUrl + `/${production.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(production)
+    }).then((res) => res.json());
+};
+
+export const deleteProduction = (productionId) => {
+    return fetch(_apiUrl + `/${productionId}`, {
+        method: "DELETE",
+    }).then((res) => res.json());
+};

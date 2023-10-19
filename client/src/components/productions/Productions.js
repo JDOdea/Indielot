@@ -2,14 +2,14 @@ import { useState } from "react";
 import ProductionList from "./ProductionList";
 import ProductionDetails from "./ProductionDetails";
 
-export default function Productions({ setProduction }) {
+export default function Productions({}) {
     const [detailsProductionId, setProductionDetailsId] = useState(null);
 
     return (
         <div className="container">
             <div className="row">
                 <div className="col-sm-8">
-                    <ProductionList setProductionDetailsId={setProductionDetailsId} setProduction={setProduction}/>
+                    <ProductionList setProductionDetailsId={setProductionDetailsId}/>
                 </div>
                 <div>
                     <div className="col-sm-4">

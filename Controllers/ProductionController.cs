@@ -95,4 +95,38 @@ public class ProductionController : ControllerBase
 
         // TODO: Implement Production Home Page
     }
+
+    [HttpPut("{id}")]
+    //[Authorize]
+    public IActionResult UpdateProduction(string id, Production production)
+    {
+        Production foundProduction = _dbContext.Productions.SingleOrDefault(p => p.Id == Guid.Parse(id));
+
+        if (foundProduction != null)
+        {
+            foundProduction.Title = production.Title;
+            foundProduction.Description = production.Description;
+            foundProduction.PicturePath = production.PicturePath;
+            foundProduction.Budget = production.Budget;
+            
+            _dbContext.SaveChanges();
+            return Ok(foundProduction);
+        }
+
+        return NotFound();
+    }
+
+    [HttpDelete("{id}")]
+    //[Authorize]
+    public IActionResult DeleteProduction(string id)
+    {
+        Production production = _dbContext.Productions.SingleOrDefault(p => p.Id == Guid.Parse(id));
+
+        if (production != null)
+        {
+            return NoContent();
+        }
+
+        return NotFound();
+    }
 }
