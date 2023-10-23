@@ -23,7 +23,10 @@ export default function AddCrewMemberModal({ getCrew }) {
         }
 
         createCrewMember(newCrewMember).then(() => {
-            fetchProductionById(production.id).then(setProduction);
+            fetchProductionById(production.id).then((res) => {
+                setProduction(res);
+                toggle();
+            });
         });
     }
 

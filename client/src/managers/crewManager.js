@@ -31,3 +31,9 @@ export const updateCrewMember = (crewMember) => {
         body: JSON.stringify(crewMember),
     });
 };
+
+export const deleteCrewMember = (crewMember) => {
+    return fetch(_apiUrl + `/${crewMember.id}`, {
+        method: "DELETE"
+    });
+};
