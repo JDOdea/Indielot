@@ -1,15 +1,21 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { ProductionContext } from "../../../../ApplicationViews"
 import { Card, CardBody, ListGroup, ListGroupItem } from "reactstrap";
+import { fetchCrewMembersByProductionId } from "../../../../../managers/crewManager";
 
-export default function ProductionCrewList({}) {
+export default function ProductionCrewList({ loggedInUser }) {
+    const [productionCrew, setProductionCrew] = useState([]);
 
     const { production, setProduction } = useContext(ProductionContext);
 
-    if (!production) return;
+    useEffect(() => {
+        fetchCrewMembersByProductionId(production.id).then(setProductionCrew);
+    }, []);
+
+    if (!production || !productionCrew) return;
     return (
         <ListGroup>
-            {production.crew.map((c) => (
+            {productionCrew.map((c) => (
                 <ListGroupItem
                     style={{ display: "flex", justifyContent: "space-between"}}
                     key={`${c.name}`}
@@ -26,6 +32,9 @@ export default function ProductionCrewList({}) {
                             </div>
                         ))}
                     </div>
+                    {
+                        /* production.productionLead === loggedInUser.fullName  */
+                    }
                 </ListGroupItem>
             ))}
         </ListGroup>

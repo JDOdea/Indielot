@@ -69,7 +69,7 @@ export default function ProductionHubNavBar({ loggedInUser }) {
                         <ProductionHubCard loggedInUser={loggedInUser}/>
                     </TabPane>
                     <TabPane tabId="2">
-                        <ProductionCrewCard />
+                        <ProductionCrewCard loggedInUser={loggedInUser}/>
                     </TabPane>
                     <TabPane tabId="3">
 

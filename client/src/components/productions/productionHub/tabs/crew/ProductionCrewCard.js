@@ -1,8 +1,13 @@
-import { Card, CardBody, CardHeader } from "reactstrap";
+import { Card, CardBody, CardFooter, CardHeader } from "reactstrap";
 import ProductionCrewHeader from "./ProductionCrewHeader";
 import ProductionCrewList from "./ProductionCrewList";
+import { useContext } from "react";
+import { ProductionContext } from "../../../../ApplicationViews";
+import AddCrewMemberModal from "./editCrew/AddCrewMemberModal";
 
-export default function ProductionCrewCard({}) {
+export default function ProductionCrewCard({ loggedInUser }) {
+
+    const { production, setProduction } = useContext(ProductionContext);
 
 
     return (
@@ -11,8 +16,14 @@ export default function ProductionCrewCard({}) {
                 <ProductionCrewHeader />
             </CardHeader>
             <CardBody>
-                <ProductionCrewList />
+                <ProductionCrewList loggedInUser={loggedInUser}/>
             </CardBody>
+            {
+                production.productionLead === loggedInUser.fullName &&
+                <CardFooter>
+                    <AddCrewMemberModal />
+                </CardFooter>
+            }
         </Card>
     )
 }

@@ -41,7 +41,7 @@ public class ProductionController : ControllerBase
                         Id = c.Id,
                         Name = c.UserProfile.FullName,
                         ProfilePicturePath = c.UserProfile.ProfilePicturePath,
-                        Roles = c.RoleNames(c.Roles)
+                        Roles = c.GetRoleNames(c.Roles)
                     })
                     .ToList()
             }));
@@ -74,7 +74,7 @@ public class ProductionController : ControllerBase
                             Id = c.Id,
                             Name = c.UserProfile.FullName,
                             ProfilePicturePath = c.UserProfile.ProfilePicturePath,
-                            Roles = c.RoleNames(c.Roles)
+                            Roles = c.GetRoleNames(c.Roles)
                         })
                         .ToList()
                 }).SingleOrDefault(p => p.Id == Guid.Parse(id)));
@@ -115,7 +115,7 @@ public class ProductionController : ControllerBase
                             Id = c.Id,
                             Name = c.UserProfile.FullName,
                             ProfilePicturePath = c.UserProfile.ProfilePicturePath,
-                            Roles = c.RoleNames(c.Roles)
+                            Roles = c.GetRoleNames(c.Roles)
                         })
                         .ToList()
                 })
