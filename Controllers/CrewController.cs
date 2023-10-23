@@ -100,10 +100,7 @@ public class CrewController : ControllerBase
         {
             List<Role> roles = new List<Role>();
             foreach (string r in crew.RoleNames)
-            {
-                /* Role role = (Role)Enum.Parse(typeof(Role), r);
-                crew.Roles.Add(role); */
-                
+            {   
                 Enum.TryParse(r, out Role role);
                 roles.Add(role);
             }
@@ -118,5 +115,31 @@ public class CrewController : ControllerBase
         {
             return BadRequest("lmao who knows");
         }
+    }
+
+    [HttpPut("{id}")]
+    //[Authorize]
+    public IActionResult UpdateCrewMember(Crew updatedCrewMember)
+    {
+        Crew crew = _dbContext.Crews.SingleOrDefault((c) => c.Id == updatedCrewMember.Id);
+
+        if (crew != null)
+        {
+            crew.RoleNames = updatedCrewMember.RoleNames;
+
+            List<Role> roles = new();
+            foreach (string r in updatedCrewMember.RoleNames)
+            {
+                Enum.TryParse(r, out Role role);
+                roles.Add(role);
+            }
+            crew.Roles = roles;
+
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+
+        return NotFound();
     }
 }

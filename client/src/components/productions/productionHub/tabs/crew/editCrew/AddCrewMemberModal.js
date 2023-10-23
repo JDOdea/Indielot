@@ -4,8 +4,9 @@ import { ProductionContext } from "../../../../../ApplicationViews";
 import AddModalSearchBar from "./AddModalSearchBar";
 import AddedCrewMember from "./AddedCrewMember";
 import { createCrewMember } from "../../../../../../managers/crewManager";
+import { fetchProductionById } from "../../../../../../managers/productionManager";
 
-export default function AddCrewMemberModal({}) {
+export default function AddCrewMemberModal({ getCrew }) {
     const [modal, setModal] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [role, setRole] = useState(null);
@@ -21,7 +22,9 @@ export default function AddCrewMemberModal({}) {
             roleNames: [role]
         }
 
-        createCrewMember(newCrewMember).then((res) => console.log(res));
+        createCrewMember(newCrewMember).then(() => {
+            fetchProductionById(production.id).then(setProduction);
+        });
     }
 
     useEffect(() => {
