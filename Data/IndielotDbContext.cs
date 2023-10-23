@@ -36,6 +36,12 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
             NormalizedName = "admin"
         });
 
+        modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+        {
+            RoleId = "2b37b6bd-3b14-4fbd-ba99-dc27ffdfde6f",
+            UserId = "ab68323a-e2d8-4fc9-8bbf-894709616766"
+        });
+
         modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser[]
         {
             new()
@@ -79,13 +85,21 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
                 UserName = "raggman",
                 Email = "llanda@gmail.com",
                 PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new()
+            {
+                Id = "423c1930-c35b-4db9-84c6-09f0474fcc1b",
+                UserName = "wondergoof",
+                Email = "dallasfitzmartin@gmail.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new()
+            {
+                Id = "7dbd6a7e-a548-4135-ab73-2e5c31d14ac6",
+                UserName = "rseaton",
+                Email = "rexseaton@gmail.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
             }
-        });
-
-        modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
-        {
-            RoleId = "2b37b6bd-3b14-4fbd-ba99-dc27ffdfde6f",
-            UserId = "ab68323a-e2d8-4fc9-8bbf-894709616766"
         });
 
         modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
@@ -143,6 +157,22 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
                 LastName = "Landa",
                 Address = "649 Grid City Lane",
                 IsActive = true
+            },
+            new()
+            {
+                Id = Guid.Parse("ee177a02-2229-40b2-b8f0-0ee2c1a96a75"),
+                IdentityUserId = "423c1930-c35b-4db9-84c6-09f0474fcc1b",
+                FirstName = "Dallas",
+                LastName = "Fitzmartin",
+                Address = "101 Sleepy St"
+            },
+            new()
+            {
+                Id = Guid.Parse("fdb68970-1e2b-4dfa-86cd-c4e6c66f0bdb"),
+                IdentityUserId = "7dbd6a7e-a548-4135-ab73-2e5c31d14ac6",
+                FirstName = "Rex",
+                LastName = "Seaton",
+                Address = "746 Ocean Way"
             }
         });
 

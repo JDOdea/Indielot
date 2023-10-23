@@ -21,7 +21,10 @@ namespace Indielot.Models
 
         public List<Role> Roles { get; set; }
 
-        public List<string> RoleNames(List<Role> roles)
+        [NotMapped]
+        public List<string> RoleNames { get; set; }
+
+        public List<string> GetRoleNames(List<Role> roles)
         {
             return roles.Select(r => Enum.GetName(typeof(Role), r)).ToList();
         }

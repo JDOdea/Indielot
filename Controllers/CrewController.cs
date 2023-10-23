@@ -29,7 +29,7 @@ public class CrewController : ControllerBase
                 Name = c.UserProfile.FullName,
                 ProfilePicturePath = c.UserProfile.ProfilePicturePath,
                 ProductionTitle = c.Production.Title,
-                Roles = c.RoleNames(c.Roles)
+                Roles = c.GetRoleNames(c.Roles)
             }));
     }
 
@@ -51,22 +51,72 @@ public class CrewController : ControllerBase
                     Name = c.UserProfile.FullName,
                     ProfilePicturePath = c.UserProfile.ProfilePicturePath,
                     ProductionTitle = crew.Production.Title,
-                    Roles = c.RoleNames(c.Roles)
+                    Roles = c.GetRoleNames(c.Roles)
                 }).SingleOrDefault(c => c.Id == Guid.Parse(id)));
         }
 
         return NotFound();
     }
 
-    /* [HttpGet("production/{productionId}")]
+    [HttpGet("production/{productionId}")]
     //[Authorize]
-    public IActionResult GetByProductionId(int productionId)
+    public IActionResult GetByProductionId(string productionId)
     {
-        Production production = _dbContext.Productions.SingleOrDefault(p => p.Id == productionId);
+        Production production = _dbContext.Productions.SingleOrDefault(p => p.Id == Guid.Parse(productionId));
 
         if (production != null)
         {
-
+            return Ok(_dbContext.Crews
+                .Include(c => c.UserProfile)
+                .Include(c => c.Production)
+                .Where(c => c.ProductionId == Guid.Parse(productionId))
+                .Select(c => new CrewDTO
+                {
+                    Id = c.Id,
+                    Name = c.UserProfile.FullName,
+                    ProfilePicturePath = c.UserProfile.ProfilePicturePath,
+                    ProductionTitle = c.Production.Title,
+                    Roles = c.GetRoleNames(c.Roles)
+                }));
         }
-    } */
+
+        return NotFound();
+    }
+
+    [HttpGet("roles")]
+    //[Authorize]
+    public IActionResult GetRoles()
+    {
+        var roles  = Enum.GetNames(typeof(Role)).ToList();
+
+        return Ok(roles);
+    }
+
+    [HttpPost]
+    //[Authorize]
+    public IActionResult CreateCrewMember(Crew crew)
+    {
+        try
+        {
+            List<Role> roles = new List<Role>();
+            foreach (string r in crew.RoleNames)
+            {
+                /* Role role = (Role)Enum.Parse(typeof(Role), r);
+                crew.Roles.Add(role); */
+                
+                Enum.TryParse(r, out Role role);
+                roles.Add(role);
+            }
+            crew.Roles = roles;
+
+            _dbContext.Crews.Add(crew);
+            _dbContext.SaveChanges();
+            
+            return Created($"/api/crew/{crew.Id}", crew);
+        }
+        catch (System.Exception)
+        {
+            return BadRequest("lmao who knows");
+        }
+    }
 }

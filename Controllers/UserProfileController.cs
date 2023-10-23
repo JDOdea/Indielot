@@ -31,6 +31,7 @@ public class UserProfileController : ControllerBase
             .Include(up => up.IdentityUser)
             .Select(up => new UserProfileDTO
             {
+                Id = up.Id,
                 Name = up.FullName,
                 UserName = up.IdentityUser.UserName,
                 ProfilePicturePath = up.ProfilePicturePath
