@@ -8,9 +8,17 @@ export default function ProductionCrewList({ loggedInUser }) {
 
     const { production, setProduction } = useContext(ProductionContext);
 
-    useEffect(() => {
+    const getProductionCrew = () => {
         fetchCrewMembersByProductionId(production.id).then(setProductionCrew);
+    }
+
+    useEffect(() => {
+        getProductionCrew();
     }, []);
+
+    useEffect(() => {
+        getProductionCrew();
+    }, [production]);
 
     if (!production || !productionCrew) return;
     return (

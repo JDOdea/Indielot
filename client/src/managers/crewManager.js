@@ -23,3 +23,11 @@ export const createCrewMember = (crewMember) => {
         body: JSON.stringify(crewMember),
     }).then((res) => res.json);
 };
+
+export const updateCrewMember = (crewMember) => {
+    return fetch(_apiUrl + `/${crewMember.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(crewMember),
+    });
+};
