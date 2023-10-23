@@ -5,6 +5,10 @@
 }
 
 
+.hov {
+  cursor: pointer;
+}
+
 /* Search Bar */
 .searchInputs {
   display: flex;

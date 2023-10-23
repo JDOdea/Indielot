@@ -142,4 +142,21 @@ public class CrewController : ControllerBase
 
         return NotFound();
     }
+
+    [HttpDelete("{id}")]
+    //[Authorize]
+    public IActionResult DeleteCrewMember(string id)
+    {
+        Crew crew = _dbContext.Crews.SingleOrDefault((c) => c.Id == Guid.Parse(id));
+
+        if (crew != null)
+        {
+            _dbContext.Crews.Remove(crew);
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+
+        return NotFound();
+    }
 }

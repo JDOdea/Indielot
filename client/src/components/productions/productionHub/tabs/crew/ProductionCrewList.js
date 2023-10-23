@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ProductionContext } from "../../../../ApplicationViews"
-import { Card, CardBody, ListGroup, ListGroupItem } from "reactstrap";
-import { fetchCrewMembersByProductionId } from "../../../../../managers/crewManager";
+import { ListGroup, ListGroupItem, UncontrolledTooltip } from "reactstrap";
+import { ReactComponent as RemoveIcon } from "../../../../../svgs/removeCrewMember.svg";
+import { deleteCrewMember, fetchCrewMembersByProductionId } from "../../../../../managers/crewManager";
 
 export default function ProductionCrewList({ loggedInUser }) {
     const [productionCrew, setProductionCrew] = useState([]);
@@ -10,6 +11,10 @@ export default function ProductionCrewList({ loggedInUser }) {
 
     const getProductionCrew = () => {
         fetchCrewMembersByProductionId(production.id).then(setProductionCrew);
+    }
+
+    const handleCrewRemoval = (crewMember) => {
+        deleteCrewMember(crewMember).then(getProductionCrew);
     }
 
     useEffect(() => {
@@ -32,17 +37,36 @@ export default function ProductionCrewList({ loggedInUser }) {
                         {c.name} 
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between"}}>
-                        {c.roles.map((r) => (
-                            <div
-                                style={{ marginLeft: "25px"}}
-                                key={`${c.name}-${r}`}>
-                                {r} 
-                            </div>
-                        ))}
+                        <div style={{ display: "flex"}}>
+                            {c.roles.map((r) => (
+                                <div
+                                    style={{ marginLeft: "25px"}}
+                                    key={`${c.name}-${r}`}>
+                                    {r} 
+                                </div>
+                            ))}
+                            {
+                                production.productionLead === loggedInUser.fullName && (
+                                    <>
+                                        <RemoveIcon 
+                                            title=""
+                                            style={{ width: "25px", height: "25px", marginLeft: "40px" }}
+                                            className="hov"
+                                            id="removeCrew"
+                                            onClick={() => {
+                                                handleCrewRemoval(c);
+                                            }}
+                                        />
+                                        <UncontrolledTooltip
+                                            target="removeCrew"
+                                        >
+                                            Remove from Crew
+                                        </UncontrolledTooltip>
+                                    </>
+                                )
+                            }
+                        </div>
                     </div>
-                    {
-                        /* production.productionLead === loggedInUser.fullName  */
-                    }
                 </ListGroupItem>
             ))}
         </ListGroup>
