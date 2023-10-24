@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Indielot.Models
 {
     public class Asset
@@ -6,9 +9,11 @@ namespace Indielot.Models
 
         public Guid ProductionId { get; set; }
 
-        public string Title { get; set; }
+        public Guid UploaderId { get; set; }
 
-        public string AssetType { get; set; }
+        public string AssetName { get; set; }
+
+        public string FileName { get; set; }
 
         public DateTime UploadDate { get; set; }
 
@@ -16,6 +21,25 @@ namespace Indielot.Models
 
         public Production Production { get; set; }
 
-        // TODO: Type enum and file type property
+        [ForeignKey("UploaderId")]
+        public UserProfile Uploader { get; set; }
+
+        public AssetType AssetType { get; set; }
+
+        [NotMapped]
+        public string AssetTypeName { get; set; }
+
+        public string GetAssetTypeName(AssetType assetType)
+        {
+            return Enum.GetName(typeof(AssetType), assetType);
+        }
+
+        // TODO: Finish enum
+    }
+
+    public enum AssetType
+    {
+        [Display(Name = "Call Sheet")]
+        CallSheet
     }
 }

@@ -42,7 +42,7 @@ export default function ProductionCrewList({ loggedInUser }) {
                                 <div
                                     style={{ marginLeft: "25px"}}
                                     key={`${c.name}-${r}`}>
-                                    {r} 
+                                    {r.replace(/([A-Z])/g, ' $1').trim()} 
                                 </div>
                             ))}
                             {

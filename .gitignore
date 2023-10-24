@@ -453,8 +453,14 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-#Migrations
+# App Settings
+appsettings.json
+
+# Migrations
 Migrations
 
-#Cloudinary
+# Cloudinary
 .env
+
+#Helpers
+Helpers
