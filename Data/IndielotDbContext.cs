@@ -99,6 +99,13 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
                 UserName = "rseaton",
                 Email = "rexseaton@gmail.com",
                 PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new()
+            {
+                Id = "8b1f1e01-4410-4d3a-ac09-259bd22facb9",
+                UserName = "aRivera",
+                Email = "arivera@gmail.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
             }
         });
 
@@ -173,6 +180,14 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
                 FirstName = "Rex",
                 LastName = "Seaton",
                 Address = "746 Ocean Way"
+            },
+            new()
+            {
+                Id = Guid.Parse("4e5fb806-b237-4407-9444-f0327b989ca1"),
+                IdentityUserId = "8b1f1e01-4410-4d3a-ac09-259bd22facb9",
+                FirstName = "Angel",
+                LastName = "Rivera",
+                Address = "829 Main St"
             }
         });
 
@@ -228,11 +243,11 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
         {
             new()
             {
-                Id = Guid.Parse("d3dd4c90-1642-45eb-99a1-2048482daf16"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Title = "Call Sheet - Day 1", AssetType = "Call Sheet", UploadDate = new DateTime(2023, 10, 16, 10, 26, 0)
+                Id = Guid.Parse("d3dd4c90-1642-45eb-99a1-2048482daf16"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), AssetName = "Call Sheet - Day 1", UploaderId = Guid.Parse("4e5fb806-b237-4407-9444-f0327b989ca1"), AssetType = AssetType.CallSheet, UploadDate = new DateTime(2023, 10, 16, 10, 26, 0), FileName = "FIX - Call Sheet - Day 1", FileLocation = "https://res.cloudinary.com/dzdcyp0ec/image/upload/f_auto,q_auto/ywwcqj0cor3pvylefzp6"
             },
             new()
             {
-                Id = Guid.Parse("66c80a46-378b-49c4-88f4-256daa0d3798"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Title = "Call Sheet - Day 2", AssetType = "Call Sheet", UploadDate = new DateTime(2023, 10, 16, 10, 26, 0)
+                Id = Guid.Parse("66c80a46-378b-49c4-88f4-256daa0d3798"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), AssetName = "Call Sheet - Day 2", UploaderId = Guid.Parse("4e5fb806-b237-4407-9444-f0327b989ca1"), AssetType = AssetType.CallSheet, UploadDate = new DateTime(2023, 10, 16, 10, 26, 0), FileName = "FIX, - Call Sheet - Day 2", FileLocation = "https://console.cloudinary.com/console/c-ddf31455f5c8d193d5d825a3d75ce9/media-explorer?assetId=54823abb69d56a8811c7507c7ba36f41"
             }
         });
 

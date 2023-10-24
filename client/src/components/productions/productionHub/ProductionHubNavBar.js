@@ -3,6 +3,7 @@ import ProductionHubCard from "./ProductionHubCard";
 import { useState } from "react";
 import classnames from 'classnames'; 
 import ProductionCrewCard from "./tabs/crew/ProductionCrewCard";
+import ProductionAssetCard from "./tabs/assets/ProductionAssetCard";
 
 
 export default function ProductionHubNavBar({ loggedInUser }) {
@@ -75,7 +76,7 @@ export default function ProductionHubNavBar({ loggedInUser }) {
 
                     </TabPane>
                     <TabPane tabId="4">
-                        
+                        <ProductionAssetCard loggedInUser={loggedInUser}/>
                     </TabPane>
                 </TabContent>
         </>
