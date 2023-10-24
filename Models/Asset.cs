@@ -13,8 +13,6 @@ namespace Indielot.Models
 
         public string AssetName { get; set; }
 
-        public string FileName { get; set; }
-
         public DateTime UploadDate { get; set; }
 
         public string FileLocation { get; set; }
@@ -39,7 +37,20 @@ namespace Indielot.Models
 
     public enum AssetType
     {
+        [Display(Name = "Script")]
+        Script,
+
         [Display(Name = "Call Sheet")]
-        CallSheet
+        CallSheet,
+
+        [Display(Name = "Location")]
+        Location,
+
+        [Display(Name = "Contract")]
+        Contract,
+
+
+        [Display(Name = "Misc.")]
+        Misc
     }
 }

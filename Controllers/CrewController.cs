@@ -96,25 +96,18 @@ public class CrewController : ControllerBase
     //[Authorize]
     public IActionResult CreateCrewMember(Crew crew)
     {
-        try
-        {
-            List<Role> roles = new List<Role>();
-            foreach (string r in crew.RoleNames)
-            {   
-                Enum.TryParse(r, out Role role);
-                roles.Add(role);
-            }
-            crew.Roles = roles;
+        List<Role> roles = new List<Role>();
+        foreach (string r in crew.RoleNames)
+        {   
+            Enum.TryParse(r, out Role role);
+            roles.Add(role);
+        }
+        crew.Roles = roles;
 
-            _dbContext.Crews.Add(crew);
-            _dbContext.SaveChanges();
-            
-            return Created($"/api/crew/{crew.Id}", crew);
-        }
-        catch (System.Exception)
-        {
-            return BadRequest("lmao who knows");
-        }
+        _dbContext.Crews.Add(crew);
+        _dbContext.SaveChanges();
+        
+        return Created($"/api/crew/{crew.Id}", crew);
     }
 
     [HttpPut("{id}")]

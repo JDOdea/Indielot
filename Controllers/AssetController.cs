@@ -90,16 +90,27 @@ public class AssetController : ControllerBase
 
         return NotFound();
     }
-}
 
-// Upload an image and log the response to the console
-//=======================================
-/* var uploadParams = new ImageUploadParams()
-{
-    File = new FileDescription(@"https://cloudinary-devs.github.io/cld-docs-assets/assets/images/cld-sample.jpg"),
-    UseFilename = true,
-    UniqueFilename = false,
-    Overwrite = true
-};
-var uploadResult = cloudinary.Upload(uploadParams);
-Console.WriteLine(uploadResult.JsonObj); */
+    [HttpGet("types")]
+    //[Authorize]
+    public IActionResult GetTypes()
+    {
+        var types = Enum.GetNames(typeof(AssetType)).ToList();
+
+        return Ok(types);
+    }
+
+    [HttpPost]
+    //[Authorize]
+    public IActionResult CreateAsset(Asset asset)
+    {
+        Enum.TryParse(asset.AssetName, out AssetType assetType);
+        asset.AssetType = assetType;
+        asset.UploadDate = DateTime.Now;
+
+        _dbContext.Assets.Add(asset);
+        _dbContext.SaveChanges();
+
+        return Created($"/api/asset/{asset.Id}", asset);
+    }
+}
