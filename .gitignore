@@ -460,7 +460,7 @@ appsettings.json
 Migrations
 
 # Cloudinary
-.env
+_env.js
 
 #Helpers
 Helpers

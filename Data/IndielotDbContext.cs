@@ -239,18 +239,6 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
             }
         });
 
-        modelBuilder.Entity<Asset>().HasData(new Asset[]
-        {
-            new()
-            {
-                Id = Guid.Parse("d3dd4c90-1642-45eb-99a1-2048482daf16"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), AssetName = "Call Sheet - Day 1", UploaderId = Guid.Parse("4e5fb806-b237-4407-9444-f0327b989ca1"), AssetType = AssetType.CallSheet, UploadDate = new DateTime(2023, 10, 16, 10, 26, 0), FileName = "FIX - Call Sheet - Day 1", FileLocation = "https://res.cloudinary.com/dzdcyp0ec/image/upload/f_auto,q_auto/ywwcqj0cor3pvylefzp6"
-            },
-            new()
-            {
-                Id = Guid.Parse("66c80a46-378b-49c4-88f4-256daa0d3798"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), AssetName = "Call Sheet - Day 2", UploaderId = Guid.Parse("4e5fb806-b237-4407-9444-f0327b989ca1"), AssetType = AssetType.CallSheet, UploadDate = new DateTime(2023, 10, 16, 10, 26, 0), FileName = "FIX, - Call Sheet - Day 2", FileLocation = "https://console.cloudinary.com/console/c-ddf31455f5c8d193d5d825a3d75ce9/media-explorer?assetId=54823abb69d56a8811c7507c7ba36f41"
-            }
-        });
-
         modelBuilder.Entity<Location>().HasData(new Location[]
         {
             new()

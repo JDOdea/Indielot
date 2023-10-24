@@ -30,7 +30,7 @@ export default function AddedCrewMember({ selectedUser, setSelectedUser, selecte
                     <option
                         key={`role--${r}`}
                         value={r}
-                    >{r}</option>
+                    >{r.replace(/([A-Z])/g, ' $1').trim()} </option>
                 ))}
             </Input>
         </div>
