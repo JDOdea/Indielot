@@ -104,7 +104,7 @@ public class AssetController : ControllerBase
     //[Authorize]
     public IActionResult CreateAsset(Asset asset)
     {
-        Enum.TryParse(asset.AssetName, out AssetType assetType);
+        Enum.TryParse(asset.AssetTypeName, out AssetType assetType);
         asset.AssetType = assetType;
         asset.UploadDate = DateTime.Now;
 
@@ -112,5 +112,28 @@ public class AssetController : ControllerBase
         _dbContext.SaveChanges();
 
         return Created($"/api/asset/{asset.Id}", asset);
+    }
+
+    [HttpPut("{id}")]
+    //[Authorize]
+    public IActionResult UpdateAsset(Asset updatedAsset)
+    {
+        Asset asset = _dbContext.Assets.SingleOrDefault((a) => a.Id == updatedAsset.Id);
+
+        if (asset != null)
+        {
+            Enum.TryParse(updatedAsset.AssetTypeName, out AssetType assetType);
+
+            asset.UploaderId = updatedAsset.UploaderId;
+            asset.AssetName = updatedAsset.AssetName;
+            asset.AssetType = assetType;
+            asset.UploadDate = DateTime.Now;
+
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+
+        return NotFound();
     }
 }

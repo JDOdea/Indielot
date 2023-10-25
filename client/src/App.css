@@ -4,6 +4,11 @@
   background-color: gainsboro;
 }
 
+.asset-card:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+}
+
 
 .hov {
   cursor: pointer;

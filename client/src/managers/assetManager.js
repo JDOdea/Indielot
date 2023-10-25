@@ -23,3 +23,11 @@ export const createAsset = (asset) => {
         body: JSON.stringify(asset),
     }).then((res) => res.json);
 };
+
+export const updateAsset = (asset) => {
+    return fetch(_apiUrl + `/${asset.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(asset)
+    });
+};
