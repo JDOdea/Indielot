@@ -7,10 +7,12 @@ import { cloud_name, preset_key } from "../../../../../_env";
 import axios from "axios";
 import Asset from "./Asset";
 import EditAssetModal from "./editAssets/EditAssetModal";
+import DeleteAssetModal from "./editAssets/DeleteAssetModal";
 
-export default function ProductionAsset({ asset, loggedInUser }) {
+export default function ProductionAsset({ asset, loggedInUser, getProductionAssets }) {
     const { production, setProduction } = useContext(ProductionContext);
     const [editAsset, setEditAsset] = useState(false);
+    const [deleteAsset, setDeleteAsset] = useState(false);
 
     const handleAssetRemoval = (asset) => {
         axios
@@ -39,7 +41,7 @@ export default function ProductionAsset({ asset, loggedInUser }) {
                             className="hov"
                             id="removeAsset"
                             onClick={() => {
-                                /* handleAssetRemoval(asset); */
+                                setDeleteAsset(true);
                             }}
                         />
                     </>
@@ -47,6 +49,9 @@ export default function ProductionAsset({ asset, loggedInUser }) {
             }
             {editAsset && (
                 <EditAssetModal asset={asset} editAsset={editAsset} setEditAsset={setEditAsset} loggedInUser={loggedInUser}/>
+            )}
+            {deleteAsset && (
+                <DeleteAssetModal asset={asset} deleteModal={deleteAsset} setDeleteModal={setDeleteAsset}/>
             )}
         </>
     )

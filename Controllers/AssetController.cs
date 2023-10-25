@@ -136,4 +136,21 @@ public class AssetController : ControllerBase
 
         return NotFound();
     }
+
+    [HttpDelete("{id}")]
+    //[Authorize]
+    public IActionResult DeleteAsset(string id)
+    {
+        Asset asset = _dbContext.Assets.SingleOrDefault((a) => a.Id == Guid.Parse(id));
+
+        if (asset != null)
+        {
+            _dbContext.Assets.Remove(asset);
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+
+        return NotFound();
+    }
 }

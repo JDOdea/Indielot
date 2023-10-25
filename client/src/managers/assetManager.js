@@ -31,3 +31,9 @@ export const updateAsset = (asset) => {
         body: JSON.stringify(asset)
     });
 };
+
+export const deleteAsset = (asset) => {
+    return fetch(_apiUrl + `/${asset.id}`, {
+        method: "DELETE"
+    });
+};
