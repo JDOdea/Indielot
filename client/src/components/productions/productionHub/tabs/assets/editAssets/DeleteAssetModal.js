@@ -24,24 +24,6 @@ export default function DeleteAssetModal({ asset, deleteModal, setDeleteModal })
             });
             setDeleteModal(false);
         })
-
-        /* axios
-            .delete(`https://api.cloudinary.com/v1_1/${cloud_name}/delete/${publicId}`, {
-                headers: {
-                    "Authorization": `Basic ${btoa(`${api_key}:${api_secret}`)}`
-                },
-            })
-            .then(() => {
-                deleteAsset(asset).then(() => {
-                    fetchProductionById(production.id).then((res) => {
-                        setProduction(res);
-                    })
-                });
-                setDeleteAsset(false);
-            })
-            .catch((error) => {
-                console.error("Asset deletion error:", error);
-            }) */
     }
 
     return (
