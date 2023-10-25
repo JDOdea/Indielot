@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { ProductionContext } from "../../../../ApplicationViews";
 import { fetchAssetsByProductionId } from "../../../../../managers/assetManager";
-import { Button, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from "reactstrap";
+import { ListGroup, ListGroupItemHeading } from "reactstrap";
+import ProductionAsset from "./ProductionAsset";
 
 export default function ProductionAssetList({ loggedInUser }) {
     const [productionAssets, setProductionAssets] = useState([]);
@@ -42,28 +43,36 @@ export default function ProductionAssetList({ loggedInUser }) {
 
     if (!production || !productionAssets) return;
     return (
-        <ListGroup style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+        <ListGroup style={{ display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
             <ListGroup>
                 <ListGroupItemHeading>Scripts</ListGroupItemHeading>
+                {productionScripts.map((a) => (
+                    <div key={`${a.assetName}`} style={{ display: "flex" }}><ProductionAsset asset={a} loggedInUser={loggedInUser}/></div>
+                ))}
             </ListGroup>
             <ListGroup>
                 <ListGroupItemHeading>Call Sheets</ListGroupItemHeading>
-                {productionAssets.map((a) => (
-                    <ListGroupItem 
-                        style={{ display: "flex", justifyContent: "center"}}
-                        key={`${a.assetName}`}
-                    >
-                        <ListGroupItemText>
-                            {a.assetName}
-                        </ListGroupItemText>
-                    </ListGroupItem>
+                {productionCallSheets.map((a) => (
+                    <div key={`${a.assetName}`} style={{ display: "flex" }}><ProductionAsset asset={a} loggedInUser={loggedInUser}/></div>
                 ))}
             </ListGroup>
             <ListGroup>
                 <ListGroupItemHeading>Locations</ListGroupItemHeading>
+                {productionLocations.map((a) => (
+                    <div key={`${a.assetName}`} style={{ display: "flex" }}><ProductionAsset asset={a} loggedInUser={loggedInUser}/></div>
+                ))}
             </ListGroup>
             <ListGroup>
                 <ListGroupItemHeading>Contracts</ListGroupItemHeading>
+                {productionContracts.map((a) => (
+                    <div key={`${a.assetName}`} style={{ display: "flex" }}><ProductionAsset asset={a} loggedInUser={loggedInUser}/></div>
+                ))}
+            </ListGroup>
+            <ListGroup>
+                <ListGroupItemHeading>Misc.</ListGroupItemHeading>
+                {productionMisc.map((a) => (
+                    <div key={`${a.assetName}`} style={{ display: "flex" }}><ProductionAsset asset={a} loggedInUser={loggedInUser}/></div>
+                ))}
             </ListGroup>
         </ListGroup>
     )

@@ -20,7 +20,7 @@ export default function AddAssetModal({ loggedInUser }) {
     const [invalidName, setInvalidName] = useState(false);
 
     const toggle = () => {
-        setModal(!modal)
+        setModal(!modal);
         setSelectedFile("");
         setSelectedType(null);
         setFileName("");
@@ -43,7 +43,7 @@ export default function AddAssetModal({ loggedInUser }) {
             .catch((err) => console.log(err));
     }
 
-    const handleAddAsset = (e) => {
+    const handleAddAsset = () => {
         if (!selectedFile) {
             setInvalidFile(!invalidFile);
         }
@@ -61,6 +61,7 @@ export default function AddAssetModal({ loggedInUser }) {
             productionId: production.id,
             uploaderId: loggedInUser.id,
             assetName: fileName,
+            assetTypeName: selectedType,
             fileLocation: selectedFile
         };
 
