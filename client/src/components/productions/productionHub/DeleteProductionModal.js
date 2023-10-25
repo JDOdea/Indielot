@@ -28,7 +28,7 @@ export default function DeleteProductionModal() {
                 Delete
             </Button>
             <Modal isOpen={modal} toggle={toggle}>
-                <ModalHeader toggle={toggle}>Confirm Deletion</ModalHeader>
+                <ModalHeader toggle={toggle}>Delete `{production.title}'</ModalHeader>
                 <ModalBody>
                     <div>Are You Sure You Want to Delete {`'${production.title}'`}?</div>
                     <div>
