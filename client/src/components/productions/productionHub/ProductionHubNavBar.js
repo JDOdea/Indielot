@@ -4,6 +4,7 @@ import { useState } from "react";
 import classnames from 'classnames'; 
 import ProductionCrewCard from "./tabs/crew/ProductionCrewCard";
 import ProductionAssetCard from "./tabs/assets/ProductionAssetCard";
+import ProductionLocationCard from "./tabs/locations/ProductionLocationCard";
 
 
 export default function ProductionHubNavBar({ loggedInUser }) {
@@ -16,7 +17,7 @@ export default function ProductionHubNavBar({ loggedInUser }) {
     return (
         <>
             <div style={{
-                display: 'block', width: 700, paddingLeft: 30, paddingRight: 30
+                display: 'block', width: "100%", paddingLeft: 30, paddingRight: 30
             }}>
                 <Nav tabs justified>
                     <NavItem>
@@ -63,6 +64,17 @@ export default function ProductionHubNavBar({ loggedInUser }) {
                             Assets
                         </NavLink>
                     </NavItem>
+                    <NavItem>
+                        <NavLink
+                            className={classnames({
+                                active:
+                                    currentActiveTab === '5'
+                            })}
+                            onClick={() => { toggle('5')}}
+                        >
+                            Locations
+                        </NavLink>
+                    </NavItem>
                 </Nav>
             </div>
                 <TabContent activeTab={currentActiveTab}>
@@ -77,6 +89,9 @@ export default function ProductionHubNavBar({ loggedInUser }) {
                     </TabPane>
                     <TabPane tabId="4">
                         <ProductionAssetCard loggedInUser={loggedInUser}/>
+                    </TabPane>
+                    <TabPane tabId="5">
+                        <ProductionLocationCard loggedInUser={loggedInUser}/>
                     </TabPane>
                 </TabContent>
         </>

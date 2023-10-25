@@ -1,4 +1,3 @@
-import { ListGroupItem, ListGroupItemText } from "reactstrap";
 import RemoveIcon from '@mui/icons-material/Remove';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { useContext, useState } from "react";
@@ -13,12 +12,6 @@ export default function ProductionAsset({ asset, loggedInUser, getProductionAsse
     const { production, setProduction } = useContext(ProductionContext);
     const [editAsset, setEditAsset] = useState(false);
     const [deleteAsset, setDeleteAsset] = useState(false);
-
-    const handleAssetRemoval = (asset) => {
-        axios
-            .delete(`https://api.cloudinary.com/v1_1/${cloud_name}/delete_by_token/${asset.fileLocation}`)
-            .then()
-    }
 
     return (
         <>

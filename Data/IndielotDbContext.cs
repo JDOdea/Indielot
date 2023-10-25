@@ -251,7 +251,7 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
             },
             new()
             {
-                Id = Guid.Parse("164f1b74-68af-4578-9530-9d7532f4b8ec"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Name = "Ext. Apartment", Description = "Xanadu Condominium", Address = "750 N Atlantic Ave, Cocoa Beach, FL 32931"
+                Id = Guid.Parse("164f1b74-68af-4578-9530-9d7532f4b8ec"), ProductionId = Guid.Parse("b9e4cf53-6075-4270-a2d5-8451c3f708d4"), Name = "Ext. Apartment", Description = "Xanadu Condominium", Address = "750 N Atlantic Ave, Cocoa Beach, FL 32931"
             }
         });
 
