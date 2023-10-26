@@ -60,4 +60,14 @@ public class LocationController : ControllerBase
 
         return NotFound();
     }
+
+    [HttpPost]
+    //[Authorize]
+    public IActionResult CreateLocation(Location location)
+    {
+        _dbContext.Locations.Add(location);
+        _dbContext.SaveChanges();
+
+        return Created($"/api/location/{location.Id}", location);
+    }
 }
