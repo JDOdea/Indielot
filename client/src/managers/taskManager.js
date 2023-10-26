@@ -23,3 +23,13 @@ export const createTask = (task) => {
         body: JSON.stringify(task),
     }).then((res) => res.json());
 };
+
+export const updateTask = (task) => {
+    
+};
+
+export const deleteTask = (task) => {
+    return fetch(_apiUrl + `/${task.id}`, {
+        method: "DELETE"
+    });
+};

@@ -92,4 +92,29 @@ public class TaskController : ControllerBase
 
         return Created($"/api/task/{task.Id}", task);
     }
+
+    [HttpPut("{id}")]
+    //[Authorize]
+    public IActionResult UpdateTask(Models.Task task)
+    {
+
+        return NotFound();
+    }
+
+    [HttpDelete("{id}")]
+    //[Authorize]
+    public IActionResult DeleteTask(string id)
+    {
+        Models.Task task = _dbContext.Tasks.SingleOrDefault((t) => t.Id == Guid.Parse(id));
+
+        if (task != null)
+        {
+            _dbContext.Tasks.Remove(task);
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+
+        return NotFound();
+    }
 }
