@@ -30,6 +30,10 @@ export default function ProductionTaskList({ loggedInUser }) {
     }, []);
 
     useEffect(() => {
+        getProductionTasks();
+    }, [production]);
+
+    useEffect(() => {
         if (productionTasks) {
             sortTasks();
         }

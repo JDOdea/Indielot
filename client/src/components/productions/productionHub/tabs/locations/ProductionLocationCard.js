@@ -13,9 +13,12 @@ export default function ProductionLocationCard({ loggedInUser }) {
             <CardBody>
                 <ProductionLocationList loggedInUser={loggedInUser}/>
             </CardBody>
-            <CardFooter>
-                <AddLocationModal loggedInUser={loggedInUser}/>
-            </CardFooter>
+            {
+                production.productionLead === loggedInUser.fullName && 
+                <CardFooter>
+                    <AddLocationModal/>
+                </CardFooter>
+            }
         </Card>
     )
 }

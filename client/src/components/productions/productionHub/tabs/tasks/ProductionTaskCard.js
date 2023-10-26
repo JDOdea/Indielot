@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ProductionContext } from "../../../../ApplicationViews";
 import { Card, CardBody, CardFooter, CardHeader } from "reactstrap";
 import ProductionTaskList from "./ProductionTaskList";
+import AddTaskModal from "./editTasks/AddTaskModal";
 
 export default function ProductionTaskCard({ loggedInUser }) {
     const { production, setProduction } = useContext(ProductionContext);
@@ -15,7 +16,7 @@ export default function ProductionTaskCard({ loggedInUser }) {
             {
                 production.productionLead === loggedInUser.fullName &&
                 <CardFooter>
-                    
+                    <AddTaskModal/>
                 </CardFooter>
             }
         </Card>
