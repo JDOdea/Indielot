@@ -5,7 +5,7 @@ import { ProductionContext } from "../../../../../ApplicationViews";
 import { createLocation } from "../../../../../../managers/locationManager";
 import { fetchProductionById } from "../../../../../../managers/productionManager";
 
-export default function AddLocationModal({ loggedInUser }) {
+export default function AddLocationModal({}) {
     const [modal, setModal] = useState(false);
     const [locationName, setLocationName] = useState("");
     const [locationDescription, setLocationDescription] = useState("");

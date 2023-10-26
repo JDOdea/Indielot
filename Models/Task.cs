@@ -14,7 +14,7 @@ namespace Indielot.Models
 
         public string Description { get; set; }
 
-        public Guid? AssignedUserId { get; set; }
+        public Guid? AssignedCrewId { get; set; }
 
         public DateTime AssignedOn { get; set; }
 
@@ -23,7 +23,7 @@ namespace Indielot.Models
         public Production Production { get; set; }
 
         [ForeignKey("AssignedUserId")]
-        public UserProfile AssignedUser { get; set; }
+        public Crew AssignedCrew { get; set; }
 
         public TaskStatus TaskStatus { get; set; }
 

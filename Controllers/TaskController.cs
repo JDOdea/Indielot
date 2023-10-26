@@ -48,19 +48,48 @@ public class TaskController : ControllerBase
         if (production != null)
         {
             return Ok(_dbContext.Tasks
-                .Include(t => t.AssignedUser)
+                .Include(t => t.AssignedCrew)
+                .ThenInclude(c => c.UserProfile)
                 .Where(t => t.ProductionId == Guid.Parse(productionId))
                 .Select(t => new TaskDTO
                 {
                     Id = t.Id,
                     Title = t.Title,
                     Description = t.Description,
-                    AssignedTo = t.AssignedUser.FullName,
+                    AssignedTo = t.AssignedCrew.UserProfile.FullName,
                     DueDate = t.DueDate,
                     TaskStatus = t.GetTaskStatusName(t.TaskStatus)
                 }));
         }
 
         return NotFound();
+    }
+
+    [HttpGet("statuses")]
+    //[Authorize]
+    public IActionResult GetStatuses()
+    {
+        var statuses = Enum.GetNames(typeof(Models.TaskStatus)).ToList();
+
+        return Ok(statuses);
+    }
+
+    [HttpPost]
+    //[Authorize]
+    public IActionResult CreateTask(Models.Task task)
+    {
+        if (task.TaskStatusName == "")
+        {
+            task.TaskStatusName = "ToDo";
+        }
+        Enum.TryParse(task.TaskStatusName, out Models.TaskStatus taskStatus);
+        task.TaskStatus = taskStatus;
+
+        task.AssignedOn = DateTime.Now;
+
+        _dbContext.Tasks.Add(task);
+        _dbContext.SaveChanges();
+
+        return Created($"/api/task/{task.Id}", task);
     }
 }
