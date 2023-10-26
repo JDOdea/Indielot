@@ -68,7 +68,7 @@ export default function AddAssetModal({ loggedInUser }) {
         createAsset(asset).then(() => {
             fetchProductionById(production.id).then((res) => {
                 setProduction(res);
-            })
+            });
             
             toggle();
         });
