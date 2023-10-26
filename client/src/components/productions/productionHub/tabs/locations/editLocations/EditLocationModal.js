@@ -1,61 +1,49 @@
 import { useContext, useState } from "react";
-import { ReactComponent as PlusIcon } from "../../../../../../svgs/plusIcon.svg"
-import { Button, Form, FormGroup, FormText, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { ProductionContext } from "../../../../../ApplicationViews";
-import { createLocation } from "../../../../../../managers/locationManager";
+import { Button, Form, FormGroup, FormText, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { updateLocation } from "../../../../../../managers/locationManager";
 import { fetchProductionById } from "../../../../../../managers/productionManager";
 
-export default function AddLocationModal({ loggedInUser }) {
-    const [modal, setModal] = useState(false);
-    const [locationName, setLocationName] = useState("");
-    const [locationDescription, setLocationDescription] = useState("");
-    const [locationAddress, setLocationAddress] = useState("");
+export default function EditLocationModal({ location, editLocation, setEditLocation }) {
+    const [locationName, setLocationName] = useState(location.name);
+    const [locationDescription, setLocationDescription] = useState(location.description);
+    const [locationAddress, setLocationAddress] = useState(location.address);
+
+    const toggle = () => {
+        setEditLocation(false);
+    }
 
     const { production, setProduction } = useContext(ProductionContext);
 
-    const toggle = () => {
-        setModal(!modal);
-    }
-
-    const handleAddLocation = () => {
-        const location = {
-            productionId: production.id,
+    const handleEditLocation = () => {
+        const updatedLocation = {
+            id: location.id,
             name: locationName,
             description: locationDescription,
             address: locationAddress
         };
 
-        createLocation(location).then(() => {
+        updateLocation(updatedLocation).then(() => {
             fetchProductionById(production.id).then((res) => {
                 setProduction(res);
             });
-            reset();
             toggle();
+
         })
     }
 
-    const reset = () => {
-        setLocationName("");
-        setLocationDescription("");
-        setLocationAddress("");
-    }
-
     return (
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <PlusIcon 
-                style={{ width: "35px", height: "35px", cursor: "pointer" }}
-                onClick={toggle}
-            />
-            <Modal isOpen={modal} toggle={toggle}>
-                <ModalHeader toggle={toggle}>Add '{production.title}' Location</ModalHeader>
+        <div>
+            <Modal isOpen={editLocation} toggle={toggle}>
+                <ModalHeader toggle={toggle}>Edit '{location.name}'</ModalHeader>
                 <ModalBody>
                     <Form>
                         <FormGroup>
                             <Label htmlFor="name">Name:</Label>
-                            <Input 
+                            <Input
                                 name="name"
                                 type="text"
-                                placeholder="Enter Location Name..."
+                                defaultValue={locationName}
                                 onChange={(e) => {
                                     setLocationName(e.target.value);
                                 }}/>
@@ -66,7 +54,7 @@ export default function AddLocationModal({ loggedInUser }) {
                             <Input
                                 name="description"
                                 type="textarea"
-                                placeholder="Enter Location Description..."
+                                defaultValue={locationDescription}
                                 onChange={(e) => {
                                     setLocationDescription(e.target.value);
                                 }}/>
@@ -76,7 +64,7 @@ export default function AddLocationModal({ loggedInUser }) {
                             <Input
                                 name="address"
                                 type="text"
-                                placeholder="Enter Address..."
+                                defaultValue={locationAddress}
                                 onChange={(e) => {
                                     setLocationAddress(e.target.value);
                                 }}/>
@@ -87,18 +75,18 @@ export default function AddLocationModal({ loggedInUser }) {
                 <ModalFooter>
                     { locationName && locationAddress
                         ?
-                        <Button 
+                        <Button
                             block
-                            onClick={handleAddLocation}
+                            onClick={handleEditLocation}
                         >
-                            Add
+                            Update
                         </Button>
                         :
                         <Button
                             disabled
                             block
                         >
-                            Add
+                            Update
                         </Button>
                     }
                 </ModalFooter>

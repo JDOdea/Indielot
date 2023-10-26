@@ -70,4 +70,24 @@ public class LocationController : ControllerBase
 
         return Created($"/api/location/{location.Id}", location);
     }
+
+    [HttpPut("{id}")]
+    //[Authorize]
+    public IActionResult UpdateLocation(Location updatedLocation)
+    {
+        Location location = _dbContext.Locations.SingleOrDefault((l) => l.Id == updatedLocation.Id);
+
+        if (location != null)
+        {
+            location.Name = updatedLocation.Name;
+            location.Description = updatedLocation.Description;
+            location.Address = updatedLocation.Address;
+
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+
+        return NotFound();
+    }
 }
