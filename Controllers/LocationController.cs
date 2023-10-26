@@ -90,4 +90,21 @@ public class LocationController : ControllerBase
 
         return NotFound();
     }
+
+    [HttpDelete("{id}")]
+    //[Authorize]
+    public IActionResult DeleteLocation(string id)
+    {
+        Location location = _dbContext.Locations.SingleOrDefault((l) => l.Id == Guid.Parse(id));
+
+        if (location != null)
+        {
+            _dbContext.Locations.Remove(location);
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+        
+        return NotFound();
+    }
 }

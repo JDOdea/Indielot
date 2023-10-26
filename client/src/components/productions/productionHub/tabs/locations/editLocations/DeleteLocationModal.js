@@ -1,21 +1,21 @@
-import { useContext, useState } from "react";
-import { ProductionContext } from "../../../../../ApplicationViews";
-import { Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { deleteAsset } from "../../../../../../managers/assetManager";
-import { fetchProductionById } from "../../../../../../managers/productionManager";
+import { useContext, useState } from 'react';
+import { ProductionContext } from '../../../../../ApplicationViews';
+import { Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { deleteLocation } from '../../../../../../managers/locationManager';
+import { fetchProductionById } from '../../../../../../managers/productionManager';
 
-export default function DeleteAssetModal({ asset, deleteModal, setDeleteModal }) {
+export default function DeleteLocationModal({ location, deleteModal, setDeleteModal}) {
     const [deletion, setDeletion] = useState("");
     const [confirmed, setConfirmed] = useState(false);
 
     const toggle = () => {
         setDeleteModal(false);
     };
-    
+
     const { production, setProduction } = useContext(ProductionContext);
 
     const handleDelete = () => {
-        deleteAsset(asset).then(() => {
+        deleteLocation(location).then(() => {
             fetchProductionById(production.id).then((res) => {
                 setProduction(res);
             });
@@ -25,15 +25,15 @@ export default function DeleteAssetModal({ asset, deleteModal, setDeleteModal })
 
     return (
         <Modal isOpen={deleteModal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Delete '{asset.assetName}'</ModalHeader>
+            <ModalHeader toggle={toggle}>Delete `{location.name}' from {production.title}</ModalHeader>
             <ModalBody>
-                <div>Are You Sure You Want to Delete '{asset.assetName}'?</div>
+                <div>Are You Sure You Want to Delete '{location.name}'?</div>
                 <div>
-                    <Label htmlFor="confirm">Type 'Delete' to confirm.</Label>
+                    <Label htmlFor='confirm'>Type 'Delete' to confirm.</Label>
                     <Input
-                        name="confirm"
-                        placeholder="Delete"
-                        type="text"
+                        name='confirm'
+                        placeholder='Delete'
+                        type='text'
                         onChange={(e) => {
                             setDeletion(e.target.value);
                         }}
@@ -45,15 +45,15 @@ export default function DeleteAssetModal({ asset, deleteModal, setDeleteModal })
                     deletion === "Delete"
                     ?
                     <Button
-                        color="danger"
+                        color='danger'
                         block
                         onClick={handleDelete}
                     >
-                            Confirm
-                        </Button>
+                        Confirm
+                    </Button>
                     :
-                    <Button 
-                        color="danger"
+                    <Button
+                        color='danger'
                         outline
                         disabled
                         block
