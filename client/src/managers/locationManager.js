@@ -27,3 +27,9 @@ export const updateLocation = (location) => {
         body: JSON.stringify(location),
     });
 };
+
+export const deleteLocation = (location) => {
+    return fetch(_apiUrl + `/${location.id}`, {
+        method: "DELETE"
+    });
+};
