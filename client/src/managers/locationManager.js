@@ -19,3 +19,11 @@ export const createLocation = (location) => {
         body: JSON.stringify(location),
     }).then((res) => res.json);
 };
+
+export const updateLocation = (location) => {
+    return fetch(_apiUrl + `/${location.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(location),
+    });
+};
