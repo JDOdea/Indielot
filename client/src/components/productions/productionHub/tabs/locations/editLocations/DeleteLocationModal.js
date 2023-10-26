@@ -6,7 +6,6 @@ import { fetchProductionById } from '../../../../../../managers/productionManage
 
 export default function DeleteLocationModal({ location, deleteModal, setDeleteModal}) {
     const [deletion, setDeletion] = useState("");
-    const [confirmed, setConfirmed] = useState(false);
 
     const toggle = () => {
         setDeleteModal(false);

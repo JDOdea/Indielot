@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 export default function DeleteProductionModal() {
     const [modal, setModal] = useState(false);
     const [deletion, setDeletion] = useState("");
-    const [confirmed, setConfirmed] = useState(false);
 
     const navigate = useNavigate();
 

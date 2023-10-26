@@ -25,7 +25,15 @@ namespace Indielot.Models
         [ForeignKey("AssignedUserId")]
         public UserProfile AssignedUser { get; set; }
 
-        public TaskStatus Status { get; set; }
+        public TaskStatus TaskStatus { get; set; }
+
+        [NotMapped]
+        public string TaskStatusName { get; set; }
+
+        public string GetTaskStatusName(TaskStatus taskStatus)
+        {
+            return Enum.GetName(typeof(TaskStatus), taskStatus);
+        }
 
     }
     public enum TaskStatus

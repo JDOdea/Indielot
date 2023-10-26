@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import ProductionCrewCard from "./tabs/crew/ProductionCrewCard";
 import ProductionAssetCard from "./tabs/assets/ProductionAssetCard";
 import ProductionLocationCard from "./tabs/locations/ProductionLocationCard";
+import ProductionTaskCard from "./tabs/tasks/ProductionTaskCard";
 
 
 export default function ProductionHubNavBar({ loggedInUser }) {
@@ -75,6 +76,17 @@ export default function ProductionHubNavBar({ loggedInUser }) {
                             Locations
                         </NavLink>
                     </NavItem>
+                    <NavItem>
+                        <NavLink
+                            className={classnames({
+                                active:
+                                    currentActiveTab === '6'
+                            })}
+                            onClick={() => { toggle('6')}}
+                        >
+                            Tasks
+                        </NavLink>
+                    </NavItem>
                 </Nav>
             </div>
                 <TabContent activeTab={currentActiveTab}>
@@ -92,6 +104,9 @@ export default function ProductionHubNavBar({ loggedInUser }) {
                     </TabPane>
                     <TabPane tabId="5">
                         <ProductionLocationCard loggedInUser={loggedInUser}/>
+                    </TabPane>
+                    <TabPane tabId="6">
+                        <ProductionTaskCard loggedInUser={loggedInUser} />
                     </TabPane>
                 </TabContent>
         </>
