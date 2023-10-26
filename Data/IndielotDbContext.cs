@@ -259,15 +259,15 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
         {
             new()
             {
-                Id = Guid.Parse("fe55ea20-4cae-463a-9aa3-eb5b5106ddff"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Title = "SFX", Description = "Finish post sound sfx placement", Status = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
+                Id = Guid.Parse("fe55ea20-4cae-463a-9aa3-eb5b5106ddff"), ProductionId = Guid.Parse("507aa23a-bbb3-4fe1-bc76-1fb3437b5be3"), Title = "SFX", Description = "Finish post sound sfx placement", TaskStatus = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
             },
             new()
             {
-                Id = Guid.Parse("f8246c24-7bbb-4a35-af08-64187bd9a7a4"), ProductionId = Guid.Parse("b9e4cf53-6075-4270-a2d5-8451c3f708d4"), Title = "Raise Funding", Description = "Acquire funding through Kickstarter", Status = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("b741081a-7b4e-4bad-9e45-181fcc188e5e")
+                Id = Guid.Parse("f8246c24-7bbb-4a35-af08-64187bd9a7a4"), ProductionId = Guid.Parse("b9e4cf53-6075-4270-a2d5-8451c3f708d4"), Title = "Raise Funding", Description = "Acquire funding through Kickstarter", TaskStatus = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("b741081a-7b4e-4bad-9e45-181fcc188e5e")
             },
             new()
             {
-                Id = Guid.Parse("ee640c55-80fd-442f-aceb-8e27923d9f6a"), ProductionId = Guid.Parse("020f13be-c902-4a27-a6c6-b3dea5fa880c"), Title = "Finish Script v1", Description = "Finish the first draft of script", Status = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
+                Id = Guid.Parse("ee640c55-80fd-442f-aceb-8e27923d9f6a"), ProductionId = Guid.Parse("020f13be-c902-4a27-a6c6-b3dea5fa880c"), Title = "Finish Script v1", Description = "Finish the first draft of script", TaskStatus = Models.TaskStatus.InProgress, AssignedUserId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
             }
         });
 

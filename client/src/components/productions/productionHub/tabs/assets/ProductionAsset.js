@@ -8,7 +8,7 @@ import Asset from "./Asset";
 import EditAssetModal from "./editAssets/EditAssetModal";
 import DeleteAssetModal from "./editAssets/DeleteAssetModal";
 
-export default function ProductionAsset({ asset, loggedInUser, getProductionAssets }) {
+export default function ProductionAsset({ asset, loggedInUser }) {
     const { production, setProduction } = useContext(ProductionContext);
     const [editAsset, setEditAsset] = useState(false);
     const [deleteAsset, setDeleteAsset] = useState(false);

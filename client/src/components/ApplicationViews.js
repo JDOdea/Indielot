@@ -8,7 +8,6 @@ import NewProduction from "./productions/NewProduction";
 import ProductionHub from "./productions/productionHub/ProductionHub";
 import { createContext, useEffect, useState } from "react";
 import EditProduction from "./productions/productionHub/EditProduction";
-import UserProductionList from "./productions/userProductions/UserProductionList";
 import UserProductions from "./productions/userProductions/UserProductions";
 
 export const ProductionContext = createContext(null);

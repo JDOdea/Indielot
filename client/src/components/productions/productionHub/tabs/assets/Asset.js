@@ -1,4 +1,3 @@
-import {AdvancedImage} from '@cloudinary/react';
 import { ListGroupItem, ListGroupItemText } from 'reactstrap';
 
 export default function Asset({ asset }) {
