@@ -6,6 +6,7 @@ import ProductionTask from "./ProductionTask";
 
 export default function ProductionTaskList({ loggedInUser }) {
     const [productionTasks, setProductionTasks] = useState([]);
+    const [deleteTask, setDeleteTask] = useState(false);
 
     const [productionToDos, setProductionToDos] = useState([]);
     const [productionInProgress, setProductionInProgress] = useState([]);

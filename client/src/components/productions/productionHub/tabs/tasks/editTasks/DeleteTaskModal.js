@@ -1,20 +1,20 @@
-import { useContext, useState } from 'react';
-import { ProductionContext } from '../../../../../ApplicationViews';
-import { Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-import { deleteLocation } from '../../../../../../managers/locationManager';
-import { fetchProductionById } from '../../../../../../managers/productionManager';
+import { useContext, useState } from "react";
+import { ProductionContext } from "../../../../../ApplicationViews";
+import { Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { deleteTask } from "../../../../../../managers/taskManager";
+import { fetchProductionById } from "../../../../../../managers/productionManager";
 
-export default function DeleteLocationModal({ location, deleteModal, setDeleteModal }) {
+export default function DeleteTaskModal({ task, deleteModal, setDeleteModal }) {
     const [deletion, setDeletion] = useState("");
 
     const toggle = () => {
         setDeleteModal(false);
-    };
+    }
 
     const { production, setProduction } = useContext(ProductionContext);
 
     const handleDelete = () => {
-        deleteLocation(location).then(() => {
+        deleteTask(task).then(() => {
             fetchProductionById(production.id).then((res) => {
                 setProduction(res);
             });
@@ -24,15 +24,15 @@ export default function DeleteLocationModal({ location, deleteModal, setDeleteMo
 
     return (
         <Modal isOpen={deleteModal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Delete `{location.name}' from {production.title}</ModalHeader>
+            <ModalHeader toggle={toggle}>Delete '{task.title}' from {production.title}</ModalHeader>
             <ModalBody>
-                <div>Are You Sure You Want to Delete '{location.name}'?</div>
+                <div>Are You Sure You Want to Delete '{task.title}'?</div>
                 <div>
-                    <Label htmlFor='confirm'>Type 'Delete' to confirm.</Label>
-                    <Input
-                        name='confirm'
-                        placeholder='Delete'
-                        type='text'
+                    <Label htmlFor="confirm">Type 'Delete' to confirm.</Label>
+                    <Input 
+                        name="confirm"
+                        placeholder="Delete"
+                        type="text"
                         onChange={(e) => {
                             setDeletion(e.target.value);
                         }}
@@ -44,7 +44,7 @@ export default function DeleteLocationModal({ location, deleteModal, setDeleteMo
                     deletion === "Delete"
                     ?
                     <Button
-                        color='danger'
+                        color="danger"
                         block
                         onClick={handleDelete}
                     >
@@ -52,7 +52,7 @@ export default function DeleteLocationModal({ location, deleteModal, setDeleteMo
                     </Button>
                     :
                     <Button
-                        color='danger'
+                        color="danger"
                         outline
                         disabled
                         block
