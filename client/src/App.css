@@ -8,7 +8,6 @@
   --speed: 500ms;
 }
 
-
 .prod-card:hover {
   cursor: pointer;
   background-color: gainsboro;

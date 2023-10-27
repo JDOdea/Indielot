@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
-import { Home } from "./Home";
+import { Home } from "./home/Home";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Productions from "./productions/Productions";
