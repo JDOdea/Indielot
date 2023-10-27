@@ -50,20 +50,8 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                             </NavItem>
                         </div>
                         <div>
-                            <ProfileButton loggedInUser={loggedInUser}/>
+                            <ProfileButton loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>
                         </div>
-                        <Button
-                            color="primary"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                setOpen(false);
-                                logout().then(() => {
-                                    setLoggedInUser(null);
-                                    setOpen(false);
-                                })
-                            }}>
-                                Logout
-                            </Button>
                     </>
                 ) : (
                     <Nav navbar>
