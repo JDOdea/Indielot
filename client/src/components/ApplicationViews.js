@@ -9,6 +9,7 @@ import ProductionHub from "./productions/productionHub/ProductionHub";
 import { createContext, useEffect, useState } from "react";
 import EditProduction from "./productions/productionHub/EditProduction";
 import UserProductions from "./productions/userProductions/UserProductions";
+import UserProfile from "./profile/UserProfile";
 
 export const ProductionContext = createContext(null);
 
@@ -32,11 +33,20 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     index
                     element={
                         <AuthorizedRoute loggedInUser={loggedInUser}>
-                            <Home />
+                            <ProductionContext.Provider value={{ production: production, setProduction: setProduction}}>
+                                <Home loggedInUser={loggedInUser}/>
+                            </ProductionContext.Provider>
                         </AuthorizedRoute>
                     }
                 />
                     <Route path=":userName">
+                        <Route 
+                            index
+                            element={
+                                <AuthorizedRoute loggedInUser={loggedInUser}>
+                                    <UserProfile loggedInUser={loggedInUser}/>
+                                </AuthorizedRoute>
+                            }/>
                         <Route
                             path="productions" 
                             element={

@@ -1,41 +1,56 @@
+import AddIcon from '@mui/icons-material/Add';
 import { useState } from "react"
 import { NavLink as RRNavLink} from "react-router-dom";
 import { Button, Collapse, Nav, NavLink, NavItem, Navbar, NavbarBrand, NavbarToggler } from "reactstrap";
-import { logout } from "../managers/authManager";
-import { ReactComponent as PlusIcon } from "../svgs/plusIcon.svg"
+import { logout } from "../../managers/authManager";
+import Canvas from '../menu/Canvas';
+import "./navBar.css";
+import ProfileButton from './ProfileButton';
+import DropdownMenu from './dropdown/DropdownMenu';
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
     const [open, setOpen] = useState(false);
+    const [menu, setMenu] = useState(false);
 
     const toggleNavbar = () => setOpen(!open);
 
     return (
         <div>
-            <Navbar color="light" light fixed="true" expand="lg">
-                <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
+            <Navbar className='navbar' fixed="true" expand="lg">
+                <NavbarBrand style={{color: "white" }} className="mr-auto" tag={RRNavLink} to="/">
                     Indielot
                 </NavbarBrand>
                 {loggedInUser ? (
                     <>
                         <NavbarToggler onClick={toggleNavbar} />
                         <Collapse isOpen={open} navbar>
-                            <Nav navbar>
+                            <Nav className='navbar-nav' navbar>
+                                <NavItem className='navItem' onClick={() => setOpen(false)}>
+                                    <Canvas menu={menu} setMenu={setMenu}/>
+                                </NavItem>
                                 <NavItem onClick={() => setOpen(false)}>
-                                    <NavLink tag={RRNavLink} to="productions">
+                                    <NavLink style={{color: "white" }} tag={RRNavLink} to="productions">
                                         Productions
                                     </NavLink>
                                 </NavItem>
                                 <NavItem onClick={() => setOpen(false)}>
-                                    <NavLink tag={RRNavLink} to={`${loggedInUser.userName}/productions`}>
+                                    <NavLink style={{color: "white" }} tag={RRNavLink} to={`${loggedInUser.userName}/productions`}>
                                         My Productions
                                     </NavLink>
                                 </NavItem>
                             </Nav>
                         </Collapse>
                         <div>
-                            <NavLink onClick={() => setOpen(false)} tag={RRNavLink} to="productions/new">
-                                <PlusIcon style={{ width: "35px", height: "35px"}}/>
-                            </NavLink>
+                            <NavItem className='navItem' onClick={() => setOpen(false)}>
+                                <NavLink onClick={() => setOpen(false)} tag={RRNavLink} to="productions/new">
+                                    <a href='#' className='icon-button'>
+                                        <AddIcon className='navbar-icon' fontSize='medium'/>
+                                    </a>
+                                </NavLink>
+                            </NavItem>
+                        </div>
+                        <div>
+                            <ProfileButton loggedInUser={loggedInUser}/>
                         </div>
                         <Button
                             color="primary"
