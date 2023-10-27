@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Nav, NavItem } from 'reactstrap';
 import DropdownMenu from './dropdown/DropdownMenu';
 
-export default function ProfileButton({ loggedInUser }) {
+export default function ProfileButton({ loggedInUser, setLoggedInUser }) {
     const [open, setOpen] = useState(false);
 
     return (
@@ -17,7 +17,7 @@ export default function ProfileButton({ loggedInUser }) {
                         <ArrowDropDownIcon className='navbar-icon'/>
                     </div>
                     {open && (
-                        <DropdownMenu loggedInUser={loggedInUser} setOpen={setOpen}/>
+                        <DropdownMenu loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setOpen={setOpen}/>
                     )}
                 </NavItem>
             </Nav>

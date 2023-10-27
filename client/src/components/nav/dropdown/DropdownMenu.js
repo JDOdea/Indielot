@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
+import { logout } from "../../../managers/authManager";
 
-export default function DropdownMenu({ loggedInUser, setOpen }) {
+export default function DropdownMenu({ loggedInUser, setLoggedInUser, setOpen }) {
     const [activeMenu, setActiveMenu] = useState('main');
     const [menuHeight, setMenuHeight] = useState(null);
     const dropdownRef = useRef(null);
@@ -19,6 +20,24 @@ export default function DropdownMenu({ loggedInUser, setOpen }) {
     const DropdownLink = (props) => {
         return (
             <a href={props.link} className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+                <span className="icon-button">{props.leftIcon}</span>
+                {props.children}
+                <span className="icon-right">{props.rightIcon}</span>
+            </a>
+        )
+    }
+
+    const DropdownLogout = (props) => {
+        return (
+            <a href={props.link} className="menu-item" 
+                onClick={(e) => {
+                    e.preventDefault();
+                    setOpen(false);
+                    logout().then(() => {
+                        setLoggedInUser(null);
+                        setOpen(false);
+                    })
+                }}>
                 <span className="icon-button">{props.leftIcon}</span>
                 {props.children}
                 <span className="icon-right">{props.rightIcon}</span>
@@ -49,7 +68,7 @@ export default function DropdownMenu({ loggedInUser, setOpen }) {
                     <DropdownItem>Your Activity</DropdownItem>
                     <DropdownItem>Messages</DropdownItem>
                     <DropdownItem goToMenu="settings">Settings</DropdownItem>
-                    <DropdownItem>Sign out</DropdownItem>
+                    <DropdownLogout>Sign Out</DropdownLogout>
                 </div>
             </CSSTransition>
 
