@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.profileContainer {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+/* Profile Header */
+.profileHeader {
+    width: 100%;
+    height: 50vh;
+}
+
+.profileHeaderBackground {
+    position: relative;
+    left: -15px;
+    top: -15px;
+    background-image: url("../../images/blurredBg.jpg");
+
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+
+    height: 140%;
+    width: 200%;
+
+    z-index: -10;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* .profileHeaderContent {
+
+} */
+
+.profileName {
+    font-weight: bold;
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 60%;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+/* .editProfile-btn {
+    
+} */
+
+.profileHeaderPictureFrame {
+    position: absolute;
+    display: flex;
+    background-color: rgb(30, 29, 29);
+    justify-content: center;
+    height: 400px;
+    width: 300px;
+    top: 30%;
+    left: 20%;
+    transform: translate(-50%, -20%);
+    z-index: 1;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* .profileHeaderPicture {
+    
+} */
+
+.profileHeaderEmptyPicture {
+    width: 240px;
+    height: 240px;
+    transform: translateY(20%);
+}
+
+.contact-btn {
+    position: absolute;
+    top: 105%;
+    left: 40%;
+}
+
+/* Profile Body */
+.profileBody {
+    background-color: white;
+}
