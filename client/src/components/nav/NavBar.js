@@ -42,10 +42,8 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                         </Collapse>
                         <div>
                             <NavItem className='navItem' onClick={() => setOpen(false)}>
-                                <NavLink onClick={() => setOpen(false)} tag={RRNavLink} to="productions/new">
-                                    <a href='#' className='icon-button'>
-                                        <AddIcon className='navbar-icon' fontSize='medium'/>
-                                    </a>
+                                <NavLink className='icon-button' onClick={() => setOpen(false)} tag={RRNavLink} to="productions/new">
+                                    <AddIcon className='navbar-icon' fontSize='medium'/>
                                 </NavLink>
                             </NavItem>
                         </div>

@@ -1,0 +1,67 @@
+.homeContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Side Bar */
+.sideNav {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    background-color: #424758;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: white;
+}
+
+.sideNav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: block;
+}
+
+.sideNav a:hover {
+    text-decoration: underline;
+}
+
+/* Home Feed */
+.homeFeed {
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: black 1px solid;
+}
+
+/* .feedItem {
+
+} */
+
+
+/* Right Side */
+.homeRight {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    right: 0;
+    z-index: 1;
+    background-color: #424758;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: white;
+}
+
+.homeRight a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: block;
+}
+
+.homeRight a:hover {
+    text-decoration: underline;
+}
