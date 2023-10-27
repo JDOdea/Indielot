@@ -1,8 +1,8 @@
-export const Home = () => {
+import Productions from "./productions/Productions"
+
+export const Home = ({ loggedInUser }) => {
 
     return (
-        <>
-        
-        </>
+        <Productions/>
     )
 }
