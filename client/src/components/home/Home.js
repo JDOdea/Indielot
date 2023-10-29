@@ -14,7 +14,7 @@ export const Home = ({ loggedInUser }) => {
                 <HomeFeed />
             </div>
             <div className="sideRightContainer">
-                <HomeRightBar />
+                <HomeRightBar loggedInUser={loggedInUser}/>
             </div>
         </div>
     )

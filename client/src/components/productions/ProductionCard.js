@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { 
     Button, 
     Card, 
@@ -27,19 +26,19 @@ export default function ProductionCard({ productionObject, setProductionDetailsI
                 </CardSubtitle>
                 <CardText>Lead by: {productionObject.productionLead}</CardText>
             </CardBody>
-                <Button
-                    color="dark"
-                    onClick={() => {
-                        setProductionDetailsId(productionObject.id);
-                        window.scrollTo({
-                            top: 0,
-                            left: 0,
-                            behavior: "smooth"
-                        })
-                    }}
-                >
-                    Show Details
-                </Button>
+            {/* <Button
+                color="dark"
+                onClick={() => {
+                    setProductionDetailsId(productionObject.id);
+                    window.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: "smooth"
+                    })
+                }}
+            >
+                Show Details
+            </Button> */}
         </Card>
     )
 }

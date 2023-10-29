@@ -10,6 +10,8 @@ import { createContext, useEffect, useState } from "react";
 import EditProduction from "./productions/productionHub/EditProduction";
 import UserProductions from "./productions/userProductions/UserProductions";
 import UserProfile from "./profile/UserProfile";
+import Error from "../Error";
+import ViewParamRouter from "./ViewParamRouter";
 
 export const ProductionContext = createContext(null);
 
@@ -28,7 +30,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
 
     return (
         <Routes>
-            <Route path="/">
+            <Route path="/" errorElement={<Error />}>
                 <Route 
                     index
                     element={
@@ -39,25 +41,6 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                         </AuthorizedRoute>
                     }
                 />
-                    <Route path=":userName">
-                        <Route 
-                            index
-                            element={
-                                <AuthorizedRoute loggedInUser={loggedInUser}>
-                                    <UserProfile loggedInUser={loggedInUser}/>
-                                </AuthorizedRoute>
-                            }/>
-                        <Route
-                            path="productions" 
-                            element={
-                                <AuthorizedRoute loggedInUser={loggedInUser}>
-                                    <ProductionContext.Provider value={{ production: production, setProduction: setProduction}}>
-                                        <UserProductions loggedInUser={loggedInUser}/>
-                                    </ProductionContext.Provider>
-                                </AuthorizedRoute>
-                            }
-                            />
-                    </Route>
                     <Route path="productions">
                         <Route
                             index
@@ -74,6 +57,28 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                             element={
                                 <AuthorizedRoute loggedInUser={loggedInUser}>
                                     <NewProduction loggedInUser={loggedInUser}/>
+                                </AuthorizedRoute>
+                            }
+                        />
+                    </Route>
+                    <Route path=":param">
+                        <Route
+                            index
+                            element={
+                                <AuthorizedRoute loggedInUser={loggedInUser}>
+                                    <ProductionContext.Provider value={{ production: production, setProduction: setProduction}}>
+                                        <ViewParamRouter loggedInUser={loggedInUser} production={production} setProduction={setProduction}/>
+                                    </ProductionContext.Provider>
+                                </AuthorizedRoute>
+                            }
+                        />
+                        <Route 
+                            path="edit"
+                            element={
+                                <AuthorizedRoute loggedInUser={loggedInUser}>
+                                    <ProductionContext.Provider value={{ production: production, setProduction: setProduction }}>
+                                        
+                                    </ProductionContext.Provider>
                                 </AuthorizedRoute>
                             }
                         />
@@ -100,7 +105,25 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                             }
                         />
                     </Route>
-
+                    <Route path=":userName">
+                        <Route 
+                            index
+                            element={
+                                <AuthorizedRoute loggedInUser={loggedInUser}>
+                                    <UserProfile loggedInUser={loggedInUser}/>
+                                </AuthorizedRoute>
+                            }/>
+                        <Route
+                            path="productions" 
+                            element={
+                                <AuthorizedRoute loggedInUser={loggedInUser}>
+                                    <ProductionContext.Provider value={{ production: production, setProduction: setProduction}}>
+                                        <UserProductions loggedInUser={loggedInUser}/>
+                                    </ProductionContext.Provider>
+                                </AuthorizedRoute>
+                            }
+                            />
+                    </Route>
 
                 <Route
                     path="login"

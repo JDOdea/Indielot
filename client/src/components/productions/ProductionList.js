@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchProductions } from "../../managers/productionManager";
 import ProductionCard from "./ProductionCard";
+import { ProductionContext } from "../ApplicationViews";
 
 export default function ProductionList({ setProductionDetailsId }) {
     const [productions, setProductions] = useState([]);
+
+    const { production, setProduction} = useContext(ProductionContext);
 
     const getAllProductions = () => {
         fetchProductions().then(setProductions);
@@ -12,6 +15,7 @@ export default function ProductionList({ setProductionDetailsId }) {
     useEffect(() => {
         getAllProductions();
         localStorage.removeItem("production");
+        setProduction(null);
     }, []);
 
 

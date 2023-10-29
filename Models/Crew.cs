@@ -1,9 +1,6 @@
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
-using System.Xml.Linq;
-using Microsoft.OpenApi.Extensions;
 
 namespace Indielot.Models
 {
@@ -49,6 +46,9 @@ namespace Indielot.Models
         [EnumMember(Value = "Composer")]
         Composer,
 
+        [EnumMember(Value = "Music Editor")]
+        MusicEditor,
+
         [Display(Name = "Director of Photography")]
         DirectorOfPhotography,
 
@@ -92,6 +92,9 @@ namespace Indielot.Models
         VisualEffects,
 
         [EnumMember(Value = "Gaffer")]
-        Gaffer
+        Gaffer,
+
+        [EnumMember(Value = "Production Assistant")]
+        ProductionAssistant
     }
 }

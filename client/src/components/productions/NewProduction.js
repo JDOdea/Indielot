@@ -7,7 +7,7 @@ export default function NewProduction({ loggedInUser }) {
     const navigate = useNavigate();
     
     const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+    const [description, setDescription] = useState(null);
     const [hasBudget, setHasBudget] = useState(false);
     const [budget, setBudget] = useState(null);
 

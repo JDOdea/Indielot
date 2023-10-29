@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Indielot.Models
 {
     public class BudgetItem
@@ -5,6 +7,9 @@ namespace Indielot.Models
         public Guid Id { get; set; }
         
         public Guid ProductionId { get; set; }
+
+        [Required]
+        public string Name { get; set; }
 
         public string Description { get; set; }
 
@@ -14,7 +19,5 @@ namespace Indielot.Models
 
         public Production Production { get; set; }
 
-
-        // TODO: category enum
     }
 }

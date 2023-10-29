@@ -58,47 +58,49 @@ export default function EditCrewMemberModal({}) {
             <Button color="dark" onClick={toggle}>
                 Edit Crew
             </Button>
-            <Modal isOpen={modal} toggle={toggle}>
-                <ModalHeader toggle={toggle}>Edit Crew</ModalHeader>
-                <ModalBody>
-                    <Input 
-                        type="select"
-                        name="crewSelect"
-                        onChange={(e) => {
-                            selectCrewMember(e.target.value);
-                        }}
-                    >
-                        <option value={0} hidden>Select a Crew Member</option>
-                        {production.crew.map((c) => (
-                            <option 
-                                key={`crew-${c.name}`}
-                                value={c.id}
-                            >{c.name}</option>
-                        ))}
-                    </Input>
-                    {selectedCrewMember && (
-                        <div>
-                            <Label htmlFor="roles"><b>Roles</b></Label>
-                            {roles.map((r) => (
-                                <div key={r}>
-                                    <Input 
-                                        type="checkbox"
-                                        value={r}
-                                        checked={!!selectedCrewRoles.find((cr) => {return cr === r})}
-                                        onChange={() => {handleRoleCheck(r)}}
-                                    />
-                                    <Label>{r}</Label>
-                                </div>
+            {modal && (
+                <Modal isOpen={modal} toggle={toggle}>
+                    <ModalHeader toggle={toggle}>Edit Crew</ModalHeader>
+                    <ModalBody>
+                        <Input 
+                            type="select"
+                            name="crewSelect"
+                            onChange={(e) => {
+                                selectCrewMember(e.target.value);
+                            }}
+                        >
+                            <option value={0} hidden>Select a Crew Member</option>
+                            {production.crew.map((c) => (
+                                <option 
+                                    key={`crew-${c.name}`}
+                                    value={c.id}
+                                >{c.name}</option>
                             ))}
-                        </div>
-                    )}
-                </ModalBody>
-                <ModalFooter>
-                    <Button onClick={handleUpdate}>
-                        Update Crew Member
-                    </Button>
-                </ModalFooter>
-            </Modal>
+                        </Input>
+                        {selectedCrewMember && (
+                            <div>
+                                <Label htmlFor="roles"><b>Roles</b></Label>
+                                {roles.map((r) => (
+                                    <div key={r}>
+                                        <Input 
+                                            type="checkbox"
+                                            value={r}
+                                            checked={!!selectedCrewRoles.find((cr) => {return cr === r})}
+                                            onChange={() => {handleRoleCheck(r)}}
+                                        />
+                                        <Label>{r}</Label>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={handleUpdate}>
+                            Update Crew Member
+                        </Button>
+                    </ModalFooter>
+                </Modal>
+            )}
         </div>
     )
 }
