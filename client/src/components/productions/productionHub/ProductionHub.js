@@ -1,11 +1,8 @@
-import { useParams } from "react-router-dom"
-import ProductionHubCard from "./ProductionHubCard";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ProductionContext } from "../../ApplicationViews";
 import ProductionHubNavBar from "./ProductionHubNavBar";
 
 export default function ProductionHub({ loggedInUser }) {
-    const { title } = useParams();
 
     const { production, setProduction} = useContext(ProductionContext);
 

@@ -113,7 +113,9 @@ a {
 
 .dropdown {
     position: absolute;
+    z-index: 100;
     top: 54px;
+    right: -110px;
     width: 300px;
     transform: translateX(-45%);
     background-color: var(--bg);

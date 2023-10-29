@@ -125,17 +125,58 @@ public class ProductionController : ControllerBase
         return NotFound();
     }
 
+    [HttpGet("user/{userId}/active")]
+    //[Authorize]
+    public IActionResult GetActiveByUserId(string userId)
+    {
+        UserProfile userProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == Guid.Parse(userId));
+
+        if (userProfile != null)
+        {
+            List<Production> productions = _dbContext.Productions
+                .Include(p => p.Crew)
+                .Where(p => p.ProductionLeadId == Guid.Parse(userId) || p.Crew.Any(c => c.UserProfileId == Guid.Parse(userId)))
+                .Where(p => p.Completed == false)
+                .ToList();
+
+            return Ok(_dbContext.Productions
+                .Include(p => p.Crew)
+                .Where(p => p.ProductionLeadId == Guid.Parse(userId) || p.Crew.Any(c => c.UserProfileId == Guid.Parse(userId)))
+                .Where(p => p.Completed == false)
+                .Select(p => new ProductionDTO
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    Description = p.Description,
+                    PicturePath = p.PicturePath,
+                    ProductionLead = p.ProductionLead.FullName,
+                })
+                .ToList());
+        }
+
+        return NotFound();
+    }
+
     [HttpPost]
     //[Authorize]
     public IActionResult CreateProduction(Production production)
     {
         production.CreationDate = DateTime.Now;
         _dbContext.Productions.Add(production);
+
+        Activity activity = new()
+        {
+            ProductionId = production.Id,
+            UpdaterId = production.ProductionLeadId,
+            ActivityDate = production.CreationDate,
+            Description = $"created a new production.",
+            ActivityType = ActivityType.Created
+        };
+        _dbContext.Activities.Add(activity);
+
         _dbContext.SaveChanges();
 
         return Created($"/api/production/{production.Id}", production);
-
-        // TODO: Implement Production Home Page
     }
 
     [HttpPut("{id}")]
@@ -150,6 +191,17 @@ public class ProductionController : ControllerBase
             foundProduction.Description = production.Description;
             foundProduction.PicturePath = production.PicturePath;
             foundProduction.Budget = production.Budget;
+
+            Activity activity = new()
+            {
+                ProductionId = foundProduction.Id,
+                UpdaterId = foundProduction.ProductionLeadId,
+                ActivityDate = DateTime.Now,
+                Description = $"edited",
+                ActivityType = ActivityType.Edited
+            };
+
+            _dbContext.Activities.Add(activity);
             
             _dbContext.SaveChanges();
             return NoContent();
@@ -166,6 +218,18 @@ public class ProductionController : ControllerBase
 
         if (production != null)
         {
+            Activity activity = new()
+            {
+                ProductionId = production.Id,
+                UpdaterId = production.ProductionLeadId,
+                ActivityDate = DateTime.Now,
+                Description = $"deleted a production.",
+                ActivityType = ActivityType.Deleted
+            };
+
+            // TODO: fix cascading delete
+            _dbContext.Activities.Add(activity);
+
             _dbContext.Productions.Remove(production);
             _dbContext.SaveChanges();
             return NoContent();

@@ -11,10 +11,12 @@ namespace Indielot.Models
 
         public Guid UploaderId { get; set; }
 
+        [Required]
         public string AssetName { get; set; }
 
         public DateTime UploadDate { get; set; }
 
+        [Required]
         public string FileLocation { get; set; }
 
         public Production Production { get; set; }
@@ -22,6 +24,7 @@ namespace Indielot.Models
         [ForeignKey("UploaderId")]
         public UserProfile Uploader { get; set; }
 
+        [Required]
         public AssetType AssetType { get; set; }
 
         [NotMapped]

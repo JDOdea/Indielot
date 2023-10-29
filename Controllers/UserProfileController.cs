@@ -53,6 +53,7 @@ public class UserProfileController : ControllerBase
                 Email = up.Email,
                 UserName = up.IdentityUser.UserName,
                 ProfilePicturePath = up.ProfilePicturePath,
+                Bio = up.Bio,
                 CreateDateTime = up.CreateDateTime,
                 IdentityUserId = up.IdentityUserId,
                 Roles = _dbContext.UserRoles
@@ -120,6 +121,7 @@ public class UserProfileController : ControllerBase
                 Email = user.Email,
                 UserName = user.IdentityUser.UserName,
                 ProfilePicturePath = user.ProfilePicturePath,
+                Bio = up.Bio,
                 CreateDateTime = user.CreateDateTime,
                 IdentityUserId = user.IdentityUserId,
                 Roles = _dbContext.UserRoles
@@ -148,6 +150,7 @@ public class UserProfileController : ControllerBase
                 Email = up.Email,
                 UserName = up.IdentityUser.UserName,
                 ProfilePicturePath = up.ProfilePicturePath,
+                Bio = up.Bio,
                 CreateDateTime = up.CreateDateTime,
                 IdentityUserId = up.IdentityUserId,
                 Roles = _dbContext.UserRoles
@@ -173,6 +176,7 @@ public class UserProfileController : ControllerBase
                 Email = up.Email,
                 UserName = up.IdentityUser.UserName,
                 ProfilePicturePath = up.ProfilePicturePath,
+                Bio = up.Bio,
                 CreateDateTime = up.CreateDateTime,
                 IdentityUserId = up.IdentityUserId,
                 Roles = _dbContext.UserRoles

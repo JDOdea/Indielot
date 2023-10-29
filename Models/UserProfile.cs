@@ -24,7 +24,7 @@ namespace Indielot.Models
         [MaxLength(255)]
         public string ProfilePicturePath { get; set; }
 
-        public string Bio { get; set; }
+        public string Bio { get; set; } = "No bio provided...";
 
         public bool IsActive { get; set; }
 
