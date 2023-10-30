@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.inboxContainer {
+    
+}
+
+.conversationListContainer {
+    height: 100%;
+    width: 22%;
+    position: fixed;
+    left: 0;
+    
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: black 1px solid; 
+}
+
+.conversationListHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerUserName {
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
+.headerUserName:hover {
+    cursor: pointer;
+}
+
+.newMessageIcon {
+    margin-top: 20px;
+    margin-right: 25px;
+}
+
+.newMessageIcon:hover {
+    cursor: pointer;
+}
+
+.modal-content {
+    height: 40rem;
+}
+
+.newMessageHeader {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.modal-header {
+    width: 100%;
+}
+
+.modal-title {
+    width: 100%;
+    text-align: center;
+    letter-spacing: -0.5px;
+    font-size: 1.15rem;
+}
+
+.modal-body {
+    padding-top: 0px;
+}
+
+.newMessageTo {
+    display: flex;
+    align-items: center;
+    margin-bottom: -10px;
+}
+
+.newMessageToSearch {
+    position: relative;
+    width: 98%;
+    left: 7px;
+}
+
+.form-control {
+    border: none;
+    transition: none;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.hl {
+    position: relative;
+    margin-top: 10px;
+    border-top: 1.5px solid rgb(231, 230, 230);
+    width: 106.9%;
+    left: -16px;
+}
+
+.searchResults {
+    position: relative;
+    height: 28rem;
+    padding-top: 1.5rem;
+    padding-left: .5rem;
+    overflow-y: scroll;
+}
+
+.searchItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-group-item {
+    border: none;
+    padding-left: 0; 
+}
+
+.list-group-item span {
+    margin-left: 10px;
+}
+
+.checkButton {
+    margin-right: 20px;
+    cursor: pointer;
+}

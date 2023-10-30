@@ -10,6 +10,8 @@ namespace Indielot.Models
 
         public List<Guid> RecipientIds { get; set; }
 
+        public Guid ConversationId { get; set; }
+
         public string Content { get; set; }
 
         public DateTime Timestamp { get; set; }
@@ -19,5 +21,7 @@ namespace Indielot.Models
 
         [ForeignKey("RecipientIds")]
         public List<UserProfile> Recipients { get; set; }
+
+        public Conversation Conversation { get; set; }
     }
 }

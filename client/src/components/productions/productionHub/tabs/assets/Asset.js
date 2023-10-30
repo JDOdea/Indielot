@@ -1,3 +1,5 @@
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import CommentIcon from '@mui/icons-material/Comment';
 import { ListGroupItem, ListGroupItemText } from 'reactstrap';
 
 export default function Asset({ asset }) {

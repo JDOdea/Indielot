@@ -12,6 +12,7 @@ import UserProductions from "./productions/userProductions/UserProductions";
 import UserProfile from "./profile/UserProfile";
 import Error from "../Error";
 import ViewParamRouter from "./ViewParamRouter";
+import Inbox from "./messaging/Inbox";
 
 export const ProductionContext = createContext(null);
 
@@ -77,7 +78,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                             element={
                                 <AuthorizedRoute loggedInUser={loggedInUser}>
                                     <ProductionContext.Provider value={{ production: production, setProduction: setProduction }}>
-                                        
+
                                     </ProductionContext.Provider>
                                 </AuthorizedRoute>
                             }
@@ -123,6 +124,16 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                                 </AuthorizedRoute>
                             }
                             />
+                    </Route>
+                    <Route path="inbox">
+                        <Route 
+                            index
+                            element={
+                                <AuthorizedRoute loggedInUser={loggedInUser}>
+                                    <Inbox loggedInUser={loggedInUser}/>
+                                </AuthorizedRoute>
+                            }
+                        />
                     </Route>
 
                 <Route
