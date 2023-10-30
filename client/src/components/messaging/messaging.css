@@ -1,19 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.inboxContainer {
-    
+.pageContainer {
+    display: flex;
+    width: 100%;
+    overflow-x: hidden;
+    height: 100%;
+    flex-direction: column;
+    position: fixed;
 }
 
-.conversationListContainer {
+.inboxContainer {
+    display: flex;
     height: 100%;
-    width: 22%;
-    position: fixed;
-    left: 0;
-    
+    min-height: inherit;
+    max-height: calc(100% - 50px);
+    flex-wrap: nowrap;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: black 1px solid; 
+    flex-shrink: 0;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 0;
+    flex-grow: 1;
+}
+
+/* Conversation List */
+.conversationListContainer {
+    display: flex;
+    min-width: 20%;
+    max-width: 100%;
+    height: 100%;
+    background-color: #888;
+    flex-direction: column;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 0;
+    border-right-style: solid;
+    border-right-color: rgb(38, 38, 38);
+    border-right-width: 1px;
+}
+
+.conversationList {
+    display: flex;
+    width: max-content;
+    max-width: 398px;
+    position: relative;
+    top: 0;
+    flex-direction: column;
+    box-sizing: border-box;
+    
 }
 
 .conversationListHeader {
@@ -70,6 +107,26 @@
     margin-bottom: -10px;
 }
 
+.selectedChip {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 0 15px;
+    font-size: 16px;
+    border-radius: 25px;
+    background-color: #d3d3d3;
+}
+
+.closebtn {
+    padding-left: 10px;
+    color: #888;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.closebtn:hover {
+    color: #000;
+}
+
 .newMessageToSearch {
     position: relative;
     width: 98%;
@@ -119,4 +176,171 @@
 .checkButton {
     margin-right: 20px;
     cursor: pointer;
+}
+
+/* Conversation */
+.conversationContainer {
+    display: flex;
+    min-width: 0;
+    max-width: 100%;
+    height: 100%;
+    flex-shrink: 1;
+    flex-direction: column;
+    box-sizing: border-box;
+    flex-basis: 0;
+    position: relative;
+    z-index: 0;
+    flex-grow: 1;
+    
+    margin: 0;
+    padding: 0;
+    border: black 1px solid; 
+}
+
+.conversationHeaderContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 75px;
+    margin-bottom: 0px;
+    min-height: 75px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    box-sizing: border-box;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(38, 38, 38);
+}
+
+.conversationHeader {
+    display: flex;
+    flex-basis: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-shrink: 1;
+    flex-grow: 1;
+    justify-content: flex-start;
+    margin-bottom: -6px;
+    margin-left: -6px;
+    margin-right: -6px;
+    margin-top: -6px;
+    min-width: 0;
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.headerUsers {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    position: relative;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0px;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.headerUser {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.headerPicture {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 44px;
+}
+
+.headerPicture svg {
+    height: 44px;
+    width: 44px;
+}
+
+.recipientNames {
+    display: flex;
+}
+
+
+
+
+/* New Message */
+/* .messageNewContainer {
+
+} */
+
+.newMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 16px;
+
+    border: rgb(54, 54, 54) solid 1px;
+    border-radius: 22px;
+}
+
+.newMessageContent {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-left: 11px;
+    padding-right: 16px;
+    line-height: 18px;
+    font-size: 15px;
+}
+
+.newMessageInput {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+    align-self: auto;
+    box-sizing: border-box;
+    margin-left: 4px;
+    margin-right: 4px;
+    min-height: 0px;
+    min-width: 0px;
+    overflow-x: visible;
+    overflow-y: visible;
+    position: static;
+    border-radius: 0px;
+}
+
+.message {
+    display: block;
+    flex-grow: 1;
+    max-height: 124px;
+    min-height: 0px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.sendBtn {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: row;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 2px 0px 0px;
+    min-height: 0px;
+    min-width: 0px;
+    padding: 0px;
+    position: relative;
 }

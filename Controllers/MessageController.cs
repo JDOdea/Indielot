@@ -22,8 +22,7 @@ public class MessageController : ControllerBase
     public IActionResult Get()
     {
         return Ok(_dbContext.Messages
-            .Include(m => m.Sender)
-            .Include(m => m.Recipients));
+            .Include(m => m.Sender));
     }
 
     [HttpGet("{id}")]
@@ -31,7 +30,6 @@ public class MessageController : ControllerBase
     {
         Message message = _dbContext.Messages
             .Include(m => m.Sender)
-            .Include(m => m.Recipients)
             .SingleOrDefault(m => m.Id == Guid.Parse(id));
 
         if (message != null)

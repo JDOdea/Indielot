@@ -9,16 +9,17 @@ namespace Indielot.Data;
 public class IndielotDbContext : IdentityDbContext<IdentityUser>
 {
     private readonly IConfiguration _configuration;
-    public DbSet<Production> Productions { get; set; }
     public DbSet<Activity> Activities { get; set; }
-    public DbSet<Crew> Crews { get; set; }
     public DbSet<Asset> Assets { get; set; }
-    public DbSet<Location> Locations { get; set; }
-    public DbSet<Models.Task> Tasks { get; set; }
     public DbSet<BudgetItem> BudgetItems { get; set; }
     public DbSet<CalendarEvent> CalendarEvents { get; set; }
-    public DbSet<Note> Notes { get; set; }
+    public DbSet<Conversation> Conversations { get; set; }
+    public DbSet<Crew> Crews { get; set; }
+    public DbSet<Location> Locations { get; set; }
     public DbSet<Message> Messages { get; set; }
+    public DbSet<Note> Notes { get; set; }
+    public DbSet<Production> Productions { get; set; }
+    public DbSet<Models.Task> Tasks { get; set; }
     public DbSet<UserProfile> UserProfiles { get; set; }
 
     public IndielotDbContext(DbContextOptions<IndielotDbContext> context, IConfiguration config) : base(context)
@@ -473,6 +474,5 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
                 AssignedCrewId = Guid.Parse("7b0d2f3f-b66e-4115-9ee6-a5d79408f161")
             }
         });
-
     }
 }

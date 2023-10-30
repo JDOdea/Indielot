@@ -4,13 +4,13 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useEffect, useState } from "react";
 import { Button, Input, ListGroup, ListGroupItem, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { fetchUsers } from "../../../managers/userManager";
+import { createConversation, fetchConversationById } from '../../../managers/conversationManager';
 
-export default function NewConversationModal({ modal, setModal }) {
+export default function NewConversationModal({ loggedInUser, modal, setModal, setCurrentConversation }) {
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [input, setInput] = useState("");
-    const [checked, setChecked] = useState(false);
 
     const toggle = () => {
         setModal(!modal);
@@ -28,19 +28,39 @@ export default function NewConversationModal({ modal, setModal }) {
     }
 
     const handleUserSelect = (u) => {
+        let selected = structuredClone(selectedUsers);
 
-    }
+        if (selected.find((su) => (su.id === u.id))) {
+            selected = selected.filter((su) => (su.id !== u.id));
+        } else {
+            selected.push(u);
+        }
 
-    const handleUserRemove = (e) => {
-
+        setSelectedUsers(selected);
+        setInput("");
     }
 
     const handleMessage = () => {
+        let userIds = selectedUsers.map((su) => (
+            su.id
+        ));
 
+        userIds.push(loggedInUser.id);
+
+        const newConversation = {
+            userProfileIds: userIds
+        }
+
+        createConversation(newConversation).then((res) => {
+            fetchConversationById(res.id).then(setCurrentConversation);
+            toggle();
+        })
     }
 
     useEffect(() => {
-     fetchUsers().then(setUsers);
+     fetchUsers().then((res) => {
+        setUsers(res.filter((u) => u.id !== loggedInUser.id))
+     });
     }, []);
 
     return (
@@ -54,13 +74,23 @@ export default function NewConversationModal({ modal, setModal }) {
                 <ModalBody>
                     <div className="newMessageTo">
                         <span><b>To:</b></span>
+                        {selectedUsers && (
+                            selectedUsers.map((u) => (
+                                <div 
+                                    className='selectedChip'
+                                    key={`${u.name}-selected`}>
+                                        {u.name.substring(0, u.name.indexOf(" "))}
+                                        <span className='closebtn' onClick={() => {handleUserSelect(u)}}>&times;</span>
+                                </div>
+                            ))
+                        )}
                         <div className="newMessageToSearch">
                             <Input 
                                 name="search"
                                 type="search" 
                                 placeholder="Search.."
+                                value={input}
                                 onChange={handleSearch}>
-
                             </Input>
                         </div>
                     </div>
@@ -76,11 +106,21 @@ export default function NewConversationModal({ modal, setModal }) {
                                             <AccountCircleIcon />
                                             <span>{u.name}</span>
                                         </ListGroupItem>
-                                        <RadioButtonUncheckedIcon 
-                                            className='checkButton'
-                                            onClick={() => {
-                                                handleUserSelect(u);
-                                            }}/>
+                                        {
+                                            selectedUsers.find((su) => su.id === u.id)
+                                            ?
+                                                <CheckCircleOutlineIcon 
+                                                className='checkButton'
+                                                onClick={() => {
+                                                    handleUserSelect(u);
+                                                }}/>
+                                            :
+                                                <RadioButtonUncheckedIcon 
+                                                className='checkButton'
+                                                onClick={() => {
+                                                    handleUserSelect(u);
+                                                }}/>
+                                        }
                                     </div>
                                 ))}
                             </ListGroup>

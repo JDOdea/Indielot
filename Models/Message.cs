@@ -8,8 +8,6 @@ namespace Indielot.Models
 
         public Guid SenderId { get; set; }
 
-        public List<Guid> RecipientIds { get; set; }
-
         public Guid ConversationId { get; set; }
 
         public string Content { get; set; }
@@ -18,9 +16,6 @@ namespace Indielot.Models
 
         [ForeignKey("SenderId")]
         public UserProfile Sender { get; set; }
-
-        [ForeignKey("RecipientIds")]
-        public List<UserProfile> Recipients { get; set; }
 
         public Conversation Conversation { get; set; }
     }
