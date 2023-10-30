@@ -41,8 +41,6 @@ namespace Indielot.Models
 
         public IdentityUser IdentityUser { get; set; }
 
-        public List<Conversation> Conversations { get; set; }
-
         public string FullName
         {
             get

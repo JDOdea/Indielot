@@ -5,7 +5,7 @@ namespace Indielot.Models
         public Guid Id { get; set; }
 
         public DateTime BeganOn { get; set; }
-
+        
         public List<Guid> UserProfileIds { get; set; }
 
         public List<UserProfile> UserProfiles { get; set; }

@@ -1,12 +1,18 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import { useState } from 'react';
-import { Modal } from 'reactstrap';
+import { useEffect, useState } from 'react';
 import NewConversationModal from './NewConversationModal';
+import { fetchConversationsByUserId } from '../../../managers/conversationManager';
 
-export default function ConversationList({ loggedInUser }) {
+export default function ConversationList({ loggedInUser, setCurrentConversation }) {
+    const [conversations, setConversations] = useState(null);
     const [modal, setModal] = useState(false);
 
+    useEffect(() => {
+        fetchConversationsByUserId(loggedInUser.id).then(setConversations);
+    }, []);
+
+    if (!conversations) return;
     return (
         <>
             <div className='conversationList'>
@@ -19,9 +25,14 @@ export default function ConversationList({ loggedInUser }) {
                         }}
                     />
                 </div>
+                <div className='conversationListBody'>
+                    {conversations.map((c) => (
+                        <div key={`${c.id}`}>Conversation</div>
+                    ))}
+                </div>
             </div>
             {modal && (
-                <NewConversationModal modal={modal} setModal={setModal}/>
+                <NewConversationModal loggedInUser={loggedInUser} modal={modal} setModal={setModal} setCurrentConversation={setCurrentConversation}/>
             )}
         </>
     )
