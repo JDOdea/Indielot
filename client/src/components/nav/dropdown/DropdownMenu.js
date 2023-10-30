@@ -1,3 +1,4 @@
+import InboxIcon from '@mui/icons-material/Inbox';
 import { useEffect, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { logout } from "../../../managers/authManager";
@@ -63,10 +64,9 @@ export default function DropdownMenu({ loggedInUser, setLoggedInUser, setOpen })
                 unmountOnExit
                 onEnter={calcHeight}>
                 <div className="menu">
-                    {/* <DropdownItem>Profile</DropdownItem> */}
                     <DropdownLink link={`/${loggedInUser.userName}`}>Profile</DropdownLink>
                     <DropdownItem>Your Activity</DropdownItem>
-                    <DropdownItem>Messages</DropdownItem>
+                    <DropdownLink link="/inbox">Messages</DropdownLink>
                     <DropdownItem goToMenu="settings">Settings</DropdownItem>
                     <DropdownLogout>Sign Out</DropdownLogout>
                 </div>
