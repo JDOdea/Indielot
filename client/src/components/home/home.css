@@ -10,7 +10,8 @@
     position: fixed;
     left: 0;
     z-index: 1;
-    background-color: #424758;
+    /* background-color: #B1A296; */
+    background-color: #5D5C61;
     overflow-x: hidden;
     padding-top: 20px;
     color: white;
@@ -35,6 +36,17 @@
     margin-bottom: 25px;
 }
 
+.sideNav-profileBtn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.sideNav-profileBtn:hover{
+    background-color: #525155;
+}
+
 .sideNav-profilePic {
     margin-right: 10px;
 }
@@ -44,6 +56,23 @@
 }
 
 /* Home Feed */
+.homeFeedBanner {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    transform: translateY(30%);
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.homeTitle {
+    position: relative;
+    left: 0;
+}
+
 .homeFeed {
     display: flex;
     align-items: center;
@@ -53,21 +82,28 @@
     position: fixed;
     z-index: 1;
     transform: translateX(-50%);
-    
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: black 1px solid;
+    background-color: #E3E2DF
 }
 
 .activityFeed {
-
+    position: relative;
+    width: 80%;
 }
 
-/* .feedItem {
+.feedItem {
+    display: flex;
+    position: relative;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 30px;
+}
 
-} */
-
+.card {
+    position: relative;
+    width: 100%;
+}
 
 /* Right Side */
 .homeRight {
@@ -76,10 +112,15 @@
     position: fixed;
     right: 0;
     z-index: 1;
-    background-color: #424758;
+    background-color: #5D5C61;
     overflow-x: hidden;
     padding-top: 20px;
     color: white;
+}
+
+.homeRight h6 {
+    display: flex;
+    justify-content: center;
 }
 
 .homeRight a {
@@ -92,6 +133,19 @@
 
 .homeRight a:hover {
     text-decoration: underline;
+}
+
+.activeProductions {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.activeProductionCardContainer {
+    margin-top: 15px;
+    position: relative;
+    width: 70%;
 }
 
 .activeProd-card {

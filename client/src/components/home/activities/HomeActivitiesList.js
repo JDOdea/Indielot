@@ -16,11 +16,14 @@ export default function HomeActivitiesList({}) {
     return (
         <>
             {activities.map((a) => (
-                <HomeActivityCard
-                    activityObject={a}
-                    key={`activity-${a.id}`}
-                />
+                <div
+                    className="feedItem"
+                    key={`activity-${a.id}`}>
+                    <div className="card">
+                        <HomeActivityCard activityObject={a}/>
+                    </div>
+                </div>
             ))}
         </>
     )
-}
+}/* className="activityFeedCard" */

@@ -1,0 +1,9 @@
+/*      ProductionHub */
+/*===========================*/
+.productionHubContainer {
+    position: relative;
+    background-color: #E3E2DF;
+    height: 100%;
+    width: 100%;
+    flex: 1;
+}

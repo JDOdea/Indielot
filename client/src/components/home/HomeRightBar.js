@@ -7,10 +7,7 @@ export default function HomeRightBar({ loggedInUser }) {
         <div className="homeRight">
             <h6>Productions in Progress</h6>
             <ActiveProductions loggedInUser={loggedInUser}/>
-            {/* <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#clients">Clients</a>
-            <a href="#contact">Contact</a> */}
+            <h6 style={{ marginTop: "25px" }}>Completed Productions</h6>
         </div>
     )
 }

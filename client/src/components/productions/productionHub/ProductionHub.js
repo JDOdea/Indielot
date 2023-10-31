@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import "./productionHub.css";
 import { ProductionContext } from "../../ApplicationViews";
 import ProductionHubNavBar from "./ProductionHubNavBar";
 
@@ -16,9 +17,9 @@ export default function ProductionHub({ loggedInUser }) {
 
     if (!production) return;
     return (
-        <>
+        <div className="productionHubContainer">
             <h1><u><b>{production.title}</b></u></h1>
             <ProductionHubNavBar loggedInUser={loggedInUser}/>
-        </>
+        </div>
     )
 }
