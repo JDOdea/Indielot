@@ -12,10 +12,9 @@ export default function ActiveProductionsList({ loggedInUser }) {
     return (
         <>
             {activeProductions.map((p) => (
-                <ActiveProductionCard
-                    productionObject={p}
-                    key={`production-${p.id}`}
-                />
+                <div key={`production-${p.id}`} className="activeProductionCardContainer">
+                    <ActiveProductionCard productionObject={p}/>
+                </div>
             ))}
         </>
     )

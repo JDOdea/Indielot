@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./productions.css"
 import ProductionList from "./ProductionList";
 import ProductionDetails from "./ProductionDetails";
 

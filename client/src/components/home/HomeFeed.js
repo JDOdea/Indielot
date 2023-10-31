@@ -11,7 +11,10 @@ export default function HomeFeed({ loggedInUser }) {
 
     return (
         <div className="homeFeed">
-            <h4>Home</h4>
+            <div className="homeFeedBanner">
+                <h4 className="homeTitle">Home</h4>
+                Set Filter
+            </div>
             <HomeActivities />
         </div>
     )

@@ -1,0 +1,96 @@
+.userProductionsContainer {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #E3E2DF;
+    flex: 1;
+}
+
+.user-profile {
+    margin-top: 50px;
+    margin-left: 130px;
+}
+
+.user-profile-pic {
+    width: 240px;
+}
+
+.profileUserName {
+    position: absolute;
+    top: 41%;
+    left: 17.5%;
+    transform: translate(-50%, -50%);
+}
+
+.editProfileBtn {
+    position: absolute;
+    top: 43%;
+    left: 12%;
+    width: 11%;
+}
+
+/* Productions List */
+/*==================*/
+
+/* Search Bar */
+.userProductionsSearch {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.userProductionsSearchInput {
+    position: relative;
+    width: 25rem;
+    border: solid black 1px;
+}
+
+.userProductionsSearchSort {
+    font-size: 14px;
+    border-radius: 7px;
+    margin-left: 25px;
+}
+
+/* List */
+.productionsContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.productionRow {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+/* .userProductionList {
+    
+}
+ */
+.userProductionListItem {
+    margin-top: 15px;
+    border-top: solid gray 1px;
+    border-bottom: solid gray 1px;
+}
+
+.userProductionListItemContent {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.productionLink {
+    margin: revert !important;
+}
+
+.productionLink:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

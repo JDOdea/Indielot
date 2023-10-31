@@ -64,7 +64,7 @@ public class IndielotDbContext : IdentityDbContext<IdentityUser>
             {
                 Id = "94e90d54-0680-4603-8c30-cc75d6cf7ce6",
                 UserName = "jholtzer",
-                Email = "jholter@gmail.com",
+                Email = "jholtzer@gmail.com",
                 PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
             },
             new()

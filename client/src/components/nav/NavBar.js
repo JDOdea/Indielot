@@ -2,11 +2,10 @@ import AddIcon from '@mui/icons-material/Add';
 import { useState } from "react"
 import { NavLink as RRNavLink} from "react-router-dom";
 import { Button, Collapse, Nav, NavLink, NavItem, Navbar, NavbarBrand, NavbarToggler } from "reactstrap";
-import { logout } from "../../managers/authManager";
 import Canvas from '../menu/Canvas';
 import "./navBar.css";
 import ProfileButton from './ProfileButton';
-import DropdownMenu from './dropdown/DropdownMenu';
+import NavSearchBar from './NavSearchBar';
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
     const [open, setOpen] = useState(false);
@@ -40,6 +39,11 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                                 </NavItem>
                             </Nav>
                         </Collapse>
+                        <div className='navSearchBar'>
+                            <NavItem>
+                                <NavSearchBar />
+                            </NavItem>
+                        </div>
                         <div>
                             <NavItem className='navItem' onClick={() => setOpen(false)}>
                                 <NavLink className='icon-button' onClick={() => setOpen(false)} tag={RRNavLink} to="productions/new">

@@ -4,7 +4,7 @@ export default function HomeActivityCard({ activityObject }) {
 
 
     return (
-        <Card color="dark" outline style={{ marginBottom: "4px" }}>
+        <Card color="dark" outline>
             <CardBody>
                 <CardTitle tag="h5">
                     {activityObject.updatedBy.fullName} {activityObject.description}
@@ -12,7 +12,7 @@ export default function HomeActivityCard({ activityObject }) {
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
                     "{activityObject.production.title}"
                 </CardSubtitle>
-                <CardText>Activity Notes</CardText>
+                {/* <CardText></CardText> */}
             </CardBody>
         </Card>
     )

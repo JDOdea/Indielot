@@ -17,7 +17,8 @@ a {
 /* <nav> */
 .navbar {
     height: var(--nav-size);
-    background-color: var(--bg);
+    /* background-color: var(--bg); */
+    background-color: #B1A296;
     padding: 0 1rem;
     border-bottom: var(--border);
 }
@@ -36,6 +37,32 @@ a {
     justify-content: center;
 }
 
+.nav-item {
+    display: flex;
+}
+
+/* Search Bar */
+.navSearchBar {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-right: 150px;
+    width: 30%;
+}
+
+.navSearchBar > li {
+    width: 100%;
+}
+
+.navSearch {
+    position: inherit;
+}
+
+.navSearchInput {
+    position: relative;
+    width: 20rem;
+}
+
 /* Icon Button */
 .navbar-icon {
     color: white;
@@ -45,7 +72,7 @@ a {
     --button-size: calc(var(--nav-size) + * 0.5);
     width: var(--button-size);
     height: var(--button-size);
-    background-color: #484a4d;
+    background-color: #8f847a;
     border-radius: 50%;
     padding: 5px;
     margin: 2px;
@@ -65,7 +92,7 @@ a {
     cursor: pointer;
     display: inline-block;
     border-radius: 10%;
-    background-color: #242526;
+    background-color: #B1A296;
     transition: background-color 0.3s, filter 0.3s;
 }
 
@@ -86,7 +113,7 @@ a {
 
 .profile-button:hover {
     opacity: 1;
-    background-color: #373839;
+    background-color: #8f847a;
 }
 
 .profile-button .navbar-icon span {
