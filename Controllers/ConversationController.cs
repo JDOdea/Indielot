@@ -45,16 +45,32 @@ public class ConversationController : ControllerBase
     //[Authorize]
     public IActionResult GetByUserId(string userId)
     {
-        UserProfile userProfile = _dbContext.UserProfiles
-            .SingleOrDefault(up => up.Id == Guid.Parse(userId));
+        /* 
 
         if (userProfile != null)
         {
-            return Ok(_dbContext.Conversations
+            Conversation conversation = _dbContext.Conversations
                 .Include(c => c.UserProfiles)
                 .Include(c => c.Messages)
-                .Where(c => c.UserProfileIds.Contains(Guid.Parse(userId))));
+                .Where(c => c.UserProfileIds.Contains(Guid.Parse(userId)));
+
+            List<UserProfile> userProfiles = new List<UserProfile>();
+            
+            foreach (Guid id in conversation.UserProfileIds
+            {
+                UserProfile foundUser = _dbContext.UserProfiles
+                    .SingleOrDefault(up => up.Id == id);
+
+                userProfiles.Add(foundUser);
+            })
+
+            conversation.UserProfiles = userProfiles; 
+            
+            return Ok(conversation);
         }
+            */
+            
+            
 
         return NotFound();
     }
