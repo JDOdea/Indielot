@@ -6,6 +6,7 @@ import ProductionCrewCard from "./tabs/crew/ProductionCrewCard";
 import ProductionAssetCard from "./tabs/assets/ProductionAssetCard";
 import ProductionLocationCard from "./tabs/locations/ProductionLocationCard";
 import ProductionTaskCard from "./tabs/tasks/ProductionTaskCard";
+import ProductionSchedule from "./tabs/schedule/ProductionSchedule";
 
 
 export default function ProductionHubNavBar({ loggedInUser }) {
@@ -97,7 +98,7 @@ export default function ProductionHubNavBar({ loggedInUser }) {
                         <ProductionCrewCard loggedInUser={loggedInUser}/>
                     </TabPane>
                     <TabPane tabId="3">
-
+                        <ProductionSchedule loggedInUser={loggedInUser}/>
                     </TabPane>
                     <TabPane tabId="4">
                         <ProductionAssetCard loggedInUser={loggedInUser}/>
