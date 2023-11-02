@@ -19,7 +19,6 @@
     display: flex;
     position: relative;
     justify-content: center;
-    margin-top: 30px;
 }
 
 .productionHubContainer ul {
@@ -84,14 +83,12 @@
 }
 
 .days li {
-    list-style-type: none;
+    /* list-style-type: none; */
     display: flex;
     justify-content: center;
     align-items: flex-start;
     width: 13.6%;
-    text-align: center;
     margin-bottom: 5px;
-    font-size: 12px;
     color: #777;
     padding: 40px;
 }
@@ -100,4 +97,170 @@
     padding: 5px;
     background: #1abc9c;
     color: white !important;
+}
+
+.day {
+    flex: 1;
+    text-align: center;
+}
+
+.day .has-event {
+    position: relative;
+}
+
+.day .has-event::before {
+    content: '●';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #f00;
+    font-size: 12px;
+    margin: 2px;
+}
+
+.calendar-event-description:hover {
+    cursor: pointer;
+    color: rgb(74, 82, 86);
+}
+
+.event-description {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+    z-index: 2;
+}
+
+.day.has-event:hover .event-description {
+    display: block;
+}
+
+.createBtnContainer {
+    position: relative;
+    width: 100%;
+/*     right: 15rem; */
+    margin-top: 30px;
+    margin-bottom: 5px;
+    padding-right: 250px;
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 1;
+}
+
+.newEventBtn {
+    border-radius: 8px;
+    padding: 0 20px 0 20px;
+}
+
+.modal-content {
+    -webkit-box-shadow: 0px 0px 24px 2px rgba(0,0,0,0.35); 
+    box-shadow: 0px 0px 24px 2px rgba(0,0,0,0.35);
+}
+
+.modal-title {
+    width: 100%;
+    text-align: center;
+    letter-spacing: -0.5px;
+    font-size: 1.15rem;
+}
+
+/* .modal-body {
+}
+ */
+.newEventTitle {
+    margin-left: 77px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -10px;
+    border-bottom: #aeaeae solid .5px;
+}
+
+.newEventDateTime {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+}
+
+.newEventDateTime svg {
+    margin-left: 30px;
+    width: 5%;
+}
+
+.newEventDateTimeInput {
+    display: flex;
+    margin-left: 25px;
+    width: 95%;
+}
+
+.newEventDateTime input {
+    border-bottom: #aeaeae solid .5px;
+    border-radius: 0px;
+}
+
+.newEventTime {
+    border-left: #aeaeae solid .5px !important;
+    border-radius: 0px;
+}
+
+.newEventDescription {
+    margin-left: 73px;
+    margin-right: 20px;
+    border: rgb(158, 158, 158) solid 0.5px;
+    border-radius: 5px;
+}
+
+.newEventLocation {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    margin-left: 23px;
+    margin-right: 20px;
+}
+
+.newEventLocation input {
+    margin-left: 25px;
+    border-bottom: #aeaeae solid .5px;
+    border-radius: 0;
+}
+
+.locationSearchResults {
+    position: absolute;
+    width: 374px;
+    /* border: #ddd solid 1px; */
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+    margin-top: 0;
+    margin-left: 72px;
+}
+
+.locationSearchResults .showDropdown {
+    display: block;
+}
+
+.searchItem {
+    padding: 10px 30px;
+    margin-left: 10px;
+}
+
+.searchItem:hover {
+    cursor: pointer;
+    background-color: #b7b7b7;
+}
+
+.saveBtn {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    transform: translate(680%, 670%);
 }

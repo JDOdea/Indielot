@@ -90,8 +90,7 @@ export default function NewConversationModal({ loggedInUser, modal, setModal, se
                                 type="search" 
                                 placeholder="Search.."
                                 value={input}
-                                onChange={handleSearch}>
-                            </Input>
+                                onChange={handleSearch}/>
                         </div>
                     </div>
                     <div className="hl"></div>
