@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dBYZbmmaA2s7iSy+w/aAevVV2AL4aSm4lPwlrWYVFjfJEyg9/fi/OGKZ8BnteNzBqBMqFGmrM2/+OYqM4kyUQA==",
+  "dgSpecHash": "b6o0XkEIbOIW8rxV7aZiBPbN6yfuRZyyvoWjCHnQ/Q/l/gBHPUYYmzFt01d4dXiXvH8Vte6Q+8kwKYb9xuT8cg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jonfi\\workspace\\csharp\\Indielot\\Indielot.csproj",
+  "projectFilePath": "C:\\Users\\jonfi\\workspace\\csharp\\Server-Side-Capstone\\Indielot\\Indielot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonfi\\.nuget\\packages\\cloudinarydotnet\\1.22.0\\cloudinarydotnet.1.22.0.nupkg.sha512",
     "C:\\Users\\jonfi\\.nuget\\packages\\dotenv.net\\3.1.2\\dotenv.net.3.1.2.nupkg.sha512",
