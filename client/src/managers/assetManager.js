@@ -21,7 +21,7 @@ export const createAsset = (asset) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(asset),
-    }).then((res) => res.json);
+    }).then((res) => res.json());
 };
 
 export const updateAsset = (asset) => {
