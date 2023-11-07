@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import "./productionHub.css";
-import { ProductionContext } from "../../ApplicationViews";
+import { ProductionContext } from "../../views/ApplicationViews";
 import ProductionHubNavBar from "./ProductionHubNavBar";
 
 export default function ProductionHub({ loggedInUser }) {

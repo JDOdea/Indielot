@@ -10,8 +10,7 @@
     position: fixed;
     left: 0;
     z-index: 1;
-    /* background-color: #B1A296; */
-    background-color: #5D5C61;
+    background-color: var(--hov-color);
     overflow-x: hidden;
     padding-top: 20px;
     color: white;
@@ -53,6 +52,21 @@
 
 .sideNav h6 {
     margin-left: 25px;
+}
+
+.topProductionTitleBorder {
+    margin-left: 25px;
+    margin-bottom: 15px;
+    width: 80%;
+    border: rgb(65, 64, 64) solid .5px;
+}
+
+.recentActivityTitle {
+    margin-top: 40px;
+}
+
+.recentActivity {
+    margin-bottom: 15px;
 }
 
 /* Home Feed */
@@ -112,7 +126,7 @@
     position: fixed;
     right: 0;
     z-index: 1;
-    background-color: #5D5C61;
+    background-color: var(--hov-color);
     overflow-x: hidden;
     padding-top: 20px;
     color: white;

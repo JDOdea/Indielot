@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { ReactComponent as PlusIcon } from "../../../../../../svgs/plusIcon.svg"
 import { Button, Form, FormGroup, FormText, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { ProductionContext } from "../../../../../ApplicationViews";
+import { ProductionContext } from "../../../../../views/ApplicationViews";
 import { createLocation } from "../../../../../../managers/locationManager";
 import { fetchProductionById } from "../../../../../../managers/productionManager";
 

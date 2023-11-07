@@ -17,8 +17,7 @@ a {
 /* <nav> */
 .navbar {
     height: var(--nav-size);
-    /* background-color: var(--bg); */
-    background-color: #B1A296;
+    background-color: var(--bg-accent);
     padding: 0 1rem;
     border-bottom: var(--border);
 }
@@ -60,7 +59,8 @@ a {
 
 .navSearchInput {
     position: relative;
-    width: 20rem;
+    width: 40rem;
+    transform: translateX(-50%);
 }
 
 /* Icon Button */
@@ -72,7 +72,7 @@ a {
     --button-size: calc(var(--nav-size) + * 0.5);
     width: var(--button-size);
     height: var(--button-size);
-    background-color: #8f847a;
+    background-color: var(--hov-color);
     border-radius: 50%;
     padding: 5px;
     margin: 2px;
@@ -92,7 +92,7 @@ a {
     cursor: pointer;
     display: inline-block;
     border-radius: 10%;
-    background-color: #B1A296;
+    background-color: var(--bg-accent);
     transition: background-color 0.3s, filter 0.3s;
 }
 
@@ -113,7 +113,7 @@ a {
 
 .profile-button:hover {
     opacity: 1;
-    background-color: #8f847a;
+    background-color: #adb0af;
 }
 
 .profile-button .navbar-icon span {
@@ -128,7 +128,7 @@ a {
     font-weight: 500;
     letter-spacing: 0.28px;
     line-height: 20px;
-    color: white;
+    color: var(--text-color);
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
     text-overflow: ellipsis;
     white-space: nowrap;

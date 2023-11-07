@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ProductionContext } from "../../ApplicationViews";
+import { ProductionContext } from "../../views/ApplicationViews";
 import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from "reactstrap";
 
 export default function UserProductionCard({ productionObject }) {
@@ -21,7 +21,7 @@ export default function UserProductionCard({ productionObject }) {
                         }}>{productionObject.title}</span>
                     </h6>
                 </ListGroupItemHeading>
-                <ListGroupItemText>Lead: {productionObject.productionLead}</ListGroupItemText>
+                <ListGroupItemText>Lead by: {productionObject.productionLead}</ListGroupItemText>
             </div>
         </ListGroupItem>
     )

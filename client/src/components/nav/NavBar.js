@@ -1,4 +1,7 @@
 import AddIcon from '@mui/icons-material/Add';
+import ModeNightIcon from '@mui/icons-material/ModeNight';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { useState } from "react"
 import { NavLink as RRNavLink} from "react-router-dom";
 import { Button, Collapse, Nav, NavLink, NavItem, Navbar, NavbarBrand, NavbarToggler } from "reactstrap";
@@ -16,7 +19,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
     return (
         <div>
             <Navbar className='navbar' fixed="true" expand="lg">
-                <NavbarBrand style={{color: "white" }} className="mr-auto" tag={RRNavLink} to="/">
+                <NavbarBrand style={{color: "black" }} className="mr-auto" tag={RRNavLink} to="/">
                     Indielot
                 </NavbarBrand>
                 {loggedInUser ? (
@@ -28,12 +31,12 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                                     <Canvas menu={menu} setMenu={setMenu}/>
                                 </NavItem>
                                 <NavItem onClick={() => setOpen(false)}>
-                                    <NavLink style={{color: "white" }} tag={RRNavLink} to="productions">
+                                    <NavLink style={{color: "black" }} tag={RRNavLink} to="productions">
                                         Productions
                                     </NavLink>
                                 </NavItem>
                                 <NavItem onClick={() => setOpen(false)}>
-                                    <NavLink style={{color: "white" }} tag={RRNavLink} to={`${loggedInUser.userName}/productions`}>
+                                    <NavLink style={{color: "black" }} tag={RRNavLink} to={`${loggedInUser.userName}/productions`}>
                                         My Productions
                                     </NavLink>
                                 </NavItem>

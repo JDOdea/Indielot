@@ -2,7 +2,7 @@ import { Card, CardBody, CardFooter, CardHeader } from "reactstrap";
 import ProductionCrewHeader from "./ProductionCrewHeader";
 import ProductionCrewList from "./ProductionCrewList";
 import { useContext } from "react";
-import { ProductionContext } from "../../../../ApplicationViews";
+import { ProductionContext } from "../../../../views/ApplicationViews";
 import AddCrewMemberModal from "./editCrew/AddCrewMemberModal";
 import EditCrewMemberModal from "./editCrew/EditCrewMemberModal";
 

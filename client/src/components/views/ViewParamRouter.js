@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Route, useParams } from "react-router-dom";
-import { fetchProductions } from "../managers/productionManager";
-import { fetchUsers } from "../managers/userManager";
-import UserProfile from "./profile/UserProfile";
+import { fetchProductions } from "../../managers/productionManager";
+import { fetchUsers } from "../../managers/userManager";
+import UserProfile from "../profile/UserProfile";
 import { ProductionContext } from "./ApplicationViews";
-import ProductionHub from "./productions/productionHub/ProductionHub";
+import ProductionHub from "../productions/productionHub/ProductionHub";
 
 export default function ViewParamRouter({ loggedInUser, production, setProduction }) {
     const [users, setUsers] = useState([]);

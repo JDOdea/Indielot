@@ -9,6 +9,7 @@ export default function Canvas({ menu, setMenu }) {
         <>
             <MenuIcon 
                 className="navbar-icon" 
+                style={{ color: "black" }}
                 fontSize="large"
                 onClick={() => {
                     setMenu(true);

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ProductionContext } from "../../../../ApplicationViews";
+import { ProductionContext } from "../../../../views/ApplicationViews";
 import { Card, CardBody, CardFooter, CardHeader } from "reactstrap";
 import ProductionAssetList from "./ProductionAssetList";
 import AddAssetModal from "./editAssets/AddAssetModal";

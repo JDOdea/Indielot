@@ -1,5 +1,5 @@
 import { Button, Form, FormFeedback, FormGroup, FormText, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { ProductionContext } from "../../../../../ApplicationViews";
+import { ProductionContext } from "../../../../../views/ApplicationViews";
 import { createAsset, fetchTypes } from "../../../../../../managers/assetManager";
 import { useContext, useEffect, useState } from "react";
 import { cloud_name, preset_key } from "../../../../../../_env";

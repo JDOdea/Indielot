@@ -1,8 +1,7 @@
 import RemoveIcon from '@mui/icons-material/Remove';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { useContext, useState } from "react";
-import { ProductionContext } from "../../../../ApplicationViews";
-import { cloud_name, preset_key } from "../../../../../_env";
+import { ProductionContext } from "../../../../views/ApplicationViews";
 import axios from "axios";
 import Asset from "./Asset";
 import EditAssetModal from "./editAssets/EditAssetModal";

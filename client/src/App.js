@@ -3,10 +3,17 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { tryGetLoggedInUser } from "./managers/authManager";
 import { Spinner } from "reactstrap";
-import ApplicationViews from "./components/ApplicationViews";
+import ApplicationViews from "./components/views/ApplicationViews";
 import NavBar from "./components/nav/NavBar";
+import { Route, Routes } from "react-router-dom";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import { AuthorizedRoute } from "./components/auth/AuthorizedRoute";
+import Footer from "./components/footer/Footer";
+import IndexPage from "./landing/pages";
+import Landing from "./landing/layouts";
 
-function App() {
+export default function App() {
   const [loggedInUser, setLoggedInUser] = useState();
 
   useEffect(() => {
@@ -22,14 +29,22 @@ function App() {
   }
   
   return (
-    <>
-      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>
-      <ApplicationViews 
-        loggedInUser={loggedInUser}
-        setLoggedInUser={setLoggedInUser}
-      />
-    </>
-  );
-}
+    <Routes>
+      <Route path="/">
+        <Route index element={<Landing />}/>
+        <Route path="login" element={<Login setLoggedInUser={setLoggedInUser}/>}/>
+        <Route path="register" element={<Register />}/>
+      </Route>
 
-export default App;
+      <Route path="*" element={
+        <AuthorizedRoute loggedInUser={loggedInUser}>
+          <>
+            <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>
+            <ApplicationViews loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>
+            <Footer/>
+          </>
+        </AuthorizedRoute>
+      }/>
+    </Routes>
+  )
+}

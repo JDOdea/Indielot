@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { fetchProductions } from "../../managers/productionManager";
 import ProductionCard from "./ProductionCard";
-import { ProductionContext } from "../ApplicationViews";
+import { ProductionContext } from "../views/ApplicationViews";
 
 export default function ProductionList({ setProductionDetailsId }) {
     const [productions, setProductions] = useState([]);

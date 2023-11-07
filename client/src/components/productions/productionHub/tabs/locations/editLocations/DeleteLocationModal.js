@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { ProductionContext } from '../../../../../ApplicationViews';
+import { ProductionContext } from '../../../../../views/ApplicationViews';
 import { Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { deleteLocation } from '../../../../../../managers/locationManager';
 import { fetchProductionById } from '../../../../../../managers/productionManager';

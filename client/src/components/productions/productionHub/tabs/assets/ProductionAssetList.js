@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { ProductionContext } from "../../../../ApplicationViews";
+import { ProductionContext } from "../../../../views/ApplicationViews";
 import { fetchAssetsByProductionId } from "../../../../../managers/assetManager";
 import { ListGroup, ListGroupItemHeading } from "reactstrap";
 import ProductionAsset from "./ProductionAsset";

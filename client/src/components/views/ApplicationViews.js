@@ -1,18 +1,20 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { AuthorizedRoute } from "./auth/AuthorizedRoute";
-import { Home } from "./home/Home";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
-import Productions from "./productions/Productions";
-import NewProduction from "./productions/NewProduction";
-import ProductionHub from "./productions/productionHub/ProductionHub";
+import { AuthorizedRoute } from "../auth/AuthorizedRoute";
+import { Home } from "../home/Home";
+import Login from "../auth/Login";
+import Register from "../auth/Register";
+import Productions from "../productions/Productions";
+import NewProduction from "../productions/NewProduction";
+import ProductionHub from "../productions/productionHub/ProductionHub";
 import { createContext, useEffect, useState } from "react";
-import EditProduction from "./productions/productionHub/EditProduction";
-import UserProductions from "./productions/userProductions/UserProductions";
-import UserProfile from "./profile/UserProfile";
-import Error from "../Error";
+import EditProduction from "../productions/productionHub/EditProduction";
+import UserProductions from "../productions/userProductions/UserProductions";
+import UserProfile from "../profile/UserProfile";
+import Error from "../../Error";
 import ViewParamRouter from "./ViewParamRouter";
-import Inbox from "./messaging/Inbox";
+import Inbox from "../messaging/Inbox";
+import ViewEditRouter from "./ViewEditRouter";
+import IndexPage from "../../landing/pages";
 
 export const ProductionContext = createContext(null);
 
@@ -78,7 +80,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                             element={
                                 <AuthorizedRoute loggedInUser={loggedInUser}>
                                     <ProductionContext.Provider value={{ production: production, setProduction: setProduction }}>
-
+                                        <ViewEditRouter loggedInUser={loggedInUser} production={production} setProduction={setProduction}/>
                                     </ProductionContext.Provider>
                                 </AuthorizedRoute>
                             }
@@ -136,6 +138,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                         />
                     </Route>
 
+                <Route 
+                    path=""
+                    element={<IndexPage />}
+                />
                 <Route
                     path="login"
                     element={<Login setLoggedInUser={setLoggedInUser} />}
