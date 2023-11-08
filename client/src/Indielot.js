@@ -1,3 +1,4 @@
+import UserProvider from "./providers/AuthContext.js"
 import { useEffect, useState } from "react";
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -5,15 +6,16 @@ import { tryGetLoggedInUser } from "./managers/authManager";
 import { Spinner } from "reactstrap";
 import ApplicationViews from "./components/views/ApplicationViews";
 import NavBar from "./components/nav/NavBar";
-import { Route, Routes } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import { AuthorizedRoute } from "./components/auth/AuthorizedRoute";
 import Footer from "./components/footer/Footer";
-import IndexPage from "./landing/pages";
-import Landing from "./landing/layouts";
+import Landing from "./pages/landing/layouts";
+import Routes from "./routes/Routes.js";
+import Context from "./providers/Context.js";
 
-export default function App() {
+
+export default function Indielot() {
   const [loggedInUser, setLoggedInUser] = useState();
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export default function App() {
     return <Spinner />;
   }
   
-  return (
+  /* return (
     <Routes>
       <Route path="/">
         <Route index element={<Landing />}/>
@@ -46,5 +48,11 @@ export default function App() {
         </AuthorizedRoute>
       }/>
     </Routes>
+  ) */
+
+  return (
+    <Context>
+      <Routes />
+    </Context>
   )
 }

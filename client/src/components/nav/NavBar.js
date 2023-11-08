@@ -2,6 +2,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ModeNightIcon from '@mui/icons-material/ModeNight';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import LogoutIcon from '@mui/icons-material/Logout';
+import Logo from "../../assets/logo.png"
 import { useState } from "react"
 import { NavLink as RRNavLink} from "react-router-dom";
 import { Button, Collapse, Nav, NavLink, NavItem, Navbar, NavbarBrand, NavbarToggler } from "reactstrap";
@@ -13,14 +14,20 @@ import NavSearchBar from './NavSearchBar';
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
     const [open, setOpen] = useState(false);
     const [menu, setMenu] = useState(false);
+    const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 
     const toggleNavbar = () => setOpen(!open);
 
     return (
         <div>
             <Navbar className='navbar' fixed="true" expand="lg">
-                <NavbarBrand style={{color: "black" }} className="mr-auto" tag={RRNavLink} to="/">
-                    Indielot
+                <NavbarBrand className='navbar-brand' tag={RRNavLink} to="/">
+                    <img 
+                        className={`logo`}
+                        src={Logo}
+                        alt='logo'
+
+                    />
                 </NavbarBrand>
                 {loggedInUser ? (
                     <>
@@ -31,12 +38,12 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                                     <Canvas menu={menu} setMenu={setMenu}/>
                                 </NavItem>
                                 <NavItem onClick={() => setOpen(false)}>
-                                    <NavLink style={{color: "black" }} tag={RRNavLink} to="productions">
+                                    <NavLink className='navLink' tag={RRNavLink} to="productions">
                                         Productions
                                     </NavLink>
                                 </NavItem>
                                 <NavItem onClick={() => setOpen(false)}>
-                                    <NavLink style={{color: "black" }} tag={RRNavLink} to={`${loggedInUser.userName}/productions`}>
+                                    <NavLink className='navLink' tag={RRNavLink} to={`${loggedInUser.userName}/productions`}>
                                         My Productions
                                     </NavLink>
                                 </NavItem>

@@ -3,7 +3,7 @@ import "../styles/global.css"
 import AOS from "aos";
 import { useEffect, useState } from "react";
 import LandingHeader from "../components/header";
-import IndexPage from "../pages";
+import IndexPage from "../views/index.js";
 import ParticlesContainer from "../components/particlesContainer";
 
 export default function Landing({ children }) {

@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../managers/authManager";
 import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 import "./Login.css";
 import { BiEnvelope, BiLock } from "react-icons/bi"
+import { UserContext } from "../../providers/AuthContext";
+import userActions from "../../utils/userActions";
 
 export default function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
@@ -11,13 +13,21 @@ export default function Login({ setLoggedInUser }) {
   const [password, setPassword] = useState("");
   const [failedLogin, setFailedLogin] = useState(false);
 
+  const userContext = useContext(UserContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password).then((user) => {
       if (!user) {
         setFailedLogin(true);
       } else {
-        setLoggedInUser(user);
+        /* setLoggedInUser(user); */
+        userActions.fetchUser()
+          .then((res) => {
+            userContext.setUser(res.profile);
+            userContext.setToken(res.token);
+            userContext.setAuthenticated(res !== null);
+          })
         navigate("/");
       }
     });

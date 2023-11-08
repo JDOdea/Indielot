@@ -1,12 +1,15 @@
 import InboxIcon from '@mui/icons-material/Inbox';
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { logout } from "../../../managers/authManager";
+import { UserContext } from '../../../providers/AuthContext';
 
 export default function DropdownMenu({ loggedInUser, setLoggedInUser, setOpen }) {
     const [activeMenu, setActiveMenu] = useState('main');
     const [menuHeight, setMenuHeight] = useState(null);
     const dropdownRef = useRef(null);
+
+    const userContext = useContext(UserContext);
 
     const DropdownItem = (props) => {
         return (
@@ -29,6 +32,10 @@ export default function DropdownMenu({ loggedInUser, setLoggedInUser, setOpen })
     }
 
     const DropdownLogout = (props) => {
+        userContext.setUser("");
+        userContext.setToken("");
+        userContext.setAuthenticated(false);
+        
         return (
             <a href={props.link} className="menu-item" 
                 onClick={(e) => {

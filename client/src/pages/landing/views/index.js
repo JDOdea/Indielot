@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuthDetection } from "../../utils/auth-provider";
+import { useAuthDetection } from "../../../utils/auth-provider.js";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/landing.css";
 import "../styles/button-3d-round.css";

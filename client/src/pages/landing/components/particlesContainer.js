@@ -1,6 +1,6 @@
 import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
-import { NODE_ENV } from "../../_env";
+import { NODE_ENV } from "../../../_env";
 
 let numParticles = 150;
 

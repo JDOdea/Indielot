@@ -14,7 +14,7 @@ import Error from "../../Error";
 import ViewParamRouter from "./ViewParamRouter";
 import Inbox from "../messaging/Inbox";
 import ViewEditRouter from "./ViewEditRouter";
-import IndexPage from "../../landing/pages";
+import IndexPage from "../../pages/landing/layouts";
 
 export const ProductionContext = createContext(null);
 
