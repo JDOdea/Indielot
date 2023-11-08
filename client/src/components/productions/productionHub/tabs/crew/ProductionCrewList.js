@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { ProductionContext } from "../../../../ApplicationViews"
+import { ProductionContext } from "../../../../views/ApplicationViews"
 import { ListGroup, ListGroupItem, UncontrolledTooltip } from "reactstrap";
 import { ReactComponent as RemoveIcon } from "../../../../../svgs/removeCrewMember.svg";
 import { deleteCrewMember, fetchCrewMembersByProductionId } from "../../../../../managers/crewManager";

@@ -1,1 +1,1 @@
-Built using Material UI, Cloudinary, React, Bootstrap, and Reactstrap
+Built using Material UI, AOS, Cloudinary, React, Bootstrap, Express, and Reactstrap

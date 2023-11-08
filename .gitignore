@@ -459,8 +459,9 @@ appsettings.json
 # Migrations
 Migrations
 
-# Cloudinary
+# env
 _env.js
+.env
 
 #Helpers
 Helpers

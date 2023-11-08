@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap"
-import { ProductionContext } from "../../ApplicationViews";
+import { ProductionContext } from "../../views/ApplicationViews";
 import { deleteProduction } from "../../../managers/productionManager";
 import { useNavigate } from "react-router-dom";
 

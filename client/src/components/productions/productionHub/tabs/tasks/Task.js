@@ -1,6 +1,6 @@
 import ClearIcon from '@mui/icons-material/Clear';
 import { ListGroupItem, ListGroupItemText } from "reactstrap";
-import { ProductionContext } from '../../../../ApplicationViews';
+import { ProductionContext } from '../../../../views/ApplicationViews';
 import { useContext, useState } from 'react';
 import DeleteTaskModal from './editTasks/DeleteTaskModal';
 

@@ -6,7 +6,7 @@ import {
     CardSubtitle, 
     CardText,
     CardTitle } from "reactstrap";
-import { ProductionContext } from "../ApplicationViews";
+import { ProductionContext } from "../views/ApplicationViews";
 
 export default function ProductionCard({ productionObject, setProductionDetailsId }) {
 

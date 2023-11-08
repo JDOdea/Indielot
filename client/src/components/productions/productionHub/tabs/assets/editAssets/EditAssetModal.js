@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { ProductionContext } from "../../../../../ApplicationViews";
+import { ProductionContext } from "../../../../../views/ApplicationViews";
 import { fetchTypes, updateAsset } from "../../../../../../managers/assetManager";
 import { Button, Form, FormGroup, FormText, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import axios from "axios";
 import { fetchProductionById } from "../../../../../../managers/productionManager";
 
 export default function EditAssetModal({ asset, editAsset, setEditAsset, loggedInUser }) {

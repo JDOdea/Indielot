@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { ProductionContext } from "../../../../ApplicationViews";
+import { ProductionContext } from "../../../../views/ApplicationViews";
 import { ListGroup, ListGroupItemHeading } from "reactstrap";
 import { fetchTasksByProductionId } from "../../../../../managers/taskManager";
 import ProductionTask from "./ProductionTask";

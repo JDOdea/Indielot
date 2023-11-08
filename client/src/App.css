@@ -1,7 +1,9 @@
 :root {
-  --bg: #242526;
-  --bg-accent: #484a4d;
-  --text-color: #dadce1;
+  --bg: #F4F5F4;
+  /* --bg-accent: #C1C6C5; */
+  --bg-accent: #000000;
+  --hov-color: #677980;
+  --text-color: #000000;
   --nav-size: 60px;
   --border: 1px solid #474a4d;
   --border-radius: 8px;

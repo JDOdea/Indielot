@@ -7,6 +7,9 @@ using System.Security.Claims;
 using Indielot.Models;
 using Indielot.Data;
 using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 
 namespace Indielot.Controllers;
 
@@ -95,6 +98,8 @@ public class AuthController : ControllerBase
     [Authorize]
     public IActionResult Me()
     {
+        var cookie = Request.Cookies["IndielotLoginCookie"];
+        
         var identityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var profile = _dbContext.UserProfiles.SingleOrDefault(up => up.IdentityUserId == identityUserId);
         var roles = User.FindAll(ClaimTypes.Role).Select(r => r.Value).ToList();
@@ -103,9 +108,31 @@ public class AuthController : ControllerBase
             profile.UserName = User.FindFirstValue(ClaimTypes.Name);
             profile.Email = User.FindFirstValue(ClaimTypes.Email);
             profile.Roles = roles;
-            return Ok(profile);
+
+            /* return Ok(profile); */
+            return Ok(new { profile, token = cookie });
         }
         return NotFound();
+    }
+
+    [HttpGet("Token")]
+    [Authorize]
+    public IActionResult Token()
+    {
+        try
+        {
+            var cookie = Request.Cookies["IndielotLoginCookie"];
+
+            if (!string.IsNullOrEmpty(cookie))
+            {
+                return Ok(new { token = cookie });
+            }
+            return NotFound();
+        }
+        catch (Exception)
+        {
+            return StatusCode(500);
+        }
     }
 
     [HttpPost("register")]

@@ -2,7 +2,7 @@ import { Button, Card, CardBody, CardFooter, CardSubtitle, CardText } from "reac
 import { ReactComponent as EmptyPoster } from "../../../svgs/emptyPoster.svg"
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { ProductionContext } from "../../ApplicationViews";
+import { ProductionContext } from "../../views/ApplicationViews";
 import DeleteProductionModal from "./DeleteProductionModal";
 
 export default function ProductionHubCard({ loggedInUser }) {

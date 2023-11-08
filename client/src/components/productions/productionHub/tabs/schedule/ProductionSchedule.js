@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Calendar from "./Calendar";
 import CreateEventModal from "./editSchedule/newEvent/CreateEventModal";
-import { ProductionContext } from "../../../../ApplicationViews";
+import { ProductionContext } from "../../../../views/ApplicationViews";
 import { fetchEventsByProductionId } from "../../../../../managers/calendarEventManager";
 
 export default function ProductionSchedule({ loggedInUser }) {
