@@ -1,0 +1,22 @@
+.profileMenuItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    margin: 10px 0px 10px 10px !important;
+    padding: 0 !important;
+}
+
+.profileMenuItem svg {
+    margin-right: 15px;
+    fill: black;
+}
+
+.profileMenuItem > span {
+    color: white;
+    font-size: 15px;
+}
+
+.profileMenuItem:hover {
+    background-color: var(--hov-color);
+}

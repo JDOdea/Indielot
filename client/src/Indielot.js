@@ -1,18 +1,11 @@
-import UserProvider from "./providers/AuthContext.js"
 import { useEffect, useState } from "react";
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { tryGetLoggedInUser } from "./managers/authManager";
 import { Spinner } from "reactstrap";
-import ApplicationViews from "./components/views/ApplicationViews";
-import NavBar from "./components/nav/NavBar";
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
-import { AuthorizedRoute } from "./components/auth/AuthorizedRoute";
-import Footer from "./components/footer/Footer";
-import Landing from "./pages/landing/layouts";
 import Routes from "./routes/Routes.js";
-import Context from "./providers/Context.js";
+import Context from "./context/Context.js";
+/* import { Route, Routes } from "react-router-dom"; */
 
 
 export default function Indielot() {
@@ -30,13 +23,15 @@ export default function Indielot() {
     return <Spinner />;
   }
   
-  /* return (
+ /*  return (
     <Routes>
-      <Route path="/">
-        <Route index element={<Landing />}/>
-        <Route path="login" element={<Login setLoggedInUser={setLoggedInUser}/>}/>
-        <Route path="register" element={<Register />}/>
-      </Route>
+      {!loggedInUser && (
+        <Route path="/">
+          <Route index element={<Landing />}/>
+          <Route path="login" element={<Login setLoggedInUser={setLoggedInUser}/>}/>
+          <Route path="register" element={<Register />}/>
+        </Route>
+      )}
 
       <Route path="*" element={
         <AuthorizedRoute loggedInUser={loggedInUser}>

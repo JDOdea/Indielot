@@ -1,10 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
-  --bg: #F4F5F4;
-  /* --bg-accent: #C1C6C5; */
-  --bg-accent: #000000;
-  --hov-color: #677980;
+  /* 
+  FIRST ORIGINAL BG COLOR #E9F1F7; 
+  SECOND ORIGINAL BG COLOR #E0E0E2
+  Fandango (Purple): #AF1E88
+
+  Blue: #1E88AF
+  Oxford Blue: #00274E
+  Air Superiority Blue: #759AAB
+
+  Dark Goldenrod (Muted Gold): #AA8831
+  Gold: #FFD700
+
+  White Smoke: #F5F5F5
+  Seasalt: #F8F8F8
+
+  Jet: #333333
+  
+  */
+
+  
+  --bg: #F8F8F8;
+
+  --primary-color: #00274E;
+  --secondary-color: #FFD700;
+  --nav-color: linear-gradient(to right, #F8F8F8, rgb(203, 7, 174));
+  --navhov-color: rgb(172, 14, 149);
+  --bg-accent: #759AAB;
+  --hov-color: #FFA500;
   --text-color: #000000;
-  --nav-size: 60px;
+  --text-shadow: #d60887;
+
+  --font: 'Roboto', Helvetica, Arial, sans-serif;
+
+  --nav-size: 70px;
   --border: 1px solid #474a4d;
   --border-radius: 8px;
   --speed: 500ms;

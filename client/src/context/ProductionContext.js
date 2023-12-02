@@ -13,10 +13,10 @@ export default function ProductionProvider({ children }) {
             localStorage.setItem("production", JSON.stringify(production));
             navigate(`/${production.title}`);
         }
-    }, []);
+    }, [production]);
 
     return (
-        <ProductionContext.Provider value={{ production, setProduction }} >
+        <ProductionContext.Provider value={{ production, setProduction }}>
             {children}
         </ProductionContext.Provider>
     )

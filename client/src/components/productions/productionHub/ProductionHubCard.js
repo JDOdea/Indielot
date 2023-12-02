@@ -10,20 +10,25 @@ export default function ProductionHubCard({ loggedInUser }) {
 
     const { production, setProduction } = useContext(ProductionContext);
 
-
     if (!production) return;
     return (
         <Card color="dark" outline style={{ marginBottom: "4px" }}>
             <CardBody>
                 <div style={{ display: "flex" }}>
                     <EmptyPoster style={{ width: "100px", height: "100px"}}/>
-                    <CardSubtitle className="mb-2 text-muted" tag="h6">
-                        {production.description}
+                    <CardSubtitle className="mb-2 text-muted productionDetails" tag="h6">
+                        <div className="productionGenres">Thriller, Drama</div>
+                        <div className="productionDescription">{production.description}</div>
                     </CardSubtitle>
                 </div>
+                <CardText className="homeText">
+                    <b>Director:</b> Jake Holtzer<br/>
+                    <b>Writer:</b> Jake Holtzer
+                </CardText>
                     {
                         production.productionLead === loggedInUser.fullName &&
                         <Button
+                            className="productionButtons"
                             size="sm"
                             onClick={() => {
                                 navigate(`/${production.title}/edit`);
@@ -32,10 +37,6 @@ export default function ProductionHubCard({ loggedInUser }) {
                             Edit
                         </Button>
                     }
-                <CardText>
-                    <b>Director</b><br/>
-                    <b>Writer</b>
-                </CardText>
             </CardBody>
             {
                 production.productionLead === loggedInUser.fullName &&

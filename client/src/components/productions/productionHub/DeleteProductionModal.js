@@ -23,7 +23,7 @@ export default function DeleteProductionModal() {
 
     return (
         <div>
-            <Button color="danger" onClick={toggle}>
+            <Button className="productionButtons" color="danger" onClick={toggle}>
                 Delete
             </Button>
             <Modal isOpen={modal} toggle={toggle}>

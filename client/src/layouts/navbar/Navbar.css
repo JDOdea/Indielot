@@ -1,0 +1,82 @@
+/* Navbar */
+.navbar {
+    height: var(--nav-size);
+    background: linear-gradient(to right, #F8F8F8, rgb(203, 7, 174));
+}
+
+.navbarBrand {
+    background: transparent;
+}
+
+.navLogo {
+    width: 4rem;
+}
+
+/* .navIconContainer {
+
+} */
+
+.navIcon {
+    --button-size: calc(var(--nav-size) + * 0.5);
+    margin: 0px 10px;
+}
+
+.navbar svg {
+    transform: scale(160%, 160%);
+}
+
+.navButtonsContainer {
+    display: flex;
+    align-items: center;
+}
+
+.notificationButton {
+    text-decoration: none;
+    padding: 15px 26px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.notificationIcon {
+    color: white;
+}
+
+.notificationButton .badge {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 20%;
+    top: -0.001px;
+    right: 20%;
+    padding: 5px 10px;
+    border-radius: 45%;
+    background: rgb(255, 39, 39);
+}
+
+.messagingButtonContainer {
+    margin-top: 1px;
+    margin-right: 10px;
+}
+
+.messagingButton {
+    color: white;
+}
+
+.messagingButton .badge {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 1%;
+    top: 12px;
+    right: 6.1%;
+    padding: 5px 10px;
+    border-radius: 45%;
+    background: rgb(255, 39, 39);
+}
+
+.navProfileContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
-import { ProductionContext } from "../../../providers/ProductionContext"
+// import { ProductionContext } from "../../views/ApplicationViews";
+import { ProductionContext } from "../../../context/ProductionContext"
 
 export default function ActiveProductionCard({ productionObject }) {
 

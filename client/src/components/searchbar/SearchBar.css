@@ -1,0 +1,17 @@
+/* Search Bar */
+.searchBar {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-right: 150px;
+    width: 100%;
+}
+
+.searchBar > li {
+    width: 100%;
+}
+
+.searchBarInput {
+    position: relative;
+    width: 40rem;
+}

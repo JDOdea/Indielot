@@ -26,7 +26,7 @@ export default function LoginPanel({ login }) {
           <div className="login__container">
             <section>
               <form className="login__form">
-                <img className="login__logo" src="/logo.png"/>
+                <img className="login__logo" src="/logo.png" />
                 <fieldset className="form__group">
                   
                   <label className="form__subhead" htmlFor="email"><b>Email</b></label>

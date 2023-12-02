@@ -10,7 +10,6 @@ import { createContext, useEffect, useState } from "react";
 import EditProduction from "../productions/productionHub/EditProduction";
 import UserProductions from "../productions/userProductions/UserProductions";
 import UserProfile from "../profile/UserProfile";
-import Error from "../../Error";
 import ViewParamRouter from "./ViewParamRouter";
 import Inbox from "../messaging/Inbox";
 import ViewEditRouter from "./ViewEditRouter";
@@ -33,7 +32,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
 
     return (
         <Routes>
-            <Route path="/" errorElement={<Error />}>
+            <Route path="/">
                 <Route 
                     index
                     element={

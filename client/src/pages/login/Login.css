@@ -1,0 +1,181 @@
+/* Background */
+.backgroundContainer {
+    position: relative;
+    background: linear-gradient(0deg, #7c7d84, #e39776, #ecdac9, #e5c2a9, #c3d1cd);
+    background-size: 1000% 1000%;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Form */
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.formSubhead {
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+
+.inputWrapper {
+    width: 100%;
+    background-color: #fbf9f7;
+    border-radius: 10px;
+    height: 2.5rem;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.inputIcon {
+    font-size: x-large;
+}
+
+.inputForm {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.inputForm:focus {
+    outline: none;
+}
+
+.formButton {
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    height: 2.5rem;
+    margin-top: 1rem;
+    background-color: #b372bb;
+    color: #fbf9f7;
+}
+
+.formButton:hover {
+    background-color: #9c63a3;
+}
+
+.formLinkContainer {
+    margin-top: 2rem;
+    font-size: 17px;
+}
+
+.formLink {
+    color: #b372bb;
+    text-decoration: none;
+}
+
+.formLink:hover {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Login */
+.loginContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 75%;
+    min-width: 30rem;
+    background: #fbf9f7c4;
+    box-shadow: 0px 0px 80px #a179af;
+    padding: 6rem 4rem;
+    border-radius: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.loginForm {
+    display: flex;
+}
+
+.loginLogoContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.loginLogo {
+    padding-bottom: 2rem;
+    width: 100%;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.formInputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    padding-left: 6rem;
+}
+
+.loginDisclaimerContainer {
+    margin-top: 60px;
+    display: flex;
+}
+
+.loginDisclaimer {
+    font-size: 11px;
+    text-indent: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+@keyframes fadeInDown {
+    from {opacity: 0%; top: 0%;}
+    to {opacity: 100%; top: 50%;}
+}
+
+/* Sizing */
+@media (max-width: 750px) {
+    .loginContainer {
+        width: 95%;
+        height: 98%;
+    }
+    
+    .loginForm {
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .loginLogoContainer {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .loginLogo {
+        width: 70%;
+    }
+
+    .formInputs {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .formLinkContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .formLinkContainer .formLink {
+        margin-left: .5rem;
+    }
+}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 ul {
     list-style: none;
@@ -12,23 +12,23 @@ a {
 }
 
 
-/* Top Navigation Bar */
-
-/* <nav> */
 .navbar {
     height: var(--nav-size);
-    background-color: var(--bg-accent);
+    background-color: var(--nav-color);
     padding: 0 1rem;
     border-bottom: var(--border);
 }
 
 .navbar-brand {
-    background: white;
+    background: var(--secondary-color);
+    background: transparent;
     padding: 1px 10px;
+    border-radius: 8px;
 }
 
-.logo {
-    width: 7rem;
+.navLogo {
+    width: 5rem;
+    fill: none;
 }
 
 .navbar-nav {
@@ -54,8 +54,21 @@ a {
 }
 
 
+Menu 
+.navbar-menu {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
 
-/* Search Bar */
+.menu-text {
+    padding-left: 10px;
+    color: white;
+}
+
+
+Search Bar
 .navSearchBar {
     display: flex;
     position: relative;
@@ -78,7 +91,7 @@ a {
     transform: translateX(-50%);
 }
 
-/* Icon Button */
+Icon Button
 .navbar-icon {
     color: white;
 }
@@ -100,14 +113,15 @@ a {
     filter: brightness(1.2);
 }
 
-/* Profile Button */
+Profile Button
 .profile-button {
     position: relative;
-    margin: 10px;
+    margin: 0px 8px;
     cursor: pointer;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     border-radius: 10%;
-    background-color: var(--bg-accent);
+    background-color: var(--nav-color);
     transition: background-color 0.3s, filter 0.3s;
 }
 
@@ -128,7 +142,7 @@ a {
 
 .profile-button:hover {
     opacity: 1;
-    background-color: #adb0af;
+    background-color: var(--navhov-color);
 }
 
 .profile-button .navbar-icon span {
@@ -143,15 +157,17 @@ a {
     font-weight: 500;
     letter-spacing: 0.28px;
     line-height: 20px;
-    color: var(--text-color);
+    color: white;
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    padding-left: 10px;
+    padding-top: 5px;
 }
 
 
-/* Dropdown Menu */
+Dropdown Menu
 
 .dropdown {
     position: absolute;
@@ -194,7 +210,7 @@ a {
     margin-left: auto;
 }
 
-/* CSSTransition Classes */
+CSSTransition Classes
 .menu-primary-enter {
     position: absolute;
     transform: translateX(-110%) ease;
@@ -221,4 +237,4 @@ a {
 .menu-secondary-exit-active {
     transform: translateX(110%);
     transition: all var(--speed) ease;
-}
+} */

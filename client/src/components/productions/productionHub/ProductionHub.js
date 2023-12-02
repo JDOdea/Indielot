@@ -18,7 +18,7 @@ export default function ProductionHub({ loggedInUser }) {
     if (!production) return;
     return (
         <div className="productionHubContainer">
-            <h1><u><b>{production.title}</b></u></h1>
+            <h1 className="productionHubTitle"><u><b>{production.title}</b></u></h1>
             <ProductionHubNavBar loggedInUser={loggedInUser}/>
         </div>
     )

@@ -13,7 +13,7 @@ export default function HomeFeed({ loggedInUser }) {
         <div className="homeFeed">
             <div className="homeFeedBanner">
                 <h4 className="homeTitle">Home</h4>
-                Set Filter
+                <span className="feedFilter">Set Filter</span>
             </div>
             <HomeActivities />
         </div>

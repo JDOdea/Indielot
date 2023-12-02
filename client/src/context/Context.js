@@ -1,13 +1,12 @@
-import UserProvider from "./AuthContext";
+import AuthProvider from "./AuthContext";
 import ProductionProvider from "./ProductionContext";
 
 export default function Context({ children }) {
-
     return (
-        <UserProvider>
+        <AuthProvider>
             <ProductionProvider>
                 {children}
             </ProductionProvider>
-        </UserProvider>
+        </AuthProvider>
     )
 }

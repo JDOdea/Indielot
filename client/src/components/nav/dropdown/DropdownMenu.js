@@ -2,14 +2,14 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import { useContext, useEffect, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { logout } from "../../../managers/authManager";
-import { UserContext } from '../../../providers/AuthContext';
+import { AuthContext } from '../../../context/AuthContext';
 
 export default function DropdownMenu({ loggedInUser, setLoggedInUser, setOpen }) {
     const [activeMenu, setActiveMenu] = useState('main');
     const [menuHeight, setMenuHeight] = useState(null);
     const dropdownRef = useRef(null);
 
-    const userContext = useContext(UserContext);
+    const userContext = useContext(AuthContext);
 
     const DropdownItem = (props) => {
         return (
@@ -42,8 +42,11 @@ export default function DropdownMenu({ loggedInUser, setLoggedInUser, setOpen })
                     e.preventDefault();
                     setOpen(false);
                     logout().then(() => {
-                        setLoggedInUser(null);
+                        /* setLoggedInUser(null); */
                         setOpen(false);
+                        userContext.setUser("");
+                        userContext.setToken("");
+                        userContext.setAuthenticated(false);
                     })
                 }}>
                 <span className="icon-button">{props.leftIcon}</span>

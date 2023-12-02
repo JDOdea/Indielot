@@ -1,0 +1,42 @@
+/* Profile Button */
+.profileButton {
+    position: relative;
+    margin: 0px 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 10%;
+    transition: background-color 0.3s, filter 0.3s;
+    height: 60%;
+}
+
+.profileButton .navIcon {
+    pointer-events: none;
+    color: white;
+}
+
+.profileButton:hover {
+    opacity: 1;
+    background-color: var(--navhov-color);
+}
+
+.profileName {
+    box-sizing: border-box;
+    max-width: 160px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.28px;
+    color: white;
+    font-family: var(--font);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    pointer-events: none;
+    padding-top: 3px;
+}
+
+.dropdownIcon {
+    padding-top: 2px;
+    width: 10%;
+    margin-left: 5px;
+}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
     box-sizing: border-box;
@@ -10,7 +10,7 @@
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
 }
 
-/* Profile Header */
+Profile Header
 .profileHeader {
     width: 100%;
     height: 50vh;
@@ -35,10 +35,6 @@
     background-size: cover;
 }
 
-/* .profileHeaderContent {
-
-} */
-
 .profileName {
     font-weight: bold;
     position: absolute;
@@ -51,10 +47,6 @@
     text-align: center;
     color: white;
 }
-
-/* .editProfile-btn {
-    
-} */
 
 .profileHeaderPictureFrame {
     position: absolute;
@@ -71,10 +63,6 @@
     border-radius: 12px;
 }
 
-/* .profileHeaderPicture {
-    
-} */
-
 .profileHeaderEmptyPicture {
     width: 240px;
     height: 240px;
@@ -87,7 +75,7 @@
     left: 40%;
 }
 
-/* Profile Body */
+Profile Body
 .profileBody {
     background-color: white;
-}
+} */

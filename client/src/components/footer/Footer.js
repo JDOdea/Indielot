@@ -7,7 +7,7 @@ export default function Footer({}) {
     const [windowWidth, windowHeight] = useWindowSize();
     
 
-    return (
+    /* return (
         <footer
             className={`${windowWidth && windowHeight < 750 ? "hide-display" : "footer"}`}
         >
@@ -30,5 +30,5 @@ export default function Footer({}) {
                 </div>
             </div>
         </footer>        
-    )
+    ) */
 }
