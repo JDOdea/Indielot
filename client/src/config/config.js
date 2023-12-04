@@ -2,6 +2,15 @@
 const sidebarOptions = [
     { key: "home", label: "Home" },
     {
+        key: "productions",
+        label: "Productions",
+        options: [
+            { key: "", label: ""}
+        ]
+    },
+    { key: "search", label: "Search" },
+    { key: "settings", label: "Settings" },
+    {
         key: "about",
         label: "About",
         options: [

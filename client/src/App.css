@@ -20,9 +20,8 @@
   
   */
 
-  
+  /* Colors */
   --bg: #F8F8F8;
-
   --primary-color: #00274E;
   --secondary-color: #FFD700;
   --nav-color: linear-gradient(to right, #F8F8F8, rgb(203, 7, 174));
@@ -32,7 +31,34 @@
   --text-color: #000000;
   --text-shadow: #d60887;
 
+  --mainColor: #161c2e;
+  --mainColorLight: #384152;
+  --mainColorUltraLight: #4b5463;
+
+  --matterColor: #4a4a4a;
+  --matterColorLight: #fff;
+  --matterColorDark: #000;
+  --matterColorBright: #fcfcfc;
+  --matterColorAnti: #b2b2b2;
+
+  /* Font */
   --font: 'Roboto', Helvetica, Arial, sans-serif;
+
+  /* Topbar */
+  --topbarHeight: 64px;
+
+  /* Sidebar */
+  --sidebarPadding: 24px;
+  --sidebarWidth: 180px;
+  --sidebarWidthDesktop: 330px;
+  /* Sidebar Icon Arrow */
+  --arrowHoverTransition: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  --arrowHoverOffset: translateX(3px);
+  --hoverTransition: 0.15s ease-in-out;
+
+  /* Components z-index */
+  --zIndexTopbar: 10;
+  --zIndexSidebar: 9;
 
   --nav-size: 70px;
   --border: 1px solid #474a4d;
@@ -131,4 +157,8 @@
 
 .clearBtn {
   cursor: pointer;
+}
+
+.body-overlay {
+  background: rgba(0, 0, 0, 0.2);
 }

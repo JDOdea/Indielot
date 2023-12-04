@@ -1,16 +1,14 @@
 import { object, func, string } from "prop-types";
+import IconArrow from "../../components/iconArrow/IconArrow";
 import classNames from "classnames";
-import IconArrow from "../iconArrow/IconArrow";
+import "./Sidebar.css"
 
 const SidebarListItem = (props) => {
     const { item } = props;
     
     return (
-        <li
-            className={classNames(css.SidebarListItem, {
-                [css.sidebarItemActive]: item.key === "home"
-            })}
-        >
+        
+        <li className={`sidebarItem ${item.key === "home" ? "sidebarItemActive" : null}`}>
             {item.label}
         </li>
     );
@@ -33,13 +31,13 @@ export const SidebarListItemWithOptions = (props) => {
     const isActive = activeSubItem === item.key;
     
     return (
-        <li className={css.sidebarItemWithOptions}>
+        <li className="sidebarItemWithOptions">
             <div
-                className={css.sidebarItem}
-                onClick={() => setActiveSubItem(isActive ? nulll : item.key)}
+                className="sidebarItem"
+                onClick={() => setActiveSubItem(isActive ? null : item.key)}
             >
                 <span>{item.label}</span>
-                <IconArrow className={css.sidebarItemArrow} />
+                <IconArrow className="sidebarItemArrow" />
             </div>
         </li>
     );
@@ -61,12 +59,12 @@ SidebarListItemWithOptions.displayName = "SidebarListItemWithOptions";
 
 export const SidebarBackListItem = (props) => {
     const { setActiveSubItem } = props;
-    const sidebarClasses = classNames(css.sidebarItem, css.sidebarBackItem);
+    const sidebarClasses = classNames("sidebarItem", "sidebarBackItem");
 
     return (
         <li className={sidebarClasses} onClick={() => setActiveSubItem(null)}>
-            <IconArrow className={css.sidebarItemArrow} />
-            <span>return</span>
+            <IconArrow className="sidebarItemArrow" />
+            <span>Return</span>
         </li>
     );
 };
@@ -75,7 +73,7 @@ SidebarBackListItem.defaultProps = {
     setActiveSubItem: null
 };
 
-sidebarBackItem.propTypes = {
+SidebarBackListItem.propTypes = {
     setActiveSubItem: func.isRequired
 };
 

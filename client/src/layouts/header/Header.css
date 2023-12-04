@@ -1,0 +1,231 @@
+/* Header */
+.headerRoot {
+    /* Layout */
+    display: flex;
+    align-items: center;
+    height: var(--topbarHeight);
+
+    /* Position */
+    position: sticky;
+    top: 0;
+    z-index: var(--zIndexTopbar);
+
+    /* Style */
+    background-color: var(--nav-color);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    padding: 0 24px;
+
+    @media (min-width: 768px) {
+        padding: 0 36px;
+    }
+}
+
+.headerContent {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerNavigation {
+    /* Layout */
+    display: flex;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* width: 100%; */
+}
+
+.headerCenter {
+    display: flex;
+    align-items: center;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+}
+
+
+.headerSearch {
+    border: 1px rgb(161, 161, 161) solid;
+    border-radius: 6px;
+
+    /* Animation */
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+        transform: scale(102%);
+    }
+
+    &:focus-within {
+        transform: scale(102%);
+    }
+
+    & .searchBarInput {
+        &:focus {
+            border: 1px rgb(52, 118, 216) solid;
+        }
+    }
+}
+
+
+/* Icon Buttons */
+.navButtonsContainer {
+    display: flex;
+    align-items: center;
+}
+
+.navIconButton {
+    --button-size: calc(var(--topbarHeight) + * 0.5);
+    width: var(--button-size);
+    height: var(--button-size);
+    background-color: var(--matterColorAnti);
+    border-radius: 50%;
+    padding: 5px;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & svg {
+        color: rgb(84, 84, 84);
+    }
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+}
+
+/* .notificationButton {
+    
+} */
+
+/* .notificationIcon {
+    color: white;
+} */
+.headerProfile {
+    margin-left: 35px;
+    
+    /* Animation */
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.05s ease-in-out;
+
+    &:hover {
+        /* transform: scale(120%); */
+    }
+}
+
+.headerProfileWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.headerProfileImage {
+    height: 45px;
+    width: 45px;
+
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+Navbar
+.navbar {
+    height: var(--nav-size);
+    background: linear-gradient(to right, #F8F8F8, rgb(203, 7, 174));
+}
+
+.navbarBrand {
+    background: transparent;
+}
+
+.navLogo {
+    width: 4rem;
+}
+
+.navIcon {
+    --button-size: calc(var(--nav-size) + * 0.5);
+    margin: 0px 10px;
+}
+
+.navbar svg {
+    transform: scale(160%, 160%);
+}
+
+.navButtonsContainer {
+    display: flex;
+    align-items: center;
+}
+
+.notificationButton {
+    text-decoration: none;
+    padding: 15px 26px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.notificationIcon {
+    color: white;
+}
+
+.notificationButton .badge {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 20%;
+    top: -0.001px;
+    right: 20%;
+    padding: 5px 10px;
+    border-radius: 45%;
+    background: rgb(255, 39, 39);
+}
+
+.messagingButtonContainer {
+    margin-top: 1px;
+    margin-right: 10px;
+}
+
+.messagingButton {
+    color: white;
+}
+
+.messagingButton .badge {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 1%;
+    top: 12px;
+    right: 6.1%;
+    padding: 5px 10px;
+    border-radius: 45%;
+    background: rgb(255, 39, 39);
+}
+
+.navProfileContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+} */

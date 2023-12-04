@@ -1,0 +1,83 @@
+/* Dropdown */
+.dropdown {
+    /* Position */
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    z-index: 100;
+
+    /* Layout */
+    width: 200px;
+    padding: 1rem;
+    overflow: hidden;
+
+    /* Style */
+    background-color: var(--mainColor);
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    /* Animation */
+    transition: height var(--speed) ease;
+}
+
+.menu {
+    width: 100%;
+}
+
+.menuItem {
+    /* Layout */
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 0.5rem;
+
+    /* Style */
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--matterColorAnti);
+
+    /* Animation */
+    cursor: pointer;
+    transition: background var(--speed);
+
+    & .iconButton {
+        margin-right: 0.5rem;
+    }
+
+    & .iconRight {
+        margin-left: auto;
+    }
+
+    &:hover {
+        background-color: var(--mainColorLight);
+    }
+}
+
+/* CSSTransition */
+.menuPrimary-enter {
+    position: absolute;
+    transform: translateX(-110%) ease;
+}
+.menuPrimary-enter-active {
+    transform: translateX(0%);
+    transition: all var(--speed) ease;
+}
+.menuPrimary-exit {
+    position: absolute;
+}
+.menuPrimary-exit-active {
+    transform: translateX(-110%);
+    transition: all var(--speed) ease;
+}
+
+.menuSecondary-enter {
+    transform: translateX(110%);
+}
+.menuSecondary-enter-active {
+    transform: translateX(0%);
+    transition: all var(--speed) ease;
+}
+.menuSecondary-exit-active {
+    transform: translateX(110%);
+    transition: all var(--speed) ease;
+}

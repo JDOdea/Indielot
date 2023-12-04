@@ -1,8 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { bool, string, array } from "prop-types";
+import { useNavigate } from "react-router-dom";
 import config from "../../config/config";
 import "./Sidebar.css";
-import { useEffect, useState } from "react";
+import Image from "../../components/image/Image.js";
+import profileImageSrc from "../../assets/sidebar/jakeAvatar.png";
 import classNames from "classnames";
 
 // Custom Sidebar components
@@ -11,15 +13,12 @@ import SidebarListItem, {
     SidebarListItemWithOptions,
     SidebarBackListItem
 } from "./SidebarListItem";
-import IconArrow from "../iconArrow/IconArrow";
+import IconArrow from "../../components/iconArrow/IconArrow";
 
 const closeSubMenuDelay = 300;
 
-const Sidebar = ({ rootClassName, className, isMenuOpen, sidebarOptions }) => {
+const Sidebar = (props) => {
     const { rootClassName, className, isMenuOpen, sidebarOptions } = props;
-    const sidebarClasses = classNames(rootClassName || css.root, className, {
-        [css.sidebarOpen]: isMenuOpen
-    });
     
     // Handle sub items state
     const [activeSubItem, setActiveSubItem] = useState(null);
@@ -30,7 +29,7 @@ const Sidebar = ({ rootClassName, className, isMenuOpen, sidebarOptions }) => {
         const closeSubMenu = !isMenuOpen && activeSubItem;
         if (closeSubMenu) {
             setTimeout(() => {
-                setactiveSubItem(null);
+                setActiveSubItem(null);
             }, [closeSubMenuDelay]);
         }
     }, [isMenuOpen, activeSubItem]);
@@ -55,23 +54,24 @@ const Sidebar = ({ rootClassName, className, isMenuOpen, sidebarOptions }) => {
     });
 
     return (
-        <div className={sidebarClasses}>
+        <div className={`sidebarRoot ${isMenuOpen ? "sidebarOpen" : null}`}>
             <SidebarList>
                 {subItemOptions ? (
                     <SidebarBackListItem setActiveSubItem={setActiveSubItem} />
                 ) : null}
                 {renderSidebarOptions}
             </SidebarList>
-            <div className={css.profile}>
-                <div className={css.profileWrapper}>
-                    {/* <Image
-                        className={css.profileImage}
+
+            <div className="sidebarProfile">
+                <div className="sidebarProfileWrapper">
+                    <Image
+                        className="sidebarProfileImage"
                         src={profileImageSrc}
                         alt="profile image"
-                    /> */}
-                    <span className={css.profileDisplayName}>Aleksa P.</span>
+                    />
+                    <span className="sidebarProfileDisplayName">Jake</span>
                 </div>
-                <IconArrow className={css.profileArrow} />
+                <IconArrow className="sidebarProfileArrow" />
             </div>
         </div>
     );

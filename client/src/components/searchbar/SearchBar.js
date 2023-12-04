@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Input } from "reactstrap";
 import "./SearchBar.css";
 
-export default function SearchBar({ placeholder }) {
+export default function SearchBar({ className,placeholder }) {
     const [input, setInput] = useState("");
 
     const handleSearch = (e) => {
@@ -10,7 +10,8 @@ export default function SearchBar({ placeholder }) {
     };
 
     return (
-        <div className="searchBar">
+        // <div className="searchBar">
+        <div className={className}>
             <Input
                 className="searchBarInput"
                 name="search"

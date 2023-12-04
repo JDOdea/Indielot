@@ -5,8 +5,10 @@ import Signup from "../pages/signup/Signup.js"
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext.js";
 import UserViews from "./views/UserViews.js";
-import Navbar from "../layouts/navbar/Navbar.js";
 import Footer from "../components/footer/Footer.js";
+import Header from "../layouts/header/Header.js";
+import Layout from "../layouts/Layout.js";
+
 
 export default function RoutePaths({}) {
 
@@ -17,9 +19,9 @@ export default function RoutePaths({}) {
             {userContext.authenticated ? (
                 <Route path="*" element={
                     <>
-                        <Navbar />
-                        <UserViews />
-                        <Footer />
+                        <Layout>
+                            <UserViews />
+                        </Layout>
                     </>
                 }/>
             ) : (

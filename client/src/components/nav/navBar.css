@@ -94,7 +94,7 @@ Search Bar
 Icon Button
 .navbar-icon {
     color: white;
-}
+} 
 
 .icon-button {
     --button-size: calc(var(--nav-size) + * 0.5);
