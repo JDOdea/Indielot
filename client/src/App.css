@@ -56,6 +56,10 @@
   --arrowHoverOffset: translateX(3px);
   --hoverTransition: 0.15s ease-in-out;
 
+  /* Dropdown */
+  --dropdownPadding: 1rem;
+  --dropdownWidth: 200px;
+
   /* Components z-index */
   --zIndexTopbar: 10;
   --zIndexSidebar: 9;

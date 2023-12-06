@@ -5,7 +5,6 @@ import config from "../../config/config";
 import "./Sidebar.css";
 import Image from "../../components/image/Image.js";
 import profileImageSrc from "../../assets/sidebar/jakeAvatar.png";
-import classNames from "classnames";
 
 // Custom Sidebar components
 import SidebarList from "./SidebarList";

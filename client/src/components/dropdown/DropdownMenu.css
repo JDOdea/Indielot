@@ -1,15 +1,18 @@
 /* Dropdown */
-.dropdown {
+.dropdownRoot {
     /* Position */
     position: absolute;
     top: 60px;
     right: 10px;
     z-index: 100;
+    transform: translateX(
+        calc((var(--dropdownWidth) + (var(--dropdownPadding) * 2)) * -1)
+    );
 
     /* Layout */
-    width: 200px;
-    padding: 1rem;
     overflow: hidden;
+    padding: var(--dropdownPadding);
+    width: var(--dropdownWidth);
 
     /* Style */
     background-color: var(--mainColor);
@@ -18,6 +21,10 @@
 
     /* Animation */
     transition: height var(--speed) ease;
+}
+
+.dropdownOpen {
+    transform: translateY(0);
 }
 
 .menu {

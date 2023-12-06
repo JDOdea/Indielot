@@ -26,7 +26,7 @@ const ProfileButton = (props) => {
                 />
             </div>
             {isMenuOpen && hasDropdown && (
-                <DropdownMenu direction={direction} />
+                <DropdownMenu isMenuOpen={isMenuOpen} direction={direction} />
             )}
         </>
     );

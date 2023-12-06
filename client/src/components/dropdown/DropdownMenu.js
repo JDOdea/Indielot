@@ -2,13 +2,17 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { CSSTransition } from "react-transition-group";
 import "./DropdownMenu.css";
+import { useNavigate } from "react-router-dom";
 
-export default function DropdownMenu({ direction }) {
+export default function DropdownMenu(props) {
+    const { isMenuOpen, direction, dropdownOptions } = props;
     const [activeMenu, setActiveMenu] = useState('main');
     const [menuHeight, setMenuHeight] = useState(null);
     const dropdownRef = useRef(null);
 
     const userContext = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const calcHeight = (el) => {
         const height = el.offsetHeight;
@@ -49,7 +53,11 @@ export default function DropdownMenu({ direction }) {
     }
 
     return (
-        <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef} >
+        <div 
+            className={`dropdownRoot ${isMenuOpen ? "dropdownOpen" : null}`}
+            style={{ height: menuHeight }} 
+            ref={dropdownRef} 
+        >
             <CSSTransition
                 in={activeMenu === "main"}
                 timeout={500}
