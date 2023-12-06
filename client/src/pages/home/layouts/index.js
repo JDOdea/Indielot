@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Sidebar from "../../../components/sidebar/sidebar";
-import Feed from "../components/feed";
+import Feed from "../components/oldFeed";
 import "../styles/home.css"
 import { AuthContext } from "../../../context/AuthContext";
 import activityActions from "../../../utils/actions/activityActions";

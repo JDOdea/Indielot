@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import activityActions from "../../../utils/actions/activityActions";
-import Loading from "../../../components/loading/loading";
-import Activity from "./activity";
+import "../styles/Feed.module.css";
+import { CircularProgress } from "@mui/material";
 
 export default function Feed({ loading }) {
     const [activities, setActivities] = useState([]);
@@ -17,20 +17,9 @@ export default function Feed({ loading }) {
                 <span className="filter">Set Filter</span>
             </div>
             {loading ? (
-                <Loading />
+                <CircularProgress />
             ) : (
-                <article className="feedList">
-                    {activities.map((a) => (
-                        <Activity 
-                            key={a.id}
-                            username={a.updatedBy.userName}
-                            displayName={a.updatedBy.fullName}
-                            text={a.description}
-                            date={a.activityDate}
-                            production={a.production.title}
-                        />
-                    ))}
-                </article>
+                <article className="feedList"></article>
             )}
         </section>
     )
