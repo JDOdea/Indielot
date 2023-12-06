@@ -5,9 +5,9 @@
     top: 60px;
     right: 10px;
     z-index: 100;
-    transform: translateX(
+    /* transform: translateX(
         calc((var(--dropdownWidth) + (var(--dropdownPadding) * 2)) * -1)
-    );
+    ); */
 
     /* Layout */
     overflow: hidden;
@@ -24,7 +24,7 @@
 }
 
 .dropdownOpen {
-    transform: translateY(0);
+    transform: translateY(50);
 }
 
 .menu {

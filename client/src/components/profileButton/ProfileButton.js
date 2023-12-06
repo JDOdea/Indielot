@@ -1,7 +1,7 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from '../../context/AuthContext';
-import "./ProfileButton.css";
+import "./ProfileButton.module.css";
 import Image from '../image/Image';
 import PropTypes from "prop-types";
 import DropdownMenu from '../dropdown/DropdownMenu';
@@ -20,14 +20,14 @@ const ProfileButton = (props) => {
         <>
             <div ref={dropdownRef} onClick={toggle}>
                 <Image 
-                    className={`${className} ${isMenuOpen ? "activeDropdown" : null}`}
+                    className={className}
                     src={src}
                     alt={alt}
                 />
             </div>
-            {isMenuOpen && hasDropdown && (
+            {/* {isMenuOpen && hasDropdown && (
                 <DropdownMenu isMenuOpen={isMenuOpen} direction={direction} />
-            )}
+            )} */}
         </>
     );
 };

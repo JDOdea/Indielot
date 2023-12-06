@@ -113,12 +113,17 @@
     /* Animation */
     cursor: pointer;
     user-select: none;
-    transition: all 0.05s ease-in-out;
+    
 }
 
 .headerProfileWrapper {
     display: flex;
     align-items: center;
+    transition: all 0.05s ease-in-out;
+
+    &:hover {
+        transform: scale(110%);
+    }
 }
 
 .headerProfileImage {
